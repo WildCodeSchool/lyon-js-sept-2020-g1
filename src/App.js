@@ -8,26 +8,26 @@ import Favoris from './components/Favoris';
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Router>
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/Contact' component={Contact} />
-          <Route path='/AboutUs' component={AboutUs} />
-          <Route path='/Favoris' component={Favoris} />
+          <Route path="/" exact component={Home} />
+          <Route path="/Contact" component={Contact} />
+          <Route path="/AboutUs" component={AboutUs} />
+          <Route path="/Favoris" component={Favoris} />
         </Switch>
         <ul>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to='/Contact'>Contact</Link>
+            <Link to="/Contact">Contact</Link>
           </li>
           <li>
-            <Link to='/AboutUs'>About us</Link>
+            <Link to="/AboutUs">About us</Link>
           </li>
           <li>
-            <Link to='/Favoris'>Favoris</Link>
+            <Link to="/Favoris">Favoris</Link>
           </li>
         </ul>
       </Router>
