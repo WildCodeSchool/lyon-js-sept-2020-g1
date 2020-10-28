@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
@@ -59,7 +58,13 @@ const Searchbar = () => {
           className: classes.input,
         }}
       />
-      <Button variant="contained" className={classes.button}>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={() => {
+          window.location.href = '#'; // Future URL de la page resultats
+        }}
+      >
         Let's Cook
       </Button>
     </>
