@@ -8,16 +8,10 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles({
   root: {
     minWidth: 200,
+    maxWidth: 400,
   },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  GridContainer: {
-    marginRight: 20,
-    marginLeft: 20,
   },
 });
 
@@ -25,82 +19,90 @@ export default function AboutUs() {
   const classes = useStyles();
 
   return (
-    <Grid container justify="space-evenly" alignItems="center" spacing={10}>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card className={classes.root}>
-          <CardContent>
-            <img src="https://via.placeholder.com/250" alt="visage" />
-            <Typography variant="h5" component="h2">
-              Christian
-            </Typography>
+    <div className="container" justify="center">
+      <Grid
+        container
+        direction="row"
+        justify="space-evenly"
+        alignItems="center"
+        spacing={5}
+      >
+        <Grid item xs={12} sm={6} md={4}>
+          <Card className={classes.root}>
+            <CardContent>
+              <img src="https://via.placeholder.com/250" alt="visage" />
+              <Typography variant="h5" component="h2">
+                Christian
+              </Typography>
 
-            <Typography variant="body2" component="p">
-              petite phrase
-              <br />
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card className={classes.root}>
-          <CardContent>
-            <img src="https://via.placeholder.com/250" alt="visage" />
-            <Typography variant="h5" component="h2">
-              Maître Jean
-            </Typography>
+              <Typography variant="body2" component="p">
+                Positive MIND from Gradeloupe !!
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card className={classes.root}>
+            <CardContent>
+              <img src="https://via.placeholder.com/250" alt="visage" />
+              <Typography variant="h5" component="h2">
+                Maître Jean
+              </Typography>
 
-            <Typography variant="body2" component="p">
-              petite phrase
-              <br />
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card className={classes.root}>
-          <CardContent>
-            <img src="https://via.placeholder.com/250" alt="visage" />
-            <Typography variant="h5" component="h2">
-              Gilles
-            </Typography>
+              <Typography variant="body2" component="p">
+                Trop de fées penchées sur son berceau !!!
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card className={classes.root}>
+            <CardContent>
+              <img src="https://via.placeholder.com/250" alt="visage" />
+              <Typography variant="h5" component="h2">
+                Gilles
+              </Typography>
 
-            <Typography variant="body2" component="p">
-              petite phrase
-              <br />
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card className={classes.root}>
-          <CardContent>
-            <img src="https://via.placeholder.com/250" alt="visage" />
-            <Typography variant="h5" component="h2">
-              Brieuc
-            </Typography>
+              <Typography variant="body2" component="p">
+                Il ne parle pas beaucoup, mais c'est pour mieux coder !!!
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card className={classes.root}>
+            <CardContent>
+              <img src="https://via.placeholder.com/250" alt="visage" />
+              <Typography variant="h5" component="h2">
+                Brieuc
+              </Typography>
 
-            <Typography variant="body2" component="p">
-              petite phrase
-              <br />
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card className={classes.root}>
-          <CardContent>
-            <img src="https://via.placeholder.com/250" alt="visage" />
-            <Typography variant="h5" component="h2">
-              Sabrina
-            </Typography>
+              <Typography variant="body2" component="p">
+                Let's play baseball!! .then: je donne un concert !!
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card className={classes.root}>
+            <CardContent>
+              <img src="https://via.placeholder.com/250" alt="visage" />
+              <Typography variant="h5" component="h2">
+                Sabrina
+              </Typography>
 
-            <Typography variant="body2" component="p">
-              petite phrase
-              <br />
-            </Typography>
-          </CardContent>
-        </Card>
+              <Typography variant="body2" component="p">
+                OH my god...
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
