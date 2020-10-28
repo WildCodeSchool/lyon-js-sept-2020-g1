@@ -1,5 +1,4 @@
 import React from 'react';
-import './Navbar.css';
 import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
@@ -12,19 +11,19 @@ class Navbar extends React.Component {
     return (
       <nav className="nav">
         <div className="menuToggle">
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
+          <input type="checkbox" id="navChecked" />
+          <span />
+          <span />
+          <span />
           <ul className="menu">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Random Recipes</Link>
             </li>
             <li>
               <Link to="/Contact">Contact</Link>
             </li>
             <li>
-              <Link to="/AboutUs">About us</Link>
+              <Link to="/AboutUs">Team Development</Link>
             </li>
             <li>
               <Link to="/Favoris">Favoris</Link>

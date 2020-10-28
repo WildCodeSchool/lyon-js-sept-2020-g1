@@ -1,9 +1,20 @@
 import React from 'react';
+import NavbarIngredients from './NavbarIngredients';
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  );
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <NavbarIngredients />
+        <h1>Random Recipes</h1>
+      </div>
+    );
+  }
 }
+
+export default Home;
