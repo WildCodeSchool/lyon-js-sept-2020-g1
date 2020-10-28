@@ -15,6 +15,9 @@ class NavbarIngredients extends React.Component {
           <span />
           <span />
           <ul className="menuIngredients">
+            <li>
+              <h2>Ingrédients :</h2>
+            </li>
             {/* <li></li>
             <li></li>
             <li></li>
