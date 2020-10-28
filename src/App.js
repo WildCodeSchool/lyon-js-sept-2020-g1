@@ -10,12 +10,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/Contact" component={Contact} />
-          <Route path="/AboutUs" component={AboutUs} />
-          <Route path="/Favoris" component={Favoris} />
-        </Switch>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -30,6 +24,15 @@ function App() {
             <Link to="/Favoris">Favoris</Link>
           </li>
         </ul>
+
+        <main>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/Contact" component={Contact} />
+            <Route path="/AboutUs" component={AboutUs} />
+            <Route path="/Favoris" component={Favoris} />
+          </Switch>
+        </main>
       </Router>
     </div>
   );

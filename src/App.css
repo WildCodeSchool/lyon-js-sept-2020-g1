@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+main {
+  background-color: #323e40;
+  width: 100%;
+}
