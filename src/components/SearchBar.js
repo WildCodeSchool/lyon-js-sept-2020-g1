@@ -6,11 +6,14 @@ import AddIcon from '@material-ui/icons/AddOutlined';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   input: {
     backgroundColor: 'white',
     borderRadius: '5px',
     color: '#323e40',
+    [theme.breakpoints.up('md')]: {
+      width: '300px',
+    },
   },
   button: {
     backgroundColor: '#f2ab27',
@@ -18,8 +21,13 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundColor: '#D97D0D',
     },
+    [theme.breakpoints.up('md')]: {
+      width: '200px',
+      height: '80px',
+      fontSize: '18px',
+    },
   },
-});
+}));
 
 // SEARCH BAR COMPONENT MADE WITH HOOKS
 
