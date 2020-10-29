@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/destructuring-assignment */
@@ -12,23 +13,25 @@ class Contact extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
+      comment: '',
+
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ name: e.target.value });
+  handleChange(fieldName, fieldValue) {
+    this.setState({[fieldName]: fieldValue });
   }
 
   render() {
     return (
-      <div>
+      <div className="bloc">
         <div>
           <label htmlFor="lastName">My lastName: </label>
           <input
             type="text"
             value={this.state.lastName}
-            onChange={this.handleChange}
+            onChange={(e)=> this.handleChange("lastName",e.target.value)}
           />
           <br />
           <br />
@@ -38,7 +41,7 @@ class Contact extends React.Component {
           <input
             type="text"
             value={this.state.firstName}
-            onChange={this.handleChange}
+            onChange={(e)=> this.handleChange("firstName",e.target.value)}
           />
           <br />
           <br />
@@ -49,20 +52,21 @@ class Contact extends React.Component {
           <input
             type="text"
             value={this.state.email}
-            onChange={this.handleChange}
+            onChange={(e)=> this.handleChange("email",e.target.value)}
           />
           <br />
           <br />
         </div>
 
         <div>
+        
           <label htmlFor="comment">You can leave your comments here: </label>
-          <textarea name="comment" />
+          <textarea name="comment" onChange={(e)=> this.handleChange("comment",e.target.value)} value={this.state.comment}/>
           <br />
           <br />
         </div>
 
-        <button>Send</button>
+        <button className="button">Send</button>
       </div>
     );
   }
