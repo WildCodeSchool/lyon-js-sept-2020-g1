@@ -10,6 +10,9 @@ const useStyles = makeStyles({
     minWidth: 200,
     maxWidth: 400,
   },
+  container: {
+    display: 'flex',
+  },
   title: {
     fontSize: 14,
   },
@@ -19,24 +22,24 @@ export default function AboutUs() {
   const classes = useStyles();
 
   return (
-    <div className="container" justify="center">
+    <>
       <Grid
         container
         direction="row"
-        justify="space-evenly"
+        justify="center"
         alignItems="center"
         spacing={5}
       >
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardContent>
-              <img src="https://via.placeholder.com/250" alt="visage" />
+              <img src="https://via.placeholder.com/200" alt="visage" />
               <Typography variant="h5" component="h2">
                 Christian
               </Typography>
 
               <Typography variant="body2" component="p">
-                Positive MIND from Gradeloupe !!
+                Positive MIND from Guadeloupe !!
                 <br />
               </Typography>
             </CardContent>
@@ -45,13 +48,13 @@ export default function AboutUs() {
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardContent>
-              <img src="https://via.placeholder.com/250" alt="visage" />
+              <img src="https://via.placeholder.com/200" alt="visage" />
               <Typography variant="h5" component="h2">
                 Maître Jean
               </Typography>
 
               <Typography variant="body2" component="p">
-                Trop de fées penchées sur son berceau !!!
+                Que de fées penchées sur son berceau !
                 <br />
               </Typography>
             </CardContent>
@@ -60,13 +63,13 @@ export default function AboutUs() {
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardContent>
-              <img src="https://via.placeholder.com/250" alt="visage" />
+              <img src="https://via.placeholder.com/200" alt="visage" />
               <Typography variant="h5" component="h2">
                 Gilles
               </Typography>
 
               <Typography variant="body2" component="p">
-                Il ne parle pas beaucoup, mais c'est pour mieux coder !!!
+                Serial coder gentil et discret!
                 <br />
               </Typography>
             </CardContent>
@@ -75,13 +78,13 @@ export default function AboutUs() {
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardContent>
-              <img src="https://via.placeholder.com/250" alt="visage" />
+              <img src="https://via.placeholder.com/200" alt="visage" />
               <Typography variant="h5" component="h2">
                 Brieuc
               </Typography>
 
               <Typography variant="body2" component="p">
-                Let's play baseball!! .then: je donne un concert !!
+                Codeur/Joueur/Chanteur!
                 <br />
               </Typography>
             </CardContent>
@@ -90,7 +93,7 @@ export default function AboutUs() {
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardContent>
-              <img src="https://via.placeholder.com/250" alt="visage" />
+              <img src="https://via.placeholder.com/200" alt="visage" />
               <Typography variant="h5" component="h2">
                 Sabrina
               </Typography>
@@ -103,6 +106,6 @@ export default function AboutUs() {
           </Card>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 }
