@@ -22,11 +22,6 @@ export default function AboutUs() {
   const classes = useStyles();
 
   return (
-<<<<<<< HEAD
-    <div>
-      <h2>Team Development</h2>
-    </div>
-=======
     <>
       <Grid
         container
@@ -112,6 +107,5 @@ export default function AboutUs() {
         </Grid>
       </Grid>
     </>
->>>>>>> dev
   );
 }
