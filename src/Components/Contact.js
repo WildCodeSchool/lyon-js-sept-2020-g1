@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
 class Contact extends React.Component {
@@ -21,56 +22,45 @@ class Contact extends React.Component {
     return (
       <div className="bloc">
         <div>
-          <label htmlFor="lastName">
-            My lastName:
-            <input
-              id="lastName"
-              type="text"
-              value={lastName}
-              onChange={(e) => this.handleChange('lastName', e.target.value)}
-            />
-          </label>
+          <label htmlFor="lastName">My lastName: </label>
+          <input
+            id="lastName"
+            type="text"
+            value={lastName}
+            onChange={(e) => this.handleChange('lastName', e.target.value)}
+          />
           <br />
           <br />
         </div>
         <div>
-          <label htmlFor="firstName">
-            My firstName:
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => this.handleChange('firstName', e.target.value)}
-            />
-          </label>
-
+          <label htmlFor="firstName">My firstName: </label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => this.handleChange('firstName', e.target.value)}
+          />
           <br />
           <br />
         </div>
 
         <div>
-          <label htmlFor="email">
-            My email:
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => this.handleChange('email', e.target.value)}
-            />
-          </label>
+          <label htmlFor="email">My email: </label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => this.handleChange('email', e.target.value)}
+          />
           <br />
           <br />
         </div>
 
         <div>
-          <label htmlFor="comment">
-            You can leave your comments here:
-            <textarea
-              id="comment"
-              name="comment"
-              onChange={(e) => this.handleChange('comment', e.target.value)}
-              value={comment}
-            />
-          </label>
-
+          <label htmlFor="comment">You can leave your comments here: </label>
+          <textarea
+            name="comment"
+            onChange={(e) => this.handleChange('comment', e.target.value)}
+            value={comment}
+          />
           <br />
           <br />
         </div>
