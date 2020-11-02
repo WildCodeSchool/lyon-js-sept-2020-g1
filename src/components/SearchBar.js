@@ -6,7 +6,7 @@ import Select from 'react-select';
 const Searchbar = () => {
   // Initializing future state for test (with Hooks useState)
   const [currentIngredient, setCurrentIngredient] = useState('');
-  //const [ingredientsList, setIngredientsList] = useState([]);
+  // const [ingredientsList, setIngredientsList] = useState([]);
 
   // Handling when users writes in input -> the value is stored in the state
   const handleSearch = (inputValue) => setCurrentIngredient({ inputValue });
