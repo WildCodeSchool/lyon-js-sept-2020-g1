@@ -25,9 +25,19 @@ const Searchbar = () => {
 
   // Initializing future state for test (with Hooks useState)
   const [currentIngredient, setCurrentIngredient] = useState('');
+  const [ingredientsList, setIngredientsList] = useState('');
 
-  // Handling when users writes in input -> the value is stored in the state
-  const handleSearch = (inputValue) => setCurrentIngredient({ inputValue });
+  // Handling when users writes in input (for autocomplete) -> the value is stored in the state
+  const handleSearch = (inputValue) => {
+    setCurrentIngredient(inputValue);
+    console.log(currentIngredient);
+  };
+
+  // Store the selected options in ingredientsList state (for API request)
+  const addIngredientToList = (selectedOptions) => {
+    setIngredientsList(selectedOptions);
+    console.log(ingredientsList);
+  };
 
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -51,8 +61,9 @@ const Searchbar = () => {
       <Select
         options={options}
         styles={customStyles}
+        onChange={addIngredientToList}
         onInputChange={handleSearch}
-        value={currentIngredient}
+        isMulti
       />
       <Button variant="contained" className={classes.button}>
         Let's Cook
