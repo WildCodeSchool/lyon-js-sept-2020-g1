@@ -9,7 +9,7 @@ class NavbarIngredients extends React.Component {
 
   render() {
     return (
-      <nav className="nav">
+      <nav className="navIngredients">
         <div className="menuToggleIngredients">
           <input type="checkbox" id="navChecked" />
           <span />

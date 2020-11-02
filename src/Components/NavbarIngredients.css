@@ -1,16 +1,18 @@
-:root {
-  --tr-origin: 0% 0%;
-  --tr: translate(-100%, 0);
+body {
+  overflow-x: hidden;
 }
-.nav {
+.navIngredients {
   width: 100%;
   height: 50px;
+  display: none;
 }
 .menuToggleIngredients {
   display: block;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   height: 50px;
+  right: 50px;
+  float: right;
   /*-webkit-user-select: none;
   user-select: none;*/
 }
@@ -27,13 +29,13 @@
   width: 40px;
   height: 32px;
   position: absolute;
-  top: -7px;
-  left: -5px;
+  top: -44px;
+  left: 13px;
 
   cursor: pointer;
 
   opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  z-index: 3; /* and place it over the hamburger */
 
   -webkit-touch-callout: none;
 }
@@ -44,21 +46,20 @@
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  top: 12px;
-  left: 12px;
+  top: -30px;
+  left: 14px;
 
   background: #cdcdcd;
   border-radius: 3px;
 
-  z-index: 1;
+  z-index: 2;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
     background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
 }
 
 .menuToggleIngredients span:nth-last-child(2) {
   transform: rotate(90deg);
-  top: 4px;
-  left: 12px;
+  top: -38px;
 }
 
 /* 
@@ -67,12 +68,12 @@
  */
 .menuToggleIngredients input:checked ~ span {
   opacity: 1;
-  transform: rotate(45deg) translate(1px, -1px);
+  transform: rotate(-45deg) translate(0px, -1px);
   background: #232323;
 }
 .menuToggleIngredients input:checked ~ span:nth-last-child(2) {
   opacity: 1;
-  transform: rotate(135deg) translate(-2px, -1px);
+  transform: rotate(45deg) translate(-1px, -1px);
   background: #232323;
 }
 
@@ -83,10 +84,11 @@
 .menuIngredients {
   position: absolute;
   width: 300px;
-  margin: -100px 0 0 -40px;
+  margin: -100px 0 0 0;
   padding: 50px;
   padding-top: 100px;
   min-height: 103vh;
+  right: -600px;
 
   background: #ededed;
   list-style-type: none;
@@ -110,8 +112,8 @@
 }
 
 .menuIngredients li:active ~ .menuIngredients {
-  transform-origin: var(--tr-origin);
-  transform: var(--tr);
+  transform-origin: 0% 0%;
+  transform: 100% 0%;
 }
 
 /*
