@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,30 +20,9 @@ const useStyles = makeStyles((theme) => ({
 
 // SEARCH BAR COMPONENT MADE WITH HOOKS
 
-const Searchbar = () => {
+const Searchbar = (props) => {
   const classes = useStyles();
-
-  // Initializing future state for test (with Hooks useState)
-  const [currentIngredient, setCurrentIngredient] = useState('');
-  const [ingredientsList, setIngredientsList] = useState('');
-
-  // Handling when users writes in input (for autocomplete) -> the value is stored in the state
-  const handleSearch = (inputValue) => {
-    setCurrentIngredient(inputValue);
-    console.log(currentIngredient);
-  };
-
-  // Store the selected options in ingredientsList state (for API request)
-  const addIngredientToList = (selectedOptions) => {
-    setIngredientsList(selectedOptions);
-    console.log(ingredientsList);
-  };
-
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
+  const { handleSearch, addIngredientToList, options } = props;
 
   const customStyles = {
     input: () => ({
