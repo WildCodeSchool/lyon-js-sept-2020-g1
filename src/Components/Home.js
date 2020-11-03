@@ -27,18 +27,23 @@ export default function Home() {
     { value: 'vanilla', label: 'Vanilla' },
   ];
 
+  // API KEY INITIALIZATION : the API key must be stored in .env file at the root of the project :
+  // REACT_APP_API_KEY = <Your API Key>
+
+  const apiKey = `${process.env.REACT_APP_API_KEY}`;
+
+  // Fechting recipes from selected ingredients
+
   const resultatsRecipes = () => {
-    if (ingredientsList !== null) {
+    if (ingredientsList) {
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
           ? ingredient.value
           : `+${ingredient.value}`
       );
-      const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=87436d53184c4ffeae724d7a4f79b336&ingredients=${ingredients}`;
-      console.log(url);
-      const resultats = url;
+      const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}`;
       axios
-        .get(resultats)
+        .get(apiURL)
         .then((response) => response.data)
         .then((data) => {
           console.log(data);
