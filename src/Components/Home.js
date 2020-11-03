@@ -25,8 +25,10 @@ export default function Home() {
     console.log(ingredientsList);
   };
 
+  // Autocomplete function : Fetching ingredients when users types in SearchBar
+
   useEffect(() => {
-    const apiURL = `https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=banana`;
+    const apiURL = `https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=${currentIngredient}`;
     axios
       .get(apiURL)
       .then((res) => res.data.results)
@@ -39,13 +41,7 @@ export default function Home() {
       })
       .catch((err) => console.error(err))
       .finally(() => console.log('Over'));
-  }, []);
-
-  // [
-  //   { value: 'chocolate', label: 'Chocolate' },
-  //   { value: 'strawberry', label: 'Strawberry' },
-  //   { value: 'vanilla', label: 'Vanilla' },
-  // ];
+  }, [currentIngredient]);
 
   // Fechting recipes from selected ingredients
 
