@@ -3,11 +3,15 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import NavbarIngredients from './NavbarIngredients';
 import './Home.css';
+import AffichageRecettes from './AffichageRecettes';
 
 export default function Home() {
   // Initializing future state for test (with Hooks useState)
   const [currentIngredient, setCurrentIngredient] = useState('');
   const [ingredientsList, setIngredientsList] = useState([]);
+
+  // Stockage résultat d'API
+  const [recipes, setRecipes] = useState([]);
 
   // Handling when users writes in input (for autocomplete) -> the value is stored in the state
   const handleSearch = (inputValue) => {
@@ -41,14 +45,20 @@ export default function Home() {
           ? ingredient.value
           : `+${ingredient.value}`
       );
-      const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}`;
+      const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&number=3&ingredients=${ingredients}`;
       axios
         .get(apiURL)
         .then((response) => response.data)
         .then((data) => {
-          console.log(data);
+          setRecipes(data);
         });
     }
+  };
+
+  const displayRecipes = () => {
+    return recipes.map((recipe) => {
+      return <AffichageRecettes titre={recipe.title} image={recipe.image} />;
+    });
   };
 
   return (
@@ -67,6 +77,7 @@ export default function Home() {
             resultatsRecipes={resultatsRecipes}
             options={options}
           />
+          {displayRecipes()}
         </div>
       </div>
     </>
