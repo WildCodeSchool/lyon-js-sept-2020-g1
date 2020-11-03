@@ -22,7 +22,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Searchbar = (props) => {
   const classes = useStyles();
-  const { handleSearch, addIngredientToList, options } = props;
+  const {
+    handleSearch,
+    addIngredientToList,
+    options,
+    resultatsRecipes,
+  } = props;
 
   const customStyles = {
     input: () => ({
@@ -44,7 +49,11 @@ const Searchbar = (props) => {
         onInputChange={handleSearch}
         isMulti
       />
-      <Button variant="contained" className={classes.button}>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={resultatsRecipes}
+      >
         Let's Cook
       </Button>
     </>
