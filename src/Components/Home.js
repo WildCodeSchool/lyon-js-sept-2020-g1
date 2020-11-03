@@ -77,9 +77,9 @@ export default function Home() {
             resultatsRecipes={resultatsRecipes}
             options={options}
           />
-          {displayRecipes()}
         </div>
       </div>
+      <div className="affichageRecettes">{displayRecipes()}</div>
     </>
   );
 }
