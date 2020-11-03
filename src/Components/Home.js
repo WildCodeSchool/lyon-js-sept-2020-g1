@@ -24,26 +24,28 @@ export default function Home() {
     setIngredientsList(selectedOptions);
     console.log(ingredientsList);
   };
-  
+
   useEffect(() => {
     const apiURL = `https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=banana`;
-      axios.get(apiURL)
-        .then(res => res.data.results)
-        .then(data => {
-          const options = data.map((ingredient) => ({value: ingredient.id, label: ingredient.name}));
-          setIngredientsList(options);
-        })
-        .catch(err => console.error(err))
-        .finally(() => console.log('Over'));
-  },[]);
-  
+    axios
+      .get(apiURL)
+      .then((res) => res.data.results)
+      .then((data) => {
+        const options = data.map((ingredient) => ({
+          value: ingredient.id,
+          label: ingredient.name,
+        }));
+        setIngredientsList(options);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => console.log('Over'));
+  }, []);
+
   // [
   //   { value: 'chocolate', label: 'Chocolate' },
   //   { value: 'strawberry', label: 'Strawberry' },
   //   { value: 'vanilla', label: 'Vanilla' },
   // ];
-
-  
 
   // Fechting recipes from selected ingredients
 
