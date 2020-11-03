@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
 import NavbarIngredients from './NavbarIngredients';
@@ -8,6 +8,10 @@ export default function Home() {
   // Initializing future state for test (with Hooks useState)
   const [currentIngredient, setCurrentIngredient] = useState('');
   const [ingredientsList, setIngredientsList] = useState([]);
+  // API KEY INITIALIZATION : the API key must be stored in .env file at the root of the project :
+  // REACT_APP_API_KEY = <Your API Key>
+
+  const apiKey = `${process.env.REACT_APP_API_KEY}`;
 
   // Handling when users writes in input (for autocomplete) -> the value is stored in the state
   const handleSearch = (inputValue) => {
@@ -20,17 +24,26 @@ export default function Home() {
     setIngredientsList(selectedOptions);
     console.log(ingredientsList);
   };
+  
+  useEffect(() => {
+    const apiURL = `https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=banana`;
+      axios.get(apiURL)
+        .then(res => res.data.results)
+        .then(data => {
+          const options = data.map((ingredient) => ({value: ingredient.id, label: ingredient.name}));
+          setIngredientsList(options);
+        })
+        .catch(err => console.error(err))
+        .finally(() => console.log('Over'));
+  },[]);
+  
+  // [
+  //   { value: 'chocolate', label: 'Chocolate' },
+  //   { value: 'strawberry', label: 'Strawberry' },
+  //   { value: 'vanilla', label: 'Vanilla' },
+  // ];
 
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
-
-  // API KEY INITIALIZATION : the API key must be stored in .env file at the root of the project :
-  // REACT_APP_API_KEY = <Your API Key>
-
-  const apiKey = `${process.env.REACT_APP_API_KEY}`;
+  
 
   // Fechting recipes from selected ingredients
 
@@ -65,7 +78,7 @@ export default function Home() {
             addIngredientToList={addIngredientToList}
             handleSearch={handleSearch}
             resultatsRecipes={resultatsRecipes}
-            options={options}
+            options={ingredientsList}
           />
         </div>
       </div>
