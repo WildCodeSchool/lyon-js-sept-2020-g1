@@ -2,8 +2,84 @@
   color: white;
 }
 
-.recipe-container {
+.recipe-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.recipe-main-container h1 {
+  padding: 25px 0;
+}
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-img {
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  border-radius: 30px;
+}
+
+.ingredients-box {
+  padding: 20px;
+  color: #f2ab27;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 20vh;
+  padding: 20px;
+  line-height: 25px;
+  list-style-type: none;
+}
+
+.recipe-box {
+  color: #f2ab27;
+  padding: 20px;
+}
+
+.recipe-steps {
+  width: 100%;
+  padding: 20px;
+  border-spacing: 20px;
+}
+
+.recipe-steps-step {
+  width: 10%;
+  border-spacing: 5px 0;
+}
+
+.recipe-steps-text {
+  width: 90%;
+}
+
+@media screen and (min-width: 768px) {
+  .recipe-img {
+    width: 50vw;
+    height: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .recipe-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .ingredients-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    width: 25vh;
+  }
+
+  .ingredients-list li {
+    margin: 0 0 5px 0;
+  }
 }

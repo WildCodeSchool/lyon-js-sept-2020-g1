@@ -25,7 +25,11 @@ const Recipe = (props) => {
   const showIngredients = () => {
     if (recipeData.extendedIngredients) {
       return recipeData.extendedIngredients.map((ingredient, index) => {
-        return <p key={index}>{ingredient.name}</p>;
+        return (
+          <li key={index}>
+            {ingredient.amount} {ingredient.name}
+          </li>
+        );
       });
     }
   };
@@ -34,22 +38,39 @@ const Recipe = (props) => {
     return recipeSteps.map((data, index) => {
       return (
         // eslint-disable-next-line react/no-array-index-key
-        <div key={index}>
+        <tbody key={index}>
           {data.steps.map((el) => {
-            return <div key={el.number}>{el.step}</div>;
+            return (
+              <tr key={el.number}>
+                <td className="recipe-steps-step">{el.number}</td>
+                <td className="recipe-steps-text">{el.step}</td>
+              </tr>
+            );
           })}
-        </div>
+        </tbody>
       );
     });
   };
 
   return (
-    <div className="recipe-container">
+    <div className="recipe-main-container">
       <h1>{recipeData.title}</h1>
-      <img src={recipeData.image} alt={recipeData.title} />
-      <div>Ingredients :{showIngredients()}</div>
+      <img
+        className="recipe-img"
+        src={recipeData.image}
+        alt={recipeData.title}
+      />
       <p>Cooking time:{recipeData.readyInMinutes} minutes</p>
-      <div className="recipeStep">{showRecipeSteps()}</div>
+
+      <div className="recipe-container">
+        <div className="ingredients-box">
+          Ingredients <ul className="ingredients-list">{showIngredients()}</ul>
+        </div>
+        <div className="recipe-box">
+          Preparation
+          <table className="recipe-steps">{showRecipeSteps()}</table>
+        </div>
+      </div>
     </div>
   );
 };
