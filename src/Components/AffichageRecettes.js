@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -20,28 +21,30 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AffichageRecettes({ image, titre }) {
+export default function AffichageRecettes({ image, titre, id }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="photo of the recipe"
-          height="140"
-          image={image}
-          title="photo of recipe"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {titre}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            BLA BLA BLA of the MIAM MIAM !!...
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Link to={`/recipe/${id}`}>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt="photo of the recipe"
+            height="140"
+            image={image}
+            title="photo of recipe"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {titre}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              BLA BLA BLA of the MIAM MIAM !!...
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Link>
   );
 }
