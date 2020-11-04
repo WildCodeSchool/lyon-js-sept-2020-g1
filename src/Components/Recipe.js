@@ -24,8 +24,8 @@ const Recipe = (props) => {
   // eslint-disable-next-line consistent-return
   const showIngredients = () => {
     if (recipeData.extendedIngredients) {
-      return recipeData.extendedIngredients.map((ingredient) => {
-        return <p key={ingredient.id}>{ingredient.name}</p>;
+      return recipeData.extendedIngredients.map((ingredient, index) => {
+        return <p key={index}>{ingredient.name}</p>;
       });
     }
   };
