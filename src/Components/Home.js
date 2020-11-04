@@ -53,8 +53,11 @@ export default function Home() {
 
   // Fechting recipes from selected ingredients
 
-  const resultatsRecipes = () => {
-    if (ingredientsList) {
+  const resultsRecipes = () => {
+    
+    
+    
+    if (ingredientsList && ingredientsList.length > 0) {
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
           ? ingredient.label
@@ -66,6 +69,15 @@ export default function Home() {
         .then((response) => response.data)
         .then((data) => {
           setRecipes(data);
+        });
+    } else {
+      const apiURLRandom = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`;
+      axios
+        .get(apiURLRandom)
+        .then((response) => response.data)
+        .then((data) => {
+          console.log(data.recipes);
+          setRecipes(data.recipes);
         });
     }
   };
@@ -89,7 +101,7 @@ export default function Home() {
           <SearchBar
             addIngredientToList={addIngredientToList}
             handleSearch={handleSearch}
-            resultatsRecipes={resultatsRecipes}
+            resultsRecipes={resultsRecipes}
             options={ingredientsOptions}
           />
         </div>
