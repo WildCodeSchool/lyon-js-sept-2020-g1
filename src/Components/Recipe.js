@@ -25,7 +25,7 @@ const Recipe = (props) => {
   const showIngredients = () => {
     if (recipeData.extendedIngredients) {
       return recipeData.extendedIngredients.map((ingredient) => {
-        return <p key={ingredient.id}>{ingredient.aisle}</p>;
+        return <p key={ingredient.id}>{ingredient.name}</p>;
       });
     }
   };
@@ -44,7 +44,7 @@ const Recipe = (props) => {
   };
 
   return (
-    <div>
+    <div className="recipe-container">
       <h1>{recipeData.title}</h1>
       <img src={recipeData.image} alt={recipeData.title} />
       <div>Ingredients :{showIngredients()}</div>
