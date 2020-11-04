@@ -54,9 +54,6 @@ export default function Home() {
   // Fechting recipes from selected ingredients
 
   const resultsRecipes = () => {
-    
-    
-    
     if (ingredientsList && ingredientsList.length > 0) {
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
