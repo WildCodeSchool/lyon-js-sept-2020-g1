@@ -45,7 +45,7 @@ export default function Home() {
           ? ingredient.value
           : `+${ingredient.value}`
       );
-      const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&number=3&ingredients=${ingredients}`;
+      const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&number=12&ingredients=${ingredients}`;
       axios
         .get(apiURL)
         .then((response) => response.data)
