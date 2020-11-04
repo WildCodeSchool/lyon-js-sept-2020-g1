@@ -11,7 +11,7 @@ export default function AboutUs() {
       spacing={5}
       style={{
         textAlign: 'center',
-        height: '100vh',
+        height: '100%',
         padding: 30,
       }}
     >
