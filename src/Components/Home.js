@@ -15,13 +15,13 @@ export default function Home() {
   // Storage of the ingredients list for recipes request
   const [ingredientsList, setIngredientsList] = useState([]);
 
+  // Storage of the recipes following the API request
+  const [recipes, setRecipes] = useState([]);
+
   // API KEY INITIALIZATION : the API key must be stored in .env file at the root of the project :
   // REACT_APP_API_KEY = <Your API Key>
 
   const apiKey = `${process.env.REACT_APP_API_KEY}`;
-
-  // Stockage résultat d'API
-  const [recipes, setRecipes] = useState([]);
 
   // Handling when users writes in input (for autocomplete) -> the value is stored in the state
   const handleSearch = (inputValue) => {
@@ -72,7 +72,14 @@ export default function Home() {
 
   const displayRecipes = () => {
     return recipes.map((recipe) => {
-      return <AffichageRecettes titre={recipe.title} image={recipe.image} />;
+      return (
+        <AffichageRecettes
+          key={recipe.id}
+          titre={recipe.title}
+          image={recipe.image}
+          id={recipe.id}
+        />
+      );
     });
   };
 

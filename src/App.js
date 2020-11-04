@@ -8,6 +8,7 @@ import AboutUs from './Components/AboutUs';
 import Favoris from './Components/Favoris';
 import './Components/Contact.css';
 import Navbar from './Components/Navbar';
+import Recipe from './Components/Recipe';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/Contact" component={Contact} />
             <Route path="/AboutUs" component={AboutUs} />
             <Route path="/Favoris" component={Favoris} />
+            <Route exact path="/recipe/:id" component={Recipe} />
           </Switch>
         </main>
       </Router>

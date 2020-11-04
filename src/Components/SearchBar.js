@@ -40,6 +40,7 @@ const Searchbar = (props) => {
     }),
   };
   // SearchBar function return
+
   return (
     <>
       <Select
