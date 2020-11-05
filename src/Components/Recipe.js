@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Recipe.css';
+import PeopleIcon from '@material-ui/icons/People';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
-  const [recipeSteps, setRecipeSteps] = useState([]);
 
   useEffect(() => {
     const { match } = props;
@@ -14,60 +15,90 @@ const Recipe = (props) => {
     const recipeId = match.params.id;
     const recipeDataURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
 
-    const recipeStepsURL = `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions?apiKey=${apiKey}`;
-
     axios.get(recipeDataURL).then((res) => setRecipeData(res.data));
-    axios.get(recipeStepsURL).then((res) => setRecipeSteps(res.data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // eslint-disable-next-line consistent-return
   const showIngredients = () => {
     if (recipeData.extendedIngredients) {
       return recipeData.extendedIngredients.map((ingredient, index) => {
-        return (
-          <li key={index}>
-            {ingredient.amount} {ingredient.name}
-          </li>
-        );
+        return <li key={index}>{ingredient.originalString}</li>;
       });
     }
   };
 
   const showRecipeSteps = () => {
-    return recipeSteps.map((data, index) => {
-      return (
-        // eslint-disable-next-line react/no-array-index-key
-        <tbody key={index}>
-          {data.steps.map((el) => {
-            return (
-              <tr key={el.number}>
-                <td className="recipe-steps-step">{el.number}</td>
-                <td className="recipe-steps-text">{el.step}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      );
-    });
+    if (recipeData.analyzedInstructions) {
+      return recipeData.analyzedInstructions.map((instruction, index) => {
+        return (
+          <tbody key={index}>
+            {instruction.steps.map((step) => {
+              return (
+                <tr key={step.number}>
+                  <td className="recipe-steps-step">{step.number}</td>
+                  <td className="recipe-steps-text">{step.step}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        );
+      });
+    }
+  };
+
+  const showDiets = () => {
+    if (recipeData.diets) {
+      return recipeData.diets.map((diet, index) => {
+        return (
+          <div className="recipe-information-list" key={index}>
+            {diet}
+          </div>
+        );
+      });
+    }
+  };
+
+  const showDishTypes = () => {
+    if (recipeData.dishTypes) {
+      return recipeData.dishTypes.map((dishType, index) => {
+        return (
+          <div className="recipe-information-list" key={index}>
+            {dishType}
+          </div>
+        );
+      });
+    }
   };
 
   return (
     <div className="recipe-main-container">
       <h1>{recipeData.title}</h1>
+      <div className="recipe-information">
+        {showDiets()}
+        {showDishTypes()}
+      </div>
       <img
         className="recipe-img"
         src={recipeData.image}
         alt={recipeData.title}
       />
-      <p>Cooking time:{recipeData.readyInMinutes} minutes</p>
+      <div className="recipe-other-information">
+        <div className="recipe-other-information-list">
+          {' '}
+          <AccessTimeIcon /> <p>{recipeData.readyInMinutes} minutes</p>
+        </div>
+        <div className="recipe-other-information-list">
+          <PeopleIcon /> <p>{recipeData.servings} people</p>
+        </div>
+      </div>
 
       <div className="recipe-container">
         <div className="ingredients-box">
-          Ingredients <ul className="ingredients-list">{showIngredients()}</ul>
+          <h2>Ingredients</h2>{' '}
+          <ul className="ingredients-list">{showIngredients()}</ul>
         </div>
         <div className="recipe-box">
-          Preparation
+          <h2>Preparation</h2>
           <table className="recipe-steps">{showRecipeSteps()}</table>
         </div>
       </div>
