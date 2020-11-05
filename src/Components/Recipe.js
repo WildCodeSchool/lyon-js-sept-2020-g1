@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Recipe.css';
+import { Link } from 'react-router-dom';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
@@ -44,6 +45,10 @@ const Recipe = (props) => {
   };
 
   return (
+    <>
+    
+      <Link to="/"><div className="btnReturnHome">{"<"}</div></Link>
+    
     <div className="recipe-container">
       <h1>{recipeData.title}</h1>
       <img src={recipeData.image} alt={recipeData.title} />
@@ -51,6 +56,7 @@ const Recipe = (props) => {
       <p>Cooking time:{recipeData.readyInMinutes} minutes</p>
       <div className="recipeStep">{showRecipeSteps()}</div>
     </div>
+    </>
   );
 };
 

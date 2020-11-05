@@ -116,8 +116,8 @@
 }
 
 .menuTr {
-  transform-origin: var(--tr-origin);
-  transform: var(--tr);
+  transform-origin: 100% 0%;
+  transform: translate(0%, 0);
 }
 
 .menu li {
