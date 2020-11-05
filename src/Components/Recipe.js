@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Recipe.css';
 import PeopleIcon from '@material-ui/icons/People';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { Link } from 'react-router-dom';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
@@ -71,38 +72,43 @@ const Recipe = (props) => {
   };
 
   return (
-    <div className="recipe-main-container">
-      <h1>{recipeData.title}</h1>
-      <div className="recipe-information">
-        {showDiets()}
-        {showDishTypes()}
-      </div>
-      <img
-        className="recipe-img"
-        src={recipeData.image}
-        alt={recipeData.title}
-      />
-      <div className="recipe-other-information">
-        <div className="recipe-other-information-list">
-          {' '}
-          <AccessTimeIcon /> <p>{recipeData.readyInMinutes} minutes</p>
+    <>
+      <Link to="/">
+        <div className="btnReturnHome">{'<'}</div>
+      </Link>
+      <div className="recipe-main-container">
+        <h1>{recipeData.title}</h1>
+        <div className="recipe-information">
+          {showDiets()}
+          {showDishTypes()}
         </div>
-        <div className="recipe-other-information-list">
-          <PeopleIcon /> <p>{recipeData.servings} people</p>
+        <img
+          className="recipe-img"
+          src={recipeData.image}
+          alt={recipeData.title}
+        />
+        <div className="recipe-other-information">
+          <div className="recipe-other-information-list">
+            {' '}
+            <AccessTimeIcon /> <p>{recipeData.readyInMinutes} minutes</p>
+          </div>
+          <div className="recipe-other-information-list">
+            <PeopleIcon /> <p>{recipeData.servings} people</p>
+          </div>
         </div>
-      </div>
 
-      <div className="recipe-container">
-        <div className="ingredients-box">
-          <h2>Ingredients</h2>{' '}
-          <ul className="ingredients-list">{showIngredients()}</ul>
-        </div>
-        <div className="recipe-box">
-          <h2>Preparation</h2>
-          <table className="recipe-steps">{showRecipeSteps()}</table>
+        <div className="recipe-container">
+          <div className="ingredients-box">
+            <h2>Ingredients</h2>{' '}
+            <ul className="ingredients-list">{showIngredients()}</ul>
+          </div>
+          <div className="recipe-box">
+            <h2>Preparation</h2>
+            <table className="recipe-steps">{showRecipeSteps()}</table>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
