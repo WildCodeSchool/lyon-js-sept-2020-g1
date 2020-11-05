@@ -46,16 +46,17 @@ const Recipe = (props) => {
 
   return (
     <>
-    
-      <Link to="/"><div className="btnReturnHome">{"<"}</div></Link>
-    
-    <div className="recipe-container">
-      <h1>{recipeData.title}</h1>
-      <img src={recipeData.image} alt={recipeData.title} />
-      <div>Ingredients :{showIngredients()}</div>
-      <p>Cooking time:{recipeData.readyInMinutes} minutes</p>
-      <div className="recipeStep">{showRecipeSteps()}</div>
-    </div>
+      <Link to="/">
+        <div className="btnReturnHome">{'<'}</div>
+      </Link>
+
+      <div className="recipe-container">
+        <h1>{recipeData.title}</h1>
+        <img src={recipeData.image} alt={recipeData.title} />
+        <div>Ingredients :{showIngredients()}</div>
+        <p>Cooking time:{recipeData.readyInMinutes} minutes</p>
+        <div className="recipeStep">{showRecipeSteps()}</div>
+      </div>
     </>
   );
 };

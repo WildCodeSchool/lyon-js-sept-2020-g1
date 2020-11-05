@@ -2,7 +2,7 @@
   color: white;
 }
 
-.btnReturnHome{
+.btnReturnHome {
   border: solid 2px #cdcdcd;
   background-color: #cdcdcd;
   color: #232323;
@@ -22,8 +22,8 @@
   text-decoration: none;
   /* z-index: 3; */
 }
-.btnReturnHome:hover{
-  cursor:pointer; 
+.btnReturnHome:hover {
+  cursor: pointer;
 }
 
 .recipe-container {
