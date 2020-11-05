@@ -1,53 +1,92 @@
 import React from 'react';
-import { Grid, Paper } from '@material-ui/core/';
+import { Grid, Paper, makeStyles } from '@material-ui/core/';
+
+const useStyles = makeStyles({
+  root: {
+    background: 'radial-gradient(#F2AB27 30%, #D94D1A 75%)',
+    textAlign: 'center',
+    height: '100%',
+    padding: 30,
+  },
+  papers: {
+    padding: 10,
+    backgroundColor: '#ecf0f1',
+  },
+  avatar: {
+    maxWidth: '100%',
+  },
+  firstName: {
+    fontSize: 30,
+    color: '#D94D1A',
+  },
+  introduction: {
+    fontSize: 20,
+    color: '#323E40',
+  },
+});
 
 export default function AboutUs() {
+  const classes = useStyles();
   return (
-    <Grid
-      container
-      display="flex"
-      flexflow="row wrap"
-      justify="space-evenly"
-      spacing={5}
-      style={{
-        textAlign: 'center',
-        height: '100%',
-        padding: 30,
-      }}
-    >
+    <Grid container className={classes.root} spacing={5} justify="space-evenly">
       <Grid item xs={12} sm={6} md={4}>
-        <Paper elevation={3} style={{ padding: 10 }}>
-          <img src="/images/Avatars/Christian.png" alt="Christian's portrait" />
-          <h3 style={{ fontSize: 30 }}>Christian</h3>
-          <p style={{ fontSize: 20 }}>Positive Mind from Guadeloupe!</p>
+        <Paper className={classes.papers} elevation={3}>
+          <img
+            className={classes.avatar}
+            src="/images/Avatars/Christian.png"
+            alt="Christian's portrait"
+          />
+          <h3 className={classes.firstName}>Christian</h3>
+          <br />
+          <p className={classes.introduction}>Traduction française?...</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <Paper elevation={3} style={{ padding: 10 }}>
-          <img src="/images/Avatars/Jean.png" alt="Jean's portrait" />
-          <h3 style={{ fontSize: 30 }}>Jean</h3>
-          <p style={{ fontSize: 20 }}>Le Blond, le vrai!...</p>
+        <Paper className={classes.papers} elevation={3}>
+          <img
+            className={classes.avatar}
+            src="/images/Avatars/Jean.png"
+            alt="Jean's portrait"
+          />
+          <h3 className={classes.firstName}>Jean</h3>
+          <br />
+          <p className={classes.introduction}>Le Blond, le vrai!...</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <Paper elevation={3} style={{ padding: 10 }}>
-          <img src="/images/Avatars/Brieuc.png" alt="Brieuc's portrait" />
-          <h3 style={{ fontSize: 30 }}>Brieuc</h3>
-          <p style={{ fontSize: 20 }}>Codeur, Joueur, Chanteur!!</p>
+        <Paper className={classes.papers} elevation={3}>
+          <img
+            className={classes.avatar}
+            src="/images/Avatars/Brieuc.png"
+            alt="Brieuc's portrait"
+          />
+          <h3 className={classes.firstName}>Brieuc</h3>
+          <br />
+          <p className={classes.introduction}>Codeur, Joueur, Chanteur!!</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <Paper elevation={3} style={{ padding: 10 }}>
-          <img src="/images/Avatars/Gilles.png" alt="Gilles's portrait" />
-          <h3 style={{ fontSize: 30 }}>Gilles</h3>
-          <p style={{ fontSize: 20 }}>La discrétion, mais efficace!</p>
+        <Paper className={classes.papers} elevation={3}>
+          <img
+            className={classes.avatar}
+            src="/images/Avatars/Gilles.png"
+            alt="Gilles's portrait"
+          />
+          <h3 className={classes.firstName}>Gilles</h3>
+          <br />
+          <p className={classes.introduction}>La discrétion, mais efficace!</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <Paper elevation={3} style={{ padding: 10 }}>
-          <img src="/images/Avatars/Sabrina.png" alt="Sabrina's portrait" />
-          <h3 style={{ fontSize: 30 }}>Sabrina</h3>
-          <p style={{ fontSize: 20 }}>Oh my god...</p>
+        <Paper className={classes.papers} elevation={3}>
+          <img
+            className={classes.avatar}
+            src="/images/Avatars/Sabrina.png"
+            alt="Sabrina's portrait"
+          />
+          <h3 className={classes.firstName}>Sabrina</h3>
+          <br />
+          <p className={classes.introduction}>Oh my god...</p>
         </Paper>
       </Grid>
     </Grid>
