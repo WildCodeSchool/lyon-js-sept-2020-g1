@@ -1,5 +1,163 @@
-.recipe-container {
+* {
+  color: white;
+}
+
+.recipe-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.recipe-main-container h1 {
+  padding: 25px 0;
+}
+.btnReturnHome {
+  border: solid 2px #cdcdcd;
+  background-color: #cdcdcd;
+  color: #232323;
+  border-radius: 2px;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+
+  left: 11px;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+  box-shadow: 1px 1px #cccccc;
+  text-decoration: none;
+}
+.btnReturnHome:hover {
+  cursor: pointer;
+}
+
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-information {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.recipe-other-information {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.recipe-other-information-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  width: 50%;
+}
+
+.recipe-other-information-list p {
+  margin-left: 10px;
+}
+
+.recipe-information-list {
+  margin: 0 10px;
+  width: 30%;
+  height: 25px;
+  background-color: #d97d0d;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-img {
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  border-radius: 30px;
+}
+
+.ingredients-box {
+  margin: 20px;
+  color: #f2ab27;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 100vh;
+  padding: 20px;
+  line-height: 25px;
+  list-style-type: none;
+}
+
+.recipe-box {
+  margin: 20px;
+}
+
+.recipe-steps {
+  width: 100%;
+  padding: 20px;
+  border-spacing: 20px;
+}
+
+.recipe-steps-step {
+  width: 10%;
+  border-spacing: 5px 0;
+}
+
+.recipe-steps-text {
+  width: 90%;
+}
+
+h2 {
+  color: #f2ab27;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .recipe-img {
+    width: 50vw;
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  .recipe-information {
+    width: 50vw;
+  }
+
+  .recipe-other-information {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .recipe-container {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+  }
+
+  .ingredients-box {
+    border-right: 1px solid #f2ab27;
+  }
+
+  .ingredients-list {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+  }
+
+  .ingredients-list li {
+    margin: 0 0 5px 0;
+  }
 }
