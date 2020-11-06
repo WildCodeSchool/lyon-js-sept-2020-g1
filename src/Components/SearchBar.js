@@ -38,6 +38,14 @@ const Searchbar = (props) => {
 
   return (
     <>
+      <Select
+        options={options}
+        styles={customStyles}
+        onChange={addIngredientToList}
+        onInputChange={handleSearch}
+        isMulti
+        placeholder="Select your ingredients"
+      />
       <Button
         variant="contained"
         className={classes.button}
@@ -45,15 +53,6 @@ const Searchbar = (props) => {
       >
         Let's Cook
       </Button>
-
-      <i>By ingredients :</i>
-      <Select
-        options={options}
-        styles={customStyles}
-        onChange={addIngredientToList}
-        onInputChange={handleSearch}
-        isMulti
-      />
     </>
   );
 };
