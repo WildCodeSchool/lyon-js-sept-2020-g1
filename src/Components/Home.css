@@ -1,0 +1,55 @@
+.home-main-container {
+  width: 100%;
+  height: 800px;
+  position: relative;
+}
+
+.home-container {
+  position: absolute;
+  margin-top: 15%;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.home-container h1 {
+  font-size: 36px;
+}
+
+.search-btn {
+  margin-top: 20px;
+  background-color: #f2ab27;
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 768px) {
+  .home-container {
+    margin-top: 10%;
+  }
+
+  .home-container h1 {
+    font-size: 44px;
+  }
+}
+
+@media screen and (min-width: 960 px) {
+  .home-main-container {
+    height: 800px;
+  }
+
+  .home-container h1 {
+    font-size: 60px;
+  }
+
+  .home-container p {
+    font-size: 24px;
+  }
+}
