@@ -9,6 +9,9 @@ function useOutsideAlerter(ref) {
      */
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
+        if (event.target.id !== document.querySelector('#navChecked').id) {
+          document.querySelector('#navChecked').checked = false;
+        }
         //   const navChecked = document.querySelector('#navChecked');
         // console.log(navChecked);
         // menu.style.transform = 'translate(100%, 0)';
