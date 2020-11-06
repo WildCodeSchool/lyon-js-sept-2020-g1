@@ -2,8 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-
-function closeNavbar(){
+function closeNavbar() {
   document.querySelector('#navChecked').checked = false;
 }
 
@@ -29,7 +28,6 @@ function useOutsideAlerter(ref) {
   }, [ref]);
 }
 
-
 function Navbar() {
   const wrapperMenu = useRef(null);
   useOutsideAlerter(wrapperMenu);
@@ -43,16 +41,24 @@ function Navbar() {
         <span />
         <ul className="menu" ref={wrapperMenu}>
           <li>
-            <Link onClick={closeNavbar} to="/">Random Recipes</Link>
+            <Link onClick={closeNavbar} to="/">
+              Random Recipes
+            </Link>
           </li>
           <li>
-            <Link onClick={closeNavbar} to="/Contact">Contact</Link>
+            <Link onClick={closeNavbar} to="/Contact">
+              Contact
+            </Link>
           </li>
           <li>
-            <Link onClick={closeNavbar} to="/AboutUs">Team Development</Link>
+            <Link onClick={closeNavbar} to="/AboutUs">
+              Team Development
+            </Link>
           </li>
           <li>
-            <Link onClick={closeNavbar} to="/Favoris">Favoris</Link>
+            <Link onClick={closeNavbar} to="/Favoris">
+              Favoris
+            </Link>
           </li>
         </ul>
       </div>
