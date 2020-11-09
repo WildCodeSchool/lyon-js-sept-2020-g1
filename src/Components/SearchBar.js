@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { SearchContext } from '../contexts/SearchContext';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -22,7 +23,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Searchbar = (props) => {
   const classes = useStyles();
-  const { handleSearch, addIngredientToList, options, resultsRecipes } = props;
+
+  // Consuming SearchContext
+  const { fetchRecipes, ingredientsList } = useContext(SearchContext);
+
+  const { handleSearch, addIngredientToList, options } = props;
 
   const customStyles = {
     input: () => ({
@@ -43,13 +48,14 @@ const Searchbar = (props) => {
         styles={customStyles}
         onChange={addIngredientToList}
         onInputChange={handleSearch}
+        value={ingredientsList}
         isMulti
         placeholder="Select your ingredients"
       />
       <Button
         variant="contained"
         className={classes.button}
-        onClick={resultsRecipes}
+        onClick={fetchRecipes}
       >
         Let's Cook
       </Button>
