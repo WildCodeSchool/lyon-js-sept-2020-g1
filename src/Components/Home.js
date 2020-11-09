@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import SearchBar from './SearchBar';
 import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
@@ -8,44 +7,7 @@ import { SearchContext } from '../contexts/SearchContext';
 
 export default function Home() {
   // Consuming SearchContext
-  const { setIngredientsList, resultsRecipes, recipes, apiKey } = useContext(
-    SearchContext
-  );
-
-  // Storage of the user search for auto-complete request
-  const [currentIngredientSearch, setCurrentIngredientSearch] = useState('');
-
-  // Ingredients options for auto-complete
-  const [ingredientsOptions, setIngredientsOptions] = useState([]);
-
-  // Handling when users writes in input (for autocomplete) -> the value is stored in the state
-  const handleSearch = (inputValue) => {
-    setCurrentIngredientSearch(inputValue);
-  };
-
-  // Store the selected options in ingredientsList state (for API request)
-  const addIngredientToList = (selectedOptions) => {
-    setIngredientsList(selectedOptions);
-  };
-
-  // Autocomplete function : Fetching ingredients when users types in SearchBar
-
-  useEffect(() => {
-    if (currentIngredientSearch) {
-      const apiURL = `https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=${currentIngredientSearch}`;
-      axios
-        .get(apiURL)
-        .then((res) => res.data.results)
-        .then((data) => {
-          const options = data.map((ingredient) => ({
-            value: ingredient.id,
-            label: ingredient.name,
-          }));
-          setIngredientsOptions(options);
-        })
-        .catch((err) => console.error(err));
-    }
-  }, [currentIngredientSearch]);
+  const { recipes } = useContext(SearchContext);
 
   // Display recipes from selected ingredients
 
@@ -71,12 +33,7 @@ export default function Home() {
           <h2>Find awesome recipes !</h2>
           <p>Get custom recipes by filling your ingredients </p>
 
-          <SearchBar
-            addIngredientToList={addIngredientToList}
-            handleSearch={handleSearch}
-            resultsRecipes={resultsRecipes}
-            options={ingredientsOptions}
-          />
+          <SearchBar />
         </div>
       </div>
       <div className="affichageRecettes">{displayRecipes()}</div>
