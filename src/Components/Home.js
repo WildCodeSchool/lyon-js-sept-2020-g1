@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import NavbarIngredients from './NavbarIngredients';
 import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
+import Logo from '../pictures/Logo.png';
 
 export default function Home() {
   // Storage of the user search for auto-complete request
@@ -97,10 +98,10 @@ export default function Home() {
       <NavbarIngredients />
       <div className="home-main-container">
         <div className="home-container">
-          <h1>Meal Factory</h1>
-          <p>
-            <i>Find awesome recipes</i>
-          </p>
+          {/* <h1>Meal Factory</h1> */}
+          <img className="logo" src={Logo} alt="Meals Factory logo" />
+          <h2>Find awesome recipes !</h2>
+          <p>Get custom recipes by filling your ingredients </p>
 
           <SearchBar
             addIngredientToList={addIngredientToList}

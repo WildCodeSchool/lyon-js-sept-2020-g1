@@ -1,23 +1,30 @@
 .home-main-container {
-  width: 100%;
+  width: 90%;
   height: 800px;
   position: relative;
+  margin: 0px auto;
 }
 
 .home-container {
   position: absolute;
   margin-top: 15%;
   width: 100%;
-  height: 80%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   color: white;
+  text-align: center;
 }
 
-.home-container h1 {
-  font-size: 36px;
+.home-container h2 {
+  text-align: center;
+}
+
+.logo {
+  max-width: 300px;
+  height: auto;
 }
 
 .search-btn {
@@ -33,23 +40,42 @@
 @media screen and (min-width: 768px) {
   .home-container {
     margin-top: 10%;
+    height: 90%;
   }
 
-  .home-container h1 {
-    font-size: 44px;
+  .home-container h2 {
+    font-size: 40px;
+  }
+
+  .home-container p {
+    font-size: 36px;
+  }
+
+  .logo {
+    max-width: 700px;
   }
 }
 
-@media screen and (min-width: 960 px) {
+@media screen and (min-width: 960px) {
   .home-main-container {
     height: 800px;
   }
 
-  .home-container h1 {
-    font-size: 60px;
+  .home-container {
+    height: 60%;
   }
 
   .home-container p {
     font-size: 24px;
+  }
+
+  .logo {
+    max-width: 900px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    max-width: 1000px;
   }
 }
