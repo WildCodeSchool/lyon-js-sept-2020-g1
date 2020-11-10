@@ -77,7 +77,7 @@ const Searchbar = () => {
         })
         .catch((err) => console.error(err));
     }
-  }, [currentIngredientSearch]);
+  }, [currentIngredientSearch, apiKey]);
 
   // SearchBar function return
 
