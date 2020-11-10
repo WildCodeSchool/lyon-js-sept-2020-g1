@@ -5,6 +5,7 @@ import NavbarIngredients from './NavbarIngredients';
 import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
 import Logo from '../pictures/Logo.png';
+import BackToTop from './BackToTop';
 
 export default function Home() {
   // Storage of the user search for auto-complete request
@@ -112,6 +113,7 @@ export default function Home() {
         </div>
       </div>
       <div className="affichageRecettes">{displayRecipes()}</div>
+      <BackToTop />
     </>
   );
 }
