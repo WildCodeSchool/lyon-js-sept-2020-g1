@@ -4,6 +4,7 @@ import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
 import Logo from '../pictures/Logo.png';
 import { SearchContext } from '../contexts/SearchContext';
+import BackToTop from './BackToTop';
 
 export default function Home() {
   // Consuming SearchContext
@@ -37,6 +38,7 @@ export default function Home() {
         </div>
       </div>
       <div className="affichageRecettes">{displayRecipes()}</div>
+      <BackToTop />
     </>
   );
 }
