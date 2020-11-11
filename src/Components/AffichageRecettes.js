@@ -7,11 +7,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/Share';
+import EmailIcon from '@material-ui/icons/Email';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 350,
     margin: '15px',
     padding: '10px',
     height: '350px',
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   },
   btnZone: {
-    justifyContent: 'center',
+    textAlign: 'right',
   },
   iconBtn: {
     cursor: 'pointer',
@@ -38,34 +39,36 @@ export default function AffichageRecettes({ image, titre, id }) {
 
   return (
     <Link to={`/recipe/${id}`}>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            alt="photo of the recipe"
-            height="140"
-            image={image}
-            title="photo of recipe"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {titre}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              BLA BLA BLA of the MIAM MIAM !!...
-            </Typography>
-          </CardContent>
-          <CardContent className={classes.btnZone}>
-            <IconButton
-              aria-label="share"
-              size="small"
-              className={classes.iconBtn}
-            >
-              <ShareIcon fontSize="inherit" />
-            </IconButton>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Grid item xs={12} sm={6} md={4}>
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="photo of the recipe"
+              height="140"
+              image={image}
+              title="photo of recipe"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {titre}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Click on this card to discover the recipe!
+              </Typography>
+            </CardContent>
+            <CardContent className={classes.btnZone}>
+              <IconButton
+                aria-label="share"
+                size="small"
+                className={classes.iconBtn}
+              >
+                <EmailIcon fontSize="inherit" />
+              </IconButton>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Grid>
     </Link>
   );
 }

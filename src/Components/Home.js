@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import SearchBar from './SearchBar';
 import NavbarIngredients from './NavbarIngredients';
 import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
+
+const useStyles = makeStyles({
+  gridZone: {
+    gridAutoFlow: 'row dense',
+  },
+});
 
 export default function Home() {
   // Storage of the user search for auto-complete request
@@ -73,7 +81,6 @@ export default function Home() {
         .get(apiURLRandom)
         .then((response) => response.data)
         .then((data) => {
-          console.log(data.recipes);
           setRecipes(data.recipes);
         });
     }
@@ -91,6 +98,8 @@ export default function Home() {
       );
     });
   };
+
+  const classes = useStyles();
 
   return (
     <>
@@ -110,7 +119,17 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="affichageRecettes">{displayRecipes()}</div>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        spacing={5}
+        xs={12}
+        className={classes.gridZone}
+      >
+        <div className="affichageRecettes">{displayRecipes()}</div>
+      </Grid>
     </>
   );
 }
