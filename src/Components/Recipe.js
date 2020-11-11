@@ -1,14 +1,21 @@
 /* eslint-disable */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './Recipe.css';
 import PeopleIcon from '@material-ui/icons/People';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Link } from 'react-router-dom';
+import { FavoritesContext } from '../contexts/FavoritesContext';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
+
+  const handleFavorites = () => {
+    setFavorites([...favorites, parseInt(props.match.params.id, 10)]);
+  };
+
+  const { favorites, setFavorites } = useContext(FavoritesContext);
 
   useEffect(() => {
     const { match } = props;
@@ -78,6 +85,9 @@ const Recipe = (props) => {
       </Link>
       <div className="recipe-main-container">
         <h1>{recipeData.title}</h1>
+        <button type="button" onClick={handleFavorites}>
+          Favorites
+        </button>
         <div className="recipe-information">
           {showDiets()}
           {showDishTypes()}

@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     height: '300px',
     display: Grid,
     justifyContent: 'center',
-
     cursor: 'pointer',
   },
 });
