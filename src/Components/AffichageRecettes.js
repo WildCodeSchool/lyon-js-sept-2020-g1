@@ -17,7 +17,10 @@ const useStyles = makeStyles({
     padding: '10px',
     height: '350px',
     justifyContent: 'center',
+  },
+  linkToRecipe: {
     cursor: 'pointer',
+    textDecoration: 'none',
   },
 });
 
@@ -28,7 +31,7 @@ export default function AffichageRecettes({ image, titre, id }) {
     <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.root}>
         <CardActionArea>
-          <Link to={`/recipe/${id}`}>
+          <Link to={`/recipe/${id}`} className={classes.linkToRecipe}>
             <CardMedia
               component="img"
               alt="photo of the recipe"
@@ -36,15 +39,15 @@ export default function AffichageRecettes({ image, titre, id }) {
               image={image}
               title="photo of recipe"
             />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {titre}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Click on this card to discover the recipe!
+              </Typography>
+            </CardContent>
           </Link>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {titre}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Click on this card to discover the recipe!
-            </Typography>
-          </CardContent>
           <CardContent>
             <IconButtonCard />
           </CardContent>
