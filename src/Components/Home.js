@@ -9,7 +9,10 @@ import AffichageRecettes from './AffichageRecettes';
 
 const useStyles = makeStyles({
   gridZone: {
-    gridAutoFlow: 'row dense',
+    marginTop: 50,
+  },
+  affichageRecettes: {
+    width: 'auto',
   },
 });
 
@@ -125,10 +128,9 @@ export default function Home() {
         justify="center"
         alignItems="center"
         spacing={5}
-        xs={12}
         className={classes.gridZone}
       >
-        <div className="affichageRecettes">{displayRecipes()}</div>
+        {displayRecipes()}
       </Grid>
     </>
   );

@@ -6,12 +6,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import IconButton from '@material-ui/core/IconButton';
 import EmailIcon from '@material-ui/icons/Email';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   root: {
+    display: 'inline-block',
     width: 350,
     margin: '15px',
     padding: '10px',
@@ -19,18 +19,19 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     cursor: 'pointer',
   },
-  btnZone: {
-    textAlign: 'right',
-  },
   iconBtn: {
     cursor: 'pointer',
-    backgroundColor: '#323E40',
-    '&:hover': {
-      background: '#D97D0D',
-    },
     borderRadius: 5,
-    width: '2em',
-    height: '2em',
+    width: '1em',
+    height: '1em',
+    lineHeight: '1em',
+    textAlign: 'center',
+    padding: 3,
+    float: 'right',
+    color: '#323E40',
+    '&:hover': {
+      color: '#D97D0D',
+    },
   },
 });
 
@@ -57,14 +58,8 @@ export default function AffichageRecettes({ image, titre, id }) {
                 Click on this card to discover the recipe!
               </Typography>
             </CardContent>
-            <CardContent className={classes.btnZone}>
-              <IconButton
-                aria-label="share"
-                size="small"
-                className={classes.iconBtn}
-              >
-                <EmailIcon fontSize="inherit" />
-              </IconButton>
+            <CardContent>
+              <EmailIcon className={classes.iconBtn} />
             </CardContent>
           </CardActionArea>
         </Card>
