@@ -3,7 +3,7 @@ import { FavoritesContext } from '../contexts/FavoritesContext';
 import AffichageRecettes from './AffichageRecettes';
 import './Favorites.css';
 
-export default function Favoris() {
+export default function Favorites() {
   const { favoriteRecipes, favorites } = useContext(FavoritesContext);
 
   const displayFavorites = () => {

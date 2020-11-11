@@ -37,7 +37,7 @@ export default function Home() {
           <SearchBar />
         </div>
       </div>
-      <div className="affichageRecettes">{displayRecipes()}</div>
+      <div className="recipes-list">{displayRecipes()}</div>
       <BackToTop />
     </>
   );

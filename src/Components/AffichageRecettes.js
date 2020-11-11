@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   },
   cardContent: {
-    height: '50px',
+    height: '55px',
   },
   interactions: {
     display: 'flex',
@@ -45,12 +45,11 @@ export default function AffichageRecettes({ image, titre, id }) {
         <Link to={`/recipe/${id}`}>
           <CardContent className={classes.cardContent}>
             <Typography
-              gutterBottom
               variant="h5"
               component="h2"
               style={{
                 textAlign: 'center',
-                fontSize: titre.length < 30 ? '26px' : '20px',
+                fontSize: titre.length < 40 ? '24px' : '20px',
               }}
             >
               {titre}
