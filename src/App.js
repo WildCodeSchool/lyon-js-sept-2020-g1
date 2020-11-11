@@ -10,6 +10,7 @@ import Favoris from './Components/Favoris';
 import './Components/Contact.css';
 import Navbar from './Components/Navbar';
 import Recipe from './Components/Recipe';
+import Footer from './Components/Footer';
 import { FavoritesContextProvider } from './contexts/FavoritesContext';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             </main>
           </FavoritesContextProvider>
         </SearchContextProvider>
+        <Footer />
       </Router>
     </div>
   );

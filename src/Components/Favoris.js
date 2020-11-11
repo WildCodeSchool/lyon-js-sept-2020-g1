@@ -1,33 +1,32 @@
 import React, { useContext } from 'react';
 import { FavoritesContext } from '../contexts/FavoritesContext';
-import { SearchContext } from '../contexts/SearchContext';
 import AffichageRecettes from './AffichageRecettes';
+import './Favorites.css';
 
 export default function Favoris() {
-  const { favorites } = useContext(FavoritesContext);
-  const { recipes } = useContext(SearchContext);
+  const { favoriteRecipes, favorites } = useContext(FavoritesContext);
 
-  const matchId = () => {
+  const displayFavorites = () => {
+    const recipes = Object.values(favoriteRecipes);
+
     return recipes.map((recipe) => {
-      return favorites.map((favorite) => {
-        return (
-          recipe.id === favorite && (
-            <AffichageRecettes
-              key={recipe.id}
-              titre={recipe.title}
-              image={recipe.image}
-              id={recipe.id}
-            />
-          )
-        );
-      });
+      return (
+        favorites[recipe.id] && (
+          <AffichageRecettes
+            key={recipe.id}
+            titre={recipe.title}
+            image={recipe.image}
+            id={recipe.id}
+          />
+        )
+      );
     });
   };
 
   return (
-    <div>
-      {matchId()}
-      <h2>Favoris</h2>
+    <div className="favorites-container">
+      <h1>Favoris</h1>
+      <div className="favorites">{displayFavorites()}</div>
     </div>
   );
 }
