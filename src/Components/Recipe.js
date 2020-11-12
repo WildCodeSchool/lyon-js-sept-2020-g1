@@ -12,6 +12,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
+  const [commentaries, setCommentaries] = useState('');
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
@@ -125,6 +126,7 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
+        <div></div>
       </div>
     </>
   );
