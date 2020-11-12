@@ -9,6 +9,9 @@
   .home-main-container {
     background: no-repeat fixed center url(../pictures/background.jpg);
     border-radius: 10px;
+    width: 100%;
+    opacity: 0.9;
+    margin-top: 10px;
   }
 }
 

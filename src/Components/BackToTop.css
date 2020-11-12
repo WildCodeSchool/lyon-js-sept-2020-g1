@@ -15,6 +15,7 @@
   animation: fadeIn 0.1s;
   transition: opacity 0.4s;
   opacity: 1;
+  rotate: 90deg;
 }
 
 .scrollTop:hover {
