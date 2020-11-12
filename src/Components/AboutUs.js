@@ -7,6 +7,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     height: '100%',
     padding: 30,
+    margin: 0,
   },
   papers: {
     padding: 10,
