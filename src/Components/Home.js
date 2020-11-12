@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Grid from '@material-ui/core/Grid';
 import SearchBar from './SearchBar';
 import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
@@ -37,7 +38,9 @@ export default function Home() {
           <SearchBar />
         </div>
       </div>
-      <div className="affichageRecettes">{displayRecipes()}</div>
+      <Grid container spacing={5}>
+        {displayRecipes()}
+      </Grid>
       <BackToTop />
     </>
   );
