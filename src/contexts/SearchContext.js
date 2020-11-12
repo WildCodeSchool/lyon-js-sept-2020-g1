@@ -6,6 +6,7 @@ export const SearchContext = createContext();
 export const SearchContextProvider = ({ children }) => {
   // Storage of the ingredients list for recipes request
   const [ingredientsList, setIngredientsList] = useState([]);
+  const [filtersList, setFiltersList] = useState([]);
 
   // Storage of the recipes following the API request
   const [recipes, setRecipes] = useState([]);
@@ -16,28 +17,90 @@ export const SearchContextProvider = ({ children }) => {
   const apiKey = `${process.env.REACT_APP_API_KEY}`;
 
   const fetchRecipes = () => {
+    let recipeApiURL = '';
     if (ingredientsList && ingredientsList.length > 0) {
+      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=12&addRecipeInformation=true`;
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
           ? ingredient.label
           : `+${ingredient.label}`
       );
-      const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&number=12&ingredients=${ingredients}`;
-      axios
-        .get(apiURL)
-        .then((response) => response.data)
-        .then((data) => {
-          setRecipes(data);
-        });
+      recipeApiURL += `&includeIngredients=${ingredients}`;
+      if (filtersList.dietList && filtersList.dietList.length > 0) {
+        const diets = filtersList.dietList.map((diet) =>
+          filtersList.dietList.indexOf(diet) === 0
+            ? diet.label.replace(/ /g, '%20')
+            : `+${diet.label.replace(/ /g, '%20')}`
+        );
+        recipeApiURL += `&diet=${diets}`;
+      }
+      if (filtersList.cuisineList && filtersList.cuisineList.length > 0) {
+        const cuisines = filtersList.cuisineList.map((cuisine) =>
+          filtersList.cuisineList.indexOf(cuisine) === 0
+            ? cuisine.label
+            : `+${cuisine.label}`
+        );
+        recipeApiURL += `&cuisine=${cuisines}`;
+      }
+      if (filtersList.mealList && filtersList.mealList.length > 0) {
+        const meals = filtersList.mealList.map((meal) =>
+          filtersList.mealList.indexOf(meal) === 0
+            ? meal.label.replace(/ /g, '%20')
+            : `+${meal.label.replace(/ /g, '%20')}`
+        );
+        recipeApiURL += `&type=${meals}`;
+      }
     } else {
-      const apiURLRandom = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`;
-      axios
-        .get(apiURLRandom)
-        .then((response) => response.data)
-        .then((data) => {
-          setRecipes(data.recipes);
-        });
+      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`;
+
+      // Repère si l'utilisateur a sélectionné un filtre
+      let tagsIndice = false;
+
+      if (filtersList.dietList && filtersList.dietList.length > 0) {
+        tagsIndice = true;
+        recipeApiURL += `&tags=`;
+        const diets = filtersList.dietList.map((diet) =>
+          diet.label.replace(/ /g, '%20')
+        );
+        recipeApiURL += `${diets}`;
+      }
+      if (filtersList.cuisineList && filtersList.cuisineList.length > 0) {
+        if (tagsIndice === false) {
+          recipeApiURL += `&tags=`;
+          tagsIndice = true;
+        } else {
+          recipeApiURL += ',';
+        }
+        const cuisines = filtersList.cuisineList.map(
+          (cuisine) => cuisine.label
+        );
+        recipeApiURL += `${cuisines}`;
+      }
+      if (filtersList.mealList && filtersList.mealList.length > 0) {
+        if (tagsIndice === false) {
+          recipeApiURL += `&tags=`;
+          tagsIndice = true;
+        } else {
+          recipeApiURL += ',';
+        }
+        const meals = filtersList.mealList.map((meal) =>
+          meal.label.replace(/ /g, '%20')
+        );
+        recipeApiURL += `${meals}`;
+      }
     }
+    axios
+      .get(recipeApiURL)
+      .then((response) => response.data)
+      .then((data) => {
+        if (data.recipes && data.recipes.length > 0) {
+          setRecipes(data.recipes);
+        } else if (data.results && data.results.length > 0) {
+          setRecipes(data.results);
+        } else {
+          setRecipes([]);
+        }
+      });
   };
 
   return (
@@ -48,6 +111,7 @@ export const SearchContextProvider = ({ children }) => {
         fetchRecipes,
         recipes,
         setRecipes,
+        setFiltersList,
         apiKey,
       }}
     >
