@@ -6,7 +6,6 @@ import Logo from '../pictures/Logo.png';
 import { SearchContext } from '../contexts/SearchContext';
 import BackToTop from './BackToTop';
 
-
 export default function Home() {
   // Consuming SearchContext
   const { recipes } = useContext(SearchContext);
