@@ -7,8 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import EmailIcon from '@material-ui/icons/Email';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import StarIcon from '@material-ui/icons/Star';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 
 const useStyles = makeStyles({
@@ -52,6 +52,7 @@ const useStyles = makeStyles({
   },
   media: {
     minHeight: '200px',
+    maxHeight: '250px',
     minWidth: 375,
     objectFit: 'cover',
   },
@@ -115,12 +116,12 @@ export default function AffichageRecettes({ image, titre, id }) {
             </Mailto>
           </CardContent>
           {favorites[id] ? (
-            <StarIcon
+            <FavoriteIcon
               style={{ color: '#D97D0D' }}
               onClick={() => toggleFavorites(id)}
             />
           ) : (
-            <StarBorderIcon onClick={() => toggleFavorites(id)} />
+            <FavoriteBorderIcon onClick={() => toggleFavorites(id)} />
           )}
         </div>
       </CardActionArea>

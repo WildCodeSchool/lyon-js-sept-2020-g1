@@ -7,20 +7,18 @@ import PeopleIcon from '@material-ui/icons/People';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Link } from 'react-router-dom';
 import { FavoritesContext } from '../contexts/FavoritesContext';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
 
-  const handleFavorites = () => {
-    setFavorites([...favorites, parseInt(props.match.params.id, 10)]);
-  };
+  const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const recipeId = props.match.params.id;
 
   useEffect(() => {
-    const { match } = props;
     const apiKey = `${process.env.REACT_APP_API_KEY}`;
-    const recipeId = match.params.id;
     const recipeDataURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
 
     axios.get(recipeDataURL).then((res) => setRecipeData(res.data));
@@ -85,9 +83,6 @@ const Recipe = (props) => {
       </Link>
       <div className="recipe-main-container">
         <h1>{recipeData.title}</h1>
-        <button type="button" onClick={handleFavorites}>
-          Favorites
-        </button>
         <div className="recipe-information">
           {showDiets()}
           {showDishTypes()}
@@ -104,6 +99,19 @@ const Recipe = (props) => {
           </div>
           <div className="recipe-other-information-list">
             <PeopleIcon /> <p>{recipeData.servings} people</p>
+          </div>
+          <div className="recipe-other-information-list">
+            {favorites[recipeId] ? (
+              <FavoriteIcon
+                style={{ color: '#D97D0D', cursor: 'pointer' }}
+                onClick={() => toggleFavorites(recipeId)}
+              />
+            ) : (
+              <FavoriteBorderIcon
+                style={{ cursor: 'pointer' }}
+                onClick={() => toggleFavorites(recipeId)}
+              />
+            )}
           </div>
         </div>
 
