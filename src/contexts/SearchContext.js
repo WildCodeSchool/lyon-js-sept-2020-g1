@@ -96,11 +96,11 @@ export const SearchContextProvider = ({ children }) => {
       .get(recipeApiURL)
       .then((response) => response.data)
       .then((data) => {
-        if(data.recipes && data.recipes.length > 0){
+        if (data.recipes && data.recipes.length > 0) {
           setRecipes(data.recipes);
-        }else if(data.results && data.results.length > 0){
+        } else if (data.results && data.results.length > 0) {
           setRecipes(data.results);
-        }else{
+        } else {
           setRecipes([]);
         }
       });
