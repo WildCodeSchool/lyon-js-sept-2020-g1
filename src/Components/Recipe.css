@@ -1,11 +1,8 @@
-* {
-  color: white;
-}
-
 .recipe-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 
 .recipe-main-container h1 {
@@ -98,6 +95,7 @@
   padding: 20px;
   line-height: 25px;
   list-style-type: none;
+  color: white;
 }
 
 .recipe-box {

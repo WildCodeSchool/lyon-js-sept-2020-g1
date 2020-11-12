@@ -3,6 +3,13 @@
   height: 800px;
   position: relative;
   margin: 0px auto;
+  background-size: contain;
+}
+@media screen and (min-width: 768px) {
+  .home-main-container {
+    background: no-repeat fixed center url(../pictures/background.jpg);
+    border-radius: 10px;
+  }
 }
 
 .home-container {
@@ -25,6 +32,7 @@
 .logo {
   max-width: 300px;
   height: auto;
+  border-radius: 10px;
 }
 
 .search-btn {
@@ -35,6 +43,17 @@
   height: 50px;
   text-align: center;
   vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+}
+
+.recipes-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -73,8 +92,7 @@
     max-width: 900px;
   }
 }
-
-@media screen and (min-width: 1024px) {
+.background @media screen and (min-width: 1024px) {
   .logo {
     max-width: 1000px;
   }

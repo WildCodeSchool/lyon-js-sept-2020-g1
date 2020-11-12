@@ -5,6 +5,7 @@
 .nav {
   width: 5%;
   height: 50px;
+  background-color: #323e40;
 }
 .menuToggle {
   display: block;
@@ -103,6 +104,7 @@
   padding: 50px;
   padding-top: 100px;
   min-height: 103vh;
+  opacity: 0.7;
 
   background: #ededed;
   list-style-type: none;
