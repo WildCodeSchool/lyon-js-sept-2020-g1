@@ -28,12 +28,13 @@ const Searchbar = () => {
   // Material-ui style
   const classes = useStyles();
   const customStyles = {
-    container: () => ({
+    container: (provided) => ({
+      ...provided,
       margin: 10,
     }),
     input: () => ({
       width: 200,
-      color: 'black',
+      color: 'black'
     }),
     option: (provided) => ({
       ...provided,

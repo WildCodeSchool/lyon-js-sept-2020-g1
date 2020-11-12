@@ -18,8 +18,6 @@ export const SearchContextProvider = ({ children }) => {
 
   const fetchRecipes = () => {
     let recipeApiURL = '';
-    console.log(ingredientsList);
-    console.log(filtersList);
     if (ingredientsList && ingredientsList.length > 0) {
       recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=12&addRecipeInformation=true`;
       const ingredients = ingredientsList.map((ingredient) =>
@@ -91,7 +89,6 @@ export const SearchContextProvider = ({ children }) => {
         recipeApiURL += `${meals}`;
       }
     }
-    console.log(recipeApiURL);
     axios
       .get(recipeApiURL)
       .then((response) => response.data)
