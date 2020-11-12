@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
+    height: 100,
   },
   footer: {
     padding: theme.spacing(3, 2),
