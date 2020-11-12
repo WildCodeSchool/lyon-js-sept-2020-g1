@@ -1,7 +1,3 @@
-* {
-  color: white;
-}
-
 .recipe-main-container {
   display: flex;
   flex-direction: column;

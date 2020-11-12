@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
+  const [commentaries, setCommentaries] = useState('');
 
   useEffect(() => {
     const { match } = props;
@@ -107,6 +108,7 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
+        <div></div>
       </div>
     </>
   );

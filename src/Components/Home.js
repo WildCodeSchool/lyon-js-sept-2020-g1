@@ -5,6 +5,7 @@ import AffichageRecettes from './AffichageRecettes';
 import Logo from '../pictures/Logo.png';
 import { SearchContext } from '../contexts/SearchContext';
 import BackToTop from './BackToTop';
+import Background from '../pictures/background.jpg';
 
 export default function Home() {
   // Consuming SearchContext
