@@ -63,7 +63,7 @@ export default function AffichageRecettes({ image, titre, id }) {
             // height="250"
             // width="100%"
             image={image}
-            objectFit="cover"
+            objectfit="cover"
             title="photo of recipe"
           />
         </Link>
