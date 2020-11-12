@@ -34,7 +34,7 @@ const Searchbar = () => {
     }),
     input: () => ({
       width: 200,
-      color: 'black'
+      color: 'black',
     }),
     option: (provided) => ({
       ...provided,
