@@ -29,7 +29,6 @@ export default function Home() {
     <>
       <div className="home-main-container">
         <div className="home-container">
-          {/* <h1>Meal Factory</h1> */}
           <img className="logo" src={Logo} alt="Meals Factory logo" />
           <h2>Find awesome recipes !</h2>
           <p>Get custom recipes by filling your ingredients </p>
