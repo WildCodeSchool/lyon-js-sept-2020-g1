@@ -1,22 +1,24 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
 import EmailIcon from '@material-ui/icons/Email';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { FavoritesContext } from '../contexts/FavoritesContext';
 
 const useStyles = makeStyles({
   root: {
-    display: 'inline-block',
-    width: 350,
+    maxWidth: 375,
     margin: '15px',
-    padding: '10px',
-    height: '350px',
+    height: '400px',
     justifyContent: 'center',
   },
+
   linkToRecipe: {
     cursor: 'pointer',
     textDecoration: 'none',
@@ -39,10 +41,27 @@ const useStyles = makeStyles({
       color: '#D97D0D',
     },
   },
+  cardContent: {
+    height: '55px',
+  },
+  interactions: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '100%',
+  },
+  media: {
+    minHeight: '200px',
+    maxHeight: '250px',
+    minWidth: 375,
+    objectFit: 'cover',
+  },
 });
 
 export default function AffichageRecettes({ image, titre, id }) {
   const classes = useStyles();
+
+  const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
   const Mailto = ({ email, subject, body, children }) => {
     return (
@@ -59,35 +78,53 @@ export default function AffichageRecettes({ image, titre, id }) {
   };
 
   return (
-    <Grid item xs={12} sm={6} md={4}>
-      <Card className={classes.root}>
-        <Link to={`/recipe/${id}`} className={classes.linkToRecipe}>
-          <CardMedia
-            component="img"
-            alt="photo of the recipe"
-            height="140"
-            image={image}
-            title="photo of recipe"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+    <Card className={classes.root}>
+      <CardActionArea>
+        <Link to={`/recipe/${id}`}>
+          <CardContent className={classes.cardContent}>
+            <Typography
+              variant="h5"
+              component="h2"
+              style={{
+                textAlign: 'center',
+                fontSize: titre.length < 40 ? '24px' : '20px',
+              }}
+            >
               {titre}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Click on this card to discover the recipe!
-            </Typography>
           </CardContent>
+
+          <CardMedia
+            className={classes.media}
+            component="img"
+            alt="photo of the recipe"
+            // height="250"
+            // width="100%"
+            image={image}
+            objectfit="cover"
+            title="photo of recipe"
+          />
         </Link>
-        <CardContent className={classes.iconList}>
-          <Mailto
-            email="email@email.com"
-            subject="Recipe send from Meal Factory with Love!"
-            body={`Hi! Somebody send you this recipe: http://localhost:3000/recipe/${id}`}
-          >
-            <EmailIcon className={classes.iconBtn} />
-          </Mailto>
-        </CardContent>
-      </Card>
-    </Grid>
+        <div className={classes.interactions}>
+          <CardContent className={classes.iconList}>
+            <Mailto
+              email="email@email.com"
+              subject="Recipe send from Meal Factory with Love!"
+              body={`Hi! Somebody send you this recipe: http://localhost:3000/recipe/${id}`}
+            >
+              <EmailIcon className={classes.iconBtn} />
+            </Mailto>
+          </CardContent>
+          {favorites[id] ? (
+            <FavoriteIcon
+              style={{ color: '#D97D0D' }}
+              onClick={() => toggleFavorites(id)}
+            />
+          ) : (
+            <FavoriteBorderIcon onClick={() => toggleFavorites(id)} />
+          )}
+        </div>
+      </CardActionArea>
+    </Card>
   );
 }
