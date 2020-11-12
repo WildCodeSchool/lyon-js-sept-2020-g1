@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
       width: '200px',
       height: '60px',
       fontSize: '18px',
-      margin: '10px'
+      margin: '10px',
     },
   },
 }));
@@ -28,8 +28,8 @@ const Searchbar = () => {
   // Material-ui style
   const classes = useStyles();
   const customStyles = {
-    container: () =>({
-      margin: 10
+    container: () => ({
+      margin: 10,
     }),
     input: () => ({
       width: 200,
