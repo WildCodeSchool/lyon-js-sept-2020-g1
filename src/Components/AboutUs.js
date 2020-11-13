@@ -3,10 +3,10 @@ import { Grid, Paper, makeStyles } from '@material-ui/core/';
 
 const useStyles = makeStyles({
   root: {
-    background: 'radial-gradient(#F2AB27 30%, #D94D1A 75%)',
+    background: 'url(/images/AboutUs.jpeg) no-repeat fixed center / cover',
     textAlign: 'center',
     height: '100%',
-    padding: 30,
+    padding: 200,
   },
   papers: {
     padding: 10,
