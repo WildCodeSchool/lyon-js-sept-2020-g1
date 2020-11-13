@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import SearchBar from './SearchBar';
 import './Home.css';
 import AffichageRecettes from './AffichageRecettes';
-import Logo from '../pictures/Logo.png';
+import Logo from '../pictures/Logo_transparent.png';
 import { SearchContext } from '../contexts/SearchContext';
 import BackToTop from './BackToTop';
 
