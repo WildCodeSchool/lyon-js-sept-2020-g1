@@ -19,3 +19,10 @@
   align-items: center;
   margin: 0px auto;
 }
+
+@media screen and (min-width: 960px) {
+  .favorites-container {
+    justify-content: flex-start;
+    min-height: 800px;
+  }
+}

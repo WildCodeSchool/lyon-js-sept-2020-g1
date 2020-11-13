@@ -1,8 +1,11 @@
+body {
+  color: white;
+}
+
 .recipe-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
 }
 
 .recipe-main-container h1 {

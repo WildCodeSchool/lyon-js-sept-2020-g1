@@ -10,6 +10,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { FavoritesContext } from '../contexts/FavoritesContext';
+import Mailto from './MailTo';
 
 const useStyles = makeStyles({
   root: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles({
     margin: '15px',
     height: '400px',
     justifyContent: 'center',
+    opacity: 0.8,
   },
 
   linkToRecipe: {
@@ -55,6 +57,12 @@ const useStyles = makeStyles({
     maxHeight: '250px',
     minWidth: 375,
     objectFit: 'cover',
+    transform: 'scale(1)',
+    transition: 'all 200ms ease-in',
+    '&:hover': {
+      transition: 'all 200ms ease-in',
+      transform: 'scale(1.05)',
+    },
   },
 });
 
@@ -62,20 +70,6 @@ export default function AffichageRecettes({ image, titre, id }) {
   const classes = useStyles();
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
-
-  const Mailto = ({ email, subject, body, children }) => {
-    return (
-      <a
-        href={`mailto:${email}?subject=${
-          encodeURIComponent(subject) || ''
-        }&body=${encodeURIComponent(body) || ''}`}
-        rel="noreferrer"
-        target="_blank"
-      >
-        {children}
-      </a>
-    );
-  };
 
   return (
     <Card className={classes.root}>

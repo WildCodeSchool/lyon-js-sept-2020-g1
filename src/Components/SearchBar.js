@@ -16,8 +16,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '200px',
       height: '60px',
-      fontSize: '18px',
-      margin: '10px',
+      fontSize: '16px',
     },
   },
 }));
@@ -171,7 +170,7 @@ const Searchbar = () => {
         className={classes.button}
         onClick={fetchRecipes}
       >
-        Let's Cook
+        {ingredientsList.length <= 0 ? 'Random Recipes' : "Let's Cook"}
       </Button>
     </>
   );
