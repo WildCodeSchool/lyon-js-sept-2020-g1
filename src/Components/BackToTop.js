@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './BackToTop.css';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 const ScrollTopArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -26,7 +27,7 @@ const ScrollTopArrow = () => {
         onClick={scrollTop}
         style={{ height: 50, display: showScroll ? 'flex' : 'none' }}
       >
-        <span className="chevron">Back to top</span>
+        <ArrowBackIosIcon />
       </button>
     </div>
   );
