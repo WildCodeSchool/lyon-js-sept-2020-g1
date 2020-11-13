@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .bloc {
   width: 200px;
   height: 200px;
@@ -7,14 +12,14 @@
 }
 
 input {
-  width: 400px;
+  width: 500px;
   height: 50px;
   border-radius: 10px;
 }
 
 textarea {
-  height: 150px;
-  width: 400px;
+  height: 250px;
+  width: 500px;
   border-radius: 10px;
 }
 
@@ -22,4 +27,28 @@ button {
   width: 200px;
   height: 50px;
   border-radius: 10px;
+}
+
+label {
+  font-family: system-ui;
+  font-size: 1.6em;
+  font-style: normal;
+  color: #d97d0d;
+}
+body {
+  background-color: #323e40;
+}
+
+.required {
+  color: red;
+  font-size: 1.3em;
+  font-family: system-ui;
+  font-style: normal;
+}
+
+.button {
+  color: #d97d0d;
+  font-size: 1.3em;
+  font-family: system-ui;
+  font-style: normal;
 }
