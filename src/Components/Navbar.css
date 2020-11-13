@@ -3,7 +3,7 @@
   --tr: translate(-100%, 0);
 }
 .nav {
-  width: 100%;
+  width: 5%;
   height: 50px;
   background-color: #323e40;
 }
@@ -143,5 +143,21 @@ h1,
 h2 {
   text-align: center;
 }
-@media screen and (min-width: 800px) {
+
+.logoMealsFactory {
+  width: 100%;
+  max-width: 320px;
+  min-width: 220px;
+  height: auto;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.linkLogo {
+  margin: 0 auto;
+}
+
+.blocNav {
+  display: flex;
+  background-color: #323e40;
 }

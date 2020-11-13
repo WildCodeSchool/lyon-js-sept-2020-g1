@@ -6,6 +6,7 @@ const useStyles = makeStyles({
     background: 'url(/images/AboutUs.jpeg) no-repeat fixed center / cover',
     textAlign: 'center',
     height: '100%',
+    margin: 0,
     padding: 200,
   },
   papers: {
