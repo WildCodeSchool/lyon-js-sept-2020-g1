@@ -4,6 +4,7 @@ import Select from 'react-select';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { SearchContext } from '../contexts/SearchContext';
+import filters from '../filters/data';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -26,6 +27,10 @@ const Searchbar = () => {
   // Material-ui style
   const classes = useStyles();
   const customStyles = {
+    container: (provided) => ({
+      ...provided,
+      margin: 10,
+    }),
     input: () => ({
       width: 200,
       color: 'black',
@@ -40,6 +45,7 @@ const Searchbar = () => {
   const {
     ingredientsList,
     setIngredientsList,
+    setFiltersList,
     fetchRecipes,
     apiKey,
   } = useContext(SearchContext);
@@ -49,6 +55,20 @@ const Searchbar = () => {
 
   // Ingredients options for auto-complete
   const [ingredientsOptions, setIngredientsOptions] = useState([]);
+
+  // Diets options for auto-complete
+  const [dietsOptions, setDietsOptions] = useState([]);
+
+  // Cuisines options for auto-complete
+  const [cuisinesOptions, setCuisinesOptions] = useState([]);
+
+  // Cuisines options for auto-complete
+  const [mealsOptions, setMealsOptions] = useState([]);
+
+  // List of the different filters to apply
+  const [dietList, setDietList] = useState([]);
+  const [cuisineList, setCuisineList] = useState([]);
+  const [mealList, setMealList] = useState([]);
 
   // Handling when users writes in input (for autocomplete) -> the value is stored in the state
   const handleSearch = (inputValue) => {
@@ -60,8 +80,22 @@ const Searchbar = () => {
     setIngredientsList(selectedOptions);
   };
 
-  // Autocomplete function : Fetching ingredients when users types in SearchBar
+  // Store the different diets in filtersList state (for API request)
+  const addFilterDietToList = (selectedOptions) => {
+    setDietList(selectedOptions);
+  };
 
+  // Store the different diets in filtersList state (for API request)
+  const addFilterCuisineToList = (selectedOptions) => {
+    setCuisineList(selectedOptions);
+  };
+
+  // Store the different diets in filtersList state (for API request)
+  const addFilterMealToList = (selectedOptions) => {
+    setMealList(selectedOptions);
+  };
+
+  // Autocomplete function : Fetching ingredients when users types in SearchBar
   useEffect(() => {
     if (currentIngredientSearch) {
       const apiURL = `https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=${currentIngredientSearch}`;
@@ -77,21 +111,60 @@ const Searchbar = () => {
         })
         .catch((err) => console.error(err));
     }
-  }, [currentIngredientSearch, apiKey]);
+    setDietsOptions(filters.diets);
+    setCuisinesOptions(filters.cuisines);
+    setMealsOptions(filters.meals);
+    setFiltersList({ dietList, cuisineList, mealList });
+  }, [
+    currentIngredientSearch,
+    apiKey,
+    filters,
+    dietList,
+    cuisineList,
+    mealList,
+  ]);
 
   // SearchBar function return
-
   return (
     <>
       <Select
+        isClearable
         options={ingredientsOptions}
         styles={customStyles}
         onChange={addIngredientToList}
         onInputChange={handleSearch}
         value={ingredientsList}
         isMulti
-        placeholder="Select your ingredients"
+        placeholder="Select your Ingredients"
       />
+      <Select
+        isMulti
+        isClearable
+        styles={customStyles}
+        options={dietsOptions}
+        value={dietList}
+        onChange={addFilterDietToList}
+        placeholder="Select your Diets"
+      />
+      <Select
+        isMulti
+        isClearable
+        styles={customStyles}
+        options={cuisinesOptions}
+        value={cuisineList}
+        onChange={addFilterCuisineToList}
+        placeholder="Select your Cuisine Type"
+      />
+      <Select
+        isMulti
+        isClearable
+        options={mealsOptions}
+        value={mealList}
+        onChange={addFilterMealToList}
+        styles={customStyles}
+        placeholder="Select your Meal Type"
+      />
+
       <Button
         variant="contained"
         className={classes.button}
