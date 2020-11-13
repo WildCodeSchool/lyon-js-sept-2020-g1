@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    height: 100,
   },
   footer: {
     padding: theme.spacing(3, 2),
@@ -26,10 +26,10 @@ export default function StickyFooter() {
         <Container maxWidth="sm">
           <Typography variant="body1">
             <Link to="/AboutUs" variant="body2" color="inherit">
-              Lien vers page AboutUs
+              Development team
             </Link>
             <Link to="/Contact" variant="body2">
-              Lien vers page Contact
+              Contact us
             </Link>
             <Link
               rel="noreferrer"
@@ -38,7 +38,7 @@ export default function StickyFooter() {
               variant="body2"
               color="inherit"
             >
-              Lien vers dépôt Github
+              Github
             </Link>
             <Link
               rel="noreferrer"
@@ -46,7 +46,7 @@ export default function StickyFooter() {
               href="https://www.wildcodeschool.com/fr-FR/campus/lyon"
               variant="body2"
             >
-              Lien vers site de la Wild Code School
+              Wild Code School
             </Link>
           </Typography>
         </Container>

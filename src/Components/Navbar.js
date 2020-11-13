@@ -1,6 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import Logo from '../pictures/Logo.png';
+
+function closeNavbar() {
+  document.querySelector('#navChecked').checked = false;
+}
 
 function useOutsideAlerter(ref) {
   useEffect(() => {
@@ -10,14 +15,8 @@ function useOutsideAlerter(ref) {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         if (event.target.id !== document.querySelector('#navChecked').id) {
-          document.querySelector('#navChecked').checked = false;
+          closeNavbar();
         }
-        //   const navChecked = document.querySelector('#navChecked');
-        // console.log(navChecked);
-        // menu.style.transform = 'translate(100%, 0)';
-        // menu.classList.add('.menuTr');
-        // const menu = document.querySelector('.menuToggle');
-        // menu.style.display = 'none';
       }
     }
 
@@ -31,32 +30,49 @@ function useOutsideAlerter(ref) {
 }
 
 function Navbar() {
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  const wrapperMenu = useRef(null);
+  useOutsideAlerter(wrapperMenu);
 
   return (
-    <nav className="nav">
-      <div className="menuToggle">
-        <input type="checkbox" id="navChecked" />
-        <span />
-        <span />
-        <span />
-        <ul className="menu" ref={wrapperRef}>
-          <li>
-            <Link to="/">Random Recipes</Link>
-          </li>
-          <li>
-            <Link to="/Contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/AboutUs">Team Development</Link>
-          </li>
-          <li>
-            <Link to="/Favoris">Favoris</Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div className="blocNav">
+      <nav className="nav">
+        <div className="menuToggle">
+          <input type="checkbox" id="navChecked" />
+          <span />
+          <span />
+          <span />
+          <ul className="menu" ref={wrapperMenu}>
+            <li>
+              <Link onClick={closeNavbar} to="/">
+                Random Recipes
+              </Link>
+            </li>
+            <li>
+              <Link onClick={closeNavbar} to="/Contact">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link onClick={closeNavbar} to="/AboutUs">
+                Team Development
+              </Link>
+            </li>
+            <li>
+              <Link onClick={closeNavbar} to="/Favoris">
+                Favoris
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <Link to="/" className="linkLogo">
+        <img
+          src={Logo}
+          alt="logo de Meals Factory"
+          className="logoMealsFactory"
+        />
+      </Link>
+    </div>
   );
 }
 

@@ -1,0 +1,28 @@
+.favorites-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.favorites-container h1 {
+  padding: 25px 0;
+  color: white;
+}
+
+.favorites {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+}
+
+@media screen and (min-width: 960px) {
+  .favorites-container {
+    justify-content: flex-start;
+    min-height: 800px;
+  }
+}

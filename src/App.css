@@ -1,7 +1,12 @@
 * {
   margin: 0;
+  padding: 0;
   font-family: Roboto, sans-serif;
   font-weight: 400;
+}
+
+.App {
+  background-color: #323e40;
 }
 
 main {

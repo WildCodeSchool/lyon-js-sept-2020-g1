@@ -1,0 +1,30 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.scrollTop {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.1s;
+  transition: opacity 0.4s;
+  opacity: 1;
+  transform: rotate 90deg;
+  -webkit-transform: rotate(90deg);
+}
+
+.scrollTop:hover {
+  opacity: 1;
+}
+.chevron {
+  text-align: center;
+  line-height: 12px;
+  font-weight: bold;
+  color: black;
+}
