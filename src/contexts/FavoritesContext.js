@@ -28,7 +28,7 @@ export const FavoritesContextProvider = ({ children }) => {
 
     recipes.map((recipe) => {
       return (
-        recipe.id === id &&
+        recipe.id === parseInt(id, 10) &&
         setFavoriteRecipes((prevFavRecipes) => {
           return { ...prevFavRecipes, [id]: recipe };
         })
