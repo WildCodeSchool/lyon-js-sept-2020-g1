@@ -37,7 +37,6 @@ const useStyles = makeStyles({
 const Recipe = (props) => {
   const classes = useStyles();
   const [recipeData, setRecipeData] = useState([]);
-  // const [commentaries, setCommentaries] = useState('');
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
@@ -166,7 +165,6 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-        <div></div>
       </div>
     </>
   );
