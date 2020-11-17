@@ -5,6 +5,10 @@
   font-weight: 400;
 }
 
+.App {
+  background-color: #323e40;
+}
+
 main {
   background-color: #323e40;
   width: 100%;

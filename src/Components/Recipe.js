@@ -1,19 +1,52 @@
 /* eslint-disable */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './Recipe.css';
+import { makeStyles } from '@material-ui/core/styles';
 import PeopleIcon from '@material-ui/icons/People';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Link } from 'react-router-dom';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import EmailIcon from '@material-ui/icons/Email';
+import { FavoritesContext } from '../contexts/FavoritesContext';
+import Mailto from './MailTo';
+
+const useStyles = makeStyles({
+  iconList: {
+    height: '3em',
+    padding: 5,
+  },
+  iconBtn: {
+    cursor: 'pointer',
+    borderRadius: 5,
+    width: '1em',
+    height: '1em',
+    lineHeight: '1em',
+    textAlign: 'center',
+    padding: 3,
+    float: 'right',
+    color: 'white',
+    '&:hover': {
+      color: '#D97D0D',
+    },
+  },
+});
 
 const Recipe = (props) => {
+  const classes = useStyles();
   const [recipeData, setRecipeData] = useState([]);
+  // const [commentaries, setCommentaries] = useState('');
+
+  const { favorites, toggleFavorites } = useContext(FavoritesContext);
+
+  const { match } = props;
+
+  const recipeId = match.params.id;
 
   useEffect(() => {
-    const { match } = props;
     const apiKey = `${process.env.REACT_APP_API_KEY}`;
-    const recipeId = match.params.id;
     const recipeDataURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`;
 
     axios.get(recipeDataURL).then((res) => setRecipeData(res.data));
@@ -51,9 +84,11 @@ const Recipe = (props) => {
     if (recipeData.diets) {
       return recipeData.diets.map((diet, index) => {
         return (
-          <div className="recipe-information-list" key={index}>
-            {diet}
-          </div>
+          diet.length < 10 && (
+            <div className="recipe-information-list" key={index}>
+              {diet}
+            </div>
+          )
         );
       });
     }
@@ -63,9 +98,11 @@ const Recipe = (props) => {
     if (recipeData.dishTypes) {
       return recipeData.dishTypes.map((dishType, index) => {
         return (
-          <div className="recipe-information-list" key={index}>
-            {dishType}
-          </div>
+          dishType.length < 10 && (
+            <div className="recipe-information-list" key={index}>
+              {dishType}
+            </div>
+          )
         );
       });
     }
@@ -95,6 +132,28 @@ const Recipe = (props) => {
           <div className="recipe-other-information-list">
             <PeopleIcon /> <p>{recipeData.servings} people</p>
           </div>
+          <div className="recipe-other-information-list">
+            <Mailto
+              email="email@email.com"
+              subject="Recipe send from Meal Factory with Love!"
+              body={`Hi! Somebody send you this recipe: http://localhost:3000/recipe/${recipeId}`}
+            >
+              <EmailIcon className={classes.iconBtn} />
+            </Mailto>
+          </div>
+          <div className="recipe-other-information-list">
+            {favorites[recipeId] ? (
+              <FavoriteIcon
+                style={{ color: '#D97D0D', cursor: 'pointer' }}
+                onClick={() => toggleFavorites(recipeId)}
+              />
+            ) : (
+              <FavoriteBorderIcon
+                style={{ cursor: 'pointer' }}
+                onClick={() => toggleFavorites(recipeId)}
+              />
+            )}
+          </div>
         </div>
 
         <div className="recipe-container">
@@ -107,6 +166,7 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
+        <div></div>
       </div>
     </>
   );
