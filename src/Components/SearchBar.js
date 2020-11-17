@@ -170,7 +170,9 @@ const Searchbar = () => {
         className={classes.button}
         onClick={fetchRecipes}
       >
-        {ingredientsList.length <= 0 ? 'Random Recipes' : "Let's Cook"}
+        {ingredientsList && ingredientsList.length <= 0
+          ? 'Random Recipes'
+          : "Let's Cook"}
       </Button>
     </>
   );

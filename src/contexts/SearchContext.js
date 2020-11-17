@@ -25,14 +25,14 @@ export const SearchContextProvider = ({ children }) => {
           ? ingredient.label
           : `+${ingredient.label}`
       );
-      recipeApiURL += `&includeIngredients=${ingredients}`;
+      recipeApiURL += `&includesIngredients=${ingredients}`;
       if (filtersList.dietList && filtersList.dietList.length > 0) {
         const diets = filtersList.dietList.map((diet) =>
           filtersList.dietList.indexOf(diet) === 0
             ? diet.label.replace(/ /g, '%20')
             : `+${diet.label.replace(/ /g, '%20')}`
         );
-        recipeApiURL += `&diet=${diets}`;
+        recipeApiURL += `&diets=${diets}`;
       }
       if (filtersList.cuisineList && filtersList.cuisineList.length > 0) {
         const cuisines = filtersList.cuisineList.map((cuisine) =>
@@ -40,7 +40,7 @@ export const SearchContextProvider = ({ children }) => {
             ? cuisine.label
             : `+${cuisine.label}`
         );
-        recipeApiURL += `&cuisine=${cuisines}`;
+        recipeApiURL += `&cuisines=${cuisines}`;
       }
       if (filtersList.mealList && filtersList.mealList.length > 0) {
         const meals = filtersList.mealList.map((meal) =>
@@ -48,7 +48,7 @@ export const SearchContextProvider = ({ children }) => {
             ? meal.label.replace(/ /g, '%20')
             : `+${meal.label.replace(/ /g, '%20')}`
         );
-        recipeApiURL += `&type=${meals}`;
+        recipeApiURL += `&types=${meals}`;
       }
     } else {
       recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`;
