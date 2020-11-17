@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const Searchbar = () => {
   // Material-ui style
   const classes = useStyles();
+
   const customStyles = {
     container: (provided) => ({
       ...provided,
@@ -38,6 +39,10 @@ const Searchbar = () => {
     option: (provided) => ({
       ...provided,
       color: 'black',
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      fontSize: '20px',
     }),
   };
 
