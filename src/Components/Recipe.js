@@ -186,17 +186,22 @@ const Recipe = (props) => {
         </div>
         <div className="container-commentary">
           <div className="box-commentary">
-            <textarea className="area-commentary" placeholder="Comment the recipe..."/>
+            <textarea
+              className="area-commentary"
+              placeholder="Comment the recipe..."
+            />
             <button onClick={putCommentary}>Commenter</button>
           </div>
-          <div className='section-commentaries'>
-          <h2>Commentaires</h2>
+          <div className="section-commentaries">
+            <h2>Commentaires</h2>
             {commentaries
               .filter((commentary) => commentary.recipe === recipeId)
               .map((commentary) => {
-                return (<div className='section-commentary' key={commentary.id}>
-                  <p>{commentary.value}</p>
-                  </div>);
+                return (
+                  <div className="section-commentary" key={commentary.id}>
+                    <p>{commentary.value}</p>
+                  </div>
+                );
               })}
           </div>
         </div>
