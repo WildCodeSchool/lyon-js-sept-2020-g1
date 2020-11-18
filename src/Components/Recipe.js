@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import PeopleIcon from '@material-ui/icons/People';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import EmailIcon from '@material-ui/icons/Email';
@@ -46,6 +48,8 @@ const Recipe = (props) => {
   const { match } = props;
 
   const recipeId = match.params.id;
+
+  let history = useHistory();
 
   useEffect(() => {
     const apiKey = `${process.env.REACT_APP_API_KEY}`;
@@ -128,9 +132,10 @@ const Recipe = (props) => {
 
   return (
     <>
-      <Link to="/">
-        <div className="btnReturnHome">{'<'}</div>
-      </Link>
+      <div className="btnReturnHome" onClick={() => history.goBack()}>
+        {'<'}
+      </div>
+
       <div className="recipe-main-container">
         <h1>{recipeData.title}</h1>
         <div className="recipe-information">
