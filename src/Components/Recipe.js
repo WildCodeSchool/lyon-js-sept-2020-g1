@@ -12,6 +12,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import EmailIcon from '@material-ui/icons/Email';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import Mailto from './MailTo';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
+import { FacebookIcon, TwitterIcon } from 'react-share';
 
 const useStyles = makeStyles({
   iconList: {
@@ -139,6 +141,17 @@ const Recipe = (props) => {
             >
               <EmailIcon className={classes.iconBtn} />
             </Mailto>
+
+            <FacebookShareButton
+              className="facebook"
+              url={'https://www.facebook.com/'}
+            >
+              <FacebookIcon size={20} borderRadius={50}></FacebookIcon>
+            </FacebookShareButton>
+
+            <TwitterShareButton className="twitter" url={'https://twitter.com/'}>
+              <TwitterIcon size={20} borderRadius={50}></TwitterIcon>
+            </TwitterShareButton>
           </div>
           <div className="recipe-other-information-list">
             {favorites[recipeId] ? (
