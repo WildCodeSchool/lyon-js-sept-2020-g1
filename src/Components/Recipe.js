@@ -12,6 +12,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import EmailIcon from '@material-ui/icons/Email';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import Mailto from './MailTo';
+import useLocalStorage from '../hooks/useLocalStorage';
+import { DriveEtaTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   iconList: {
@@ -37,7 +39,7 @@ const useStyles = makeStyles({
 const Recipe = (props) => {
   const classes = useStyles();
   const [recipeData, setRecipeData] = useState([]);
-  // const [commentaries, setCommentaries] = useState('');
+  const [commentaries, setCommentaries] = useLocalStorage('commentaries',[]);
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
@@ -108,6 +110,18 @@ const Recipe = (props) => {
     }
   };
 
+  
+
+  const putCommentary = () => {
+    const commentary = document.querySelector('.commentary').value;
+    const getCommentaries = [...commentaries, {
+      id: commentaries.length > 0 ? commentaries[commentaries.length - 1].id + 1 : 1,
+      value: commentary,
+      recipe: recipeId
+    }];
+    setCommentaries(getCommentaries);
+  }
+
   return (
     <>
       <Link to="/">
@@ -158,7 +172,7 @@ const Recipe = (props) => {
 
         <div className="recipe-container">
           <div className="ingredients-box">
-            <h2>Ingredients</h2>{' '}
+            <h2>Ingredients</h2>
             <ul className="ingredients-list">{showIngredients()}</ul>
           </div>
           <div className="recipe-box">
@@ -166,7 +180,15 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-        <div></div>
+        <div className="sectionCommentary">
+          <textarea className='commentary'/>
+          <button onClick={putCommentary}>Commenter</button>
+          <div>
+            {commentaries.filter(commentary => commentary.recipe === recipeId).map((commentary) => {
+              return (<p key={commentary.id}>{commentary.value}</p>);
+            })}
+          </div>
+        </div>
       </div>
     </>
   );
