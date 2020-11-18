@@ -146,11 +146,17 @@ h2 {
 
 .logoMealsFactory {
   width: 100%;
-  max-width: 320px;
+  max-width: 250px;
   min-width: 220px;
   height: auto;
   margin: auto;
   border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .logoMealsFactory {
+    max-width: 320px;
+  }
 }
 
 .linkLogo {
