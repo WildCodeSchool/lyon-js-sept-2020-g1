@@ -111,7 +111,7 @@ const Recipe = (props) => {
   };
 
   const putCommentary = () => {
-    const commentary = document.querySelector('.commentary').value;
+    const commentary = document.querySelector('.area-commentary').value;
     const getCommentaries = [
       ...commentaries,
       {
@@ -184,14 +184,19 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-        <div className="sectionCommentary">
-          <textarea className="commentary" />
-          <button onClick={putCommentary}>Commenter</button>
-          <div>
+        <div className="container-commentary">
+          <div className="box-commentary">
+            <textarea className="area-commentary" placeholder="Comment the recipe..."/>
+            <button onClick={putCommentary}>Commenter</button>
+          </div>
+          <div className='section-commentaries'>
+          <h2>Commentaires</h2>
             {commentaries
               .filter((commentary) => commentary.recipe === recipeId)
               .map((commentary) => {
-                return <p key={commentary.id}>{commentary.value}</p>;
+                return (<div className='section-commentary' key={commentary.id}>
+                  <p>{commentary.value}</p>
+                  </div>);
               })}
           </div>
         </div>
