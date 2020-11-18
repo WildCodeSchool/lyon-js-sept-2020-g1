@@ -149,7 +149,10 @@ const Recipe = (props) => {
               <FacebookIcon size={20} borderRadius={50}></FacebookIcon>
             </FacebookShareButton>
 
-            <TwitterShareButton className="twitter" url={'https://twitter.com/'}>
+            <TwitterShareButton
+              className="twitter"
+              url={'https://twitter.com/'}
+            >
               <TwitterIcon size={20} borderRadius={50}></TwitterIcon>
             </TwitterShareButton>
           </div>
