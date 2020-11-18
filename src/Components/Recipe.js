@@ -127,7 +127,7 @@ const Recipe = (props) => {
         value: commentary,
         recipe: recipeId,
         author: 'Wilder',
-        date: moment(Date.now()).format('DD/MM/YYYY H:i:s')
+        date: moment(Date.now()).format('DD/MM/YYYY H:i:s'),
       },
     ];
     setCommentaries(getCommentaries);
@@ -199,9 +199,7 @@ const Recipe = (props) => {
               className="area-commentary"
               placeholder="Comment the recipe..."
               value={commentary}
-              onChange={(e)=>
-                setCommentary(e.target.value)
-              }
+              onChange={(e) => setCommentary(e.target.value)}
             />
             <button onClick={putCommentary}>Commenter</button>
           </div>
