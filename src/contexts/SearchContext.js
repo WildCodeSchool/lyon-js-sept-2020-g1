@@ -8,6 +8,11 @@ export const SearchContextProvider = ({ children }) => {
   const [ingredientsList, setIngredientsList] = useState([]);
   const [filtersList, setFiltersList] = useState([]);
 
+  // List of the different filters to apply
+  const [dietList, setDietList] = useState([]);
+  const [cuisineList, setCuisineList] = useState([]);
+  const [mealList, setMealList] = useState([]);
+
   // Storage of the recipes following the API request
   const [recipes, setRecipes] = useState([]);
 
@@ -113,6 +118,12 @@ export const SearchContextProvider = ({ children }) => {
         setRecipes,
         setFiltersList,
         apiKey,
+        dietList,
+        setDietList,
+        cuisineList,
+        setCuisineList,
+        mealList,
+        setMealList,
       }}
     >
       {children}
