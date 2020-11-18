@@ -15,7 +15,8 @@ import EmailIcon from '@material-ui/icons/Email';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import Mailto from './MailTo';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { DriveEtaTwoTone } from '@material-ui/icons';
+import { DriveEtaTwoTone, ModeComment } from '@material-ui/icons';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   iconList: {
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
 const Recipe = (props) => {
   const classes = useStyles();
   const [recipeData, setRecipeData] = useState([]);
+  const [commentary, setCommentary] = useState('');
   const [commentaries, setCommentaries] = useLocalStorage('commentaries', []);
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
@@ -115,7 +117,6 @@ const Recipe = (props) => {
   };
 
   const putCommentary = () => {
-    const commentary = document.querySelector('.area-commentary').value;
     const getCommentaries = [
       ...commentaries,
       {
@@ -125,9 +126,12 @@ const Recipe = (props) => {
             : 1,
         value: commentary,
         recipe: recipeId,
+        author: 'Wilder',
+        date: moment(Date.now()).format('DD/MM/YYYY H:i:s')
       },
     ];
     setCommentaries(getCommentaries);
+    setCommentary('');
   };
 
   return (
@@ -194,6 +198,10 @@ const Recipe = (props) => {
             <textarea
               className="area-commentary"
               placeholder="Comment the recipe..."
+              value={commentary}
+              onChange={(e)=>
+                setCommentary(e.target.value)
+              }
             />
             <button onClick={putCommentary}>Commenter</button>
           </div>
