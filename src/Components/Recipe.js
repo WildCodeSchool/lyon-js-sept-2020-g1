@@ -116,7 +116,7 @@ const Recipe = (props) => {
     }
   };
 
-  const putCommentary = () => {
+  const setCommentaryIntoRecipe = () => {
     const getCommentaries = [
       ...commentaries,
       {
@@ -201,7 +201,7 @@ const Recipe = (props) => {
               value={commentary}
               onChange={(e) => setCommentary(e.target.value)}
             />
-            <button onClick={putCommentary}>Commenter</button>
+            <button onClick={setCommentaryIntoRecipe}>Commenter</button>
           </div>
           <div className="section-commentaries">
             <h2>Commentaires</h2>
