@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 const Recipe = (props) => {
   const classes = useStyles();
   const [recipeData, setRecipeData] = useState([]);
-  const [commentaries, setCommentaries] = useLocalStorage('commentaries',[]);
+  const [commentaries, setCommentaries] = useLocalStorage('commentaries', []);
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
@@ -110,17 +110,21 @@ const Recipe = (props) => {
     }
   };
 
-  
-
   const putCommentary = () => {
     const commentary = document.querySelector('.commentary').value;
-    const getCommentaries = [...commentaries, {
-      id: commentaries.length > 0 ? commentaries[commentaries.length - 1].id + 1 : 1,
-      value: commentary,
-      recipe: recipeId
-    }];
+    const getCommentaries = [
+      ...commentaries,
+      {
+        id:
+          commentaries.length > 0
+            ? commentaries[commentaries.length - 1].id + 1
+            : 1,
+        value: commentary,
+        recipe: recipeId,
+      },
+    ];
     setCommentaries(getCommentaries);
-  }
+  };
 
   return (
     <>
@@ -181,12 +185,14 @@ const Recipe = (props) => {
           </div>
         </div>
         <div className="sectionCommentary">
-          <textarea className='commentary'/>
+          <textarea className="commentary" />
           <button onClick={putCommentary}>Commenter</button>
           <div>
-            {commentaries.filter(commentary => commentary.recipe === recipeId).map((commentary) => {
-              return (<p key={commentary.id}>{commentary.value}</p>);
-            })}
+            {commentaries
+              .filter((commentary) => commentary.recipe === recipeId)
+              .map((commentary) => {
+                return <p key={commentary.id}>{commentary.value}</p>;
+              })}
           </div>
         </div>
       </div>
