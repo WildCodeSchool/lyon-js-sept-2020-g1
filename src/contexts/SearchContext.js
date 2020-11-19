@@ -94,6 +94,7 @@ export const SearchContextProvider = ({ children }) => {
         recipeApiURL += `${meals}`;
       }
     }
+
     axios
       .get(recipeApiURL)
       .then((response) => response.data)

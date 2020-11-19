@@ -14,6 +14,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import EmailIcon from '@material-ui/icons/Email';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import Mailto from './MailTo';
+import useLocalStorage from '../hooks/useLocalStorage';
+import { DriveEtaTwoTone, ModeComment } from '@material-ui/icons';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   iconList: {
@@ -39,6 +42,8 @@ const useStyles = makeStyles({
 const Recipe = (props) => {
   const classes = useStyles();
   const [recipeData, setRecipeData] = useState([]);
+  const [commentary, setCommentary] = useState('');
+  const [commentaries, setCommentaries] = useLocalStorage('commentaries', []);
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
@@ -111,6 +116,24 @@ const Recipe = (props) => {
     }
   };
 
+  const setCommentaryIntoRecipe = () => {
+    const getCommentaries = [
+      ...commentaries,
+      {
+        id:
+          commentaries.length > 0
+            ? commentaries[commentaries.length - 1].id + 1
+            : 1,
+        value: commentary,
+        recipe: recipeId,
+        author: 'Wilder',
+        date: moment(Date.now()).format('DD/MM/YYYY H:i:s'),
+      },
+    ];
+    setCommentaries(getCommentaries);
+    setCommentary('');
+  };
+
   return (
     <>
       <div className="btnReturnHome" onClick={() => history.goBack()}>
@@ -162,7 +185,7 @@ const Recipe = (props) => {
 
         <div className="recipe-container">
           <div className="ingredients-box">
-            <h2>Ingredients</h2>{' '}
+            <h2>Ingredients</h2>
             <ul className="ingredients-list">{showIngredients()}</ul>
           </div>
           <div className="recipe-box">
@@ -170,7 +193,29 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-        <div></div>
+        <div className="container-commentary">
+          <div className="box-commentary">
+            <textarea
+              className="area-commentary"
+              placeholder="Comment the recipe..."
+              value={commentary}
+              onChange={(e) => setCommentary(e.target.value)}
+            />
+            <button onClick={setCommentaryIntoRecipe}>Commenter</button>
+          </div>
+          <div className="section-commentaries">
+            <h2>Commentaires</h2>
+            {commentaries
+              .filter((commentary) => commentary.recipe === recipeId)
+              .map((commentary) => {
+                return (
+                  <div className="section-commentary" key={commentary.id}>
+                    <p>{commentary.value}</p>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </div>
     </>
   );
