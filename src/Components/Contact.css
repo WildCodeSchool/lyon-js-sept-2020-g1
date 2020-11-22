@@ -27,6 +27,7 @@ button {
   width: 200px;
   height: 50px;
   border-radius: 10px;
+  margin-left: 150px;
 }
 
 label {
@@ -41,14 +42,43 @@ body {
 
 .required {
   color: red;
-  font-size: 1.3em;
+  font-size: 1.6em;
   font-family: system-ui;
   font-style: normal;
 }
 
 .button {
-  color: #d97d0d;
-  font-size: 1.3em;
+  color: black;
+  font-size: 1.6em;
   font-family: system-ui;
   font-style: normal;
+}
+
+input:required {
+  border: 3px solid #d97d0d;
+  font-family: system-ui;
+}
+
+textarea:required {
+  border: 3px solid #d97d0d;
+  font-family: system-ui;
+}
+
+input::placeholder {
+  color:black;
+  font-size: 1.6em;
+  font-family: system-ui;
+}
+
+textarea::placeholder {
+  color:black;
+  font-size: 1.6em;
+}
+
+input:focus {
+  font-size: 1.6em;
+}
+
+textarea:focus {
+  font-size: 1.6em;
 }

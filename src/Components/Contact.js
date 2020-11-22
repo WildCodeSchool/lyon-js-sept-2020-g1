@@ -60,9 +60,12 @@ class Contact extends React.Component {
       <div className="bloc">
         <div>
           <label htmlFor="lastName">My lastName : </label>
-          <input
+          <input 
             type="text"
+            placeholder="lastName"
+            focus
             value={lastName}
+            required
             onChange={(e) => this.handleChange('lastName', e.target.value)}
             onBlur={this.handleErrorLastName}
           />
@@ -78,6 +81,8 @@ class Contact extends React.Component {
           <input
             type="text"
             value={firstName}
+            placeholder="firstName"
+            required
             onChange={(e) => this.handleChange('firstName', e.target.value)}
             onBlur={this.handleErrorFirstName}
           />
@@ -92,6 +97,8 @@ class Contact extends React.Component {
           <input
             type="text"
             value={email}
+            placeholder="toto@exemple.com"
+            required
             onChange={(e) => this.handleChange('email', e.target.value)}
             onBlur={this.handleErrorEmail}
           />
@@ -104,14 +111,16 @@ class Contact extends React.Component {
           <textarea
             name="comment"
             value={comment}
+            placeholder="Write your comments"
+            required
             onChange={(e) => this.handleChange('comment', e.target.value)}
             onBlur={this.handleErrorComment}
           />
-          <p className="required">{errorComment && 'a comment is required'}</p>
+         <p className="required">{errorComment && 'a comment is required'}</p>
           <br />
           <br />
         </div>
-        <button type="button" className="button">
+        <button type="button" className="button" >
           <p className="button">Send</p>
         </button>
       </div>
