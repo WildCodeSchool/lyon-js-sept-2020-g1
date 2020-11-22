@@ -60,7 +60,7 @@ class Contact extends React.Component {
       <div className="bloc">
         <div>
           <label htmlFor="lastName">My lastName : </label>
-          <input 
+          <input
             type="text"
             placeholder="lastName"
             focus
@@ -116,7 +116,7 @@ class Contact extends React.Component {
             onChange={(e) => this.handleChange('comment', e.target.value)}
             onBlur={this.handleErrorComment}
           />
-         <p className="required">{errorComment && 'a comment is required'}</p>
+          <p className="required">{errorComment && 'a comment is required'}</p>
           <br />
           <br />
         </div>
