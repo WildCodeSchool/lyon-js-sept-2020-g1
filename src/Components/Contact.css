@@ -6,20 +6,40 @@
 .contact-main-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
-  background: url(../pictures/background.jpg);
-  border-radius: 10px;
-  width: 100%;
-  opacity: 0.9;
-  padding-top: 20px;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   height: 800px;
+  text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+  .contact-main-container {
+    background: url(../pictures/background-small.jpg);
+    border-radius: 10px;
+    background-size: 100vh;
+    background-position: center center;
+    background-size: cover;
+
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .contact-main-container {
+    background: url(../pictures/background.jpg);
+    border-radius: 10px;
+    width: 100%;
+    opacity: 0.9;
+    padding-top: 20px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 800px;
+    align-items: flex-start;
+  }
 }
 
 .form-container {
@@ -80,7 +100,7 @@ textarea {
 
 button {
   width: 200px;
-  height: 50px;
+  height: 60px;
   border-radius: 10px;
   border: none;
   margin: 0px auto;
