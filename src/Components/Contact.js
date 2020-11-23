@@ -120,7 +120,7 @@ class Contact extends React.Component {
           <br />
           <br />
         </div>
-        <button type="button" className="button" >
+        <button type="button" className="button">
           <p className="button">Send</p>
         </button>
       </div>
