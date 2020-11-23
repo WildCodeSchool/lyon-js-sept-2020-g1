@@ -3,23 +3,57 @@
   padding: 0;
 }
 
-.bloc {
+.contact-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background: url(../pictures/background.jpg);
+  border-radius: 10px;
+  width: 100%;
+  opacity: 0.9;
+  padding-top: 20px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 800px;
+}
+
+.form-container {
   width: 50vw;
   height: 800px;
 
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
+  margin: 20px auto;
+}
+
+.contact-main-container h1,
+p {
+  padding: 25px 25px;
+  color: white;
+}
+
+.contact-main-container p {
+  font-size: 18px;
 }
 
 @media screen and (min-width: 768px) {
-  .bloc {
+  .form-container {
     width: 40vw;
     max-width: 700px;
   }
+
+  .contact-main-container h1,
+  p {
+    padding-left: 52px;
+  }
 }
 
-.bloc > div {
+.form-container > div {
   width: inherit;
 }
 
@@ -27,17 +61,18 @@ input {
   width: inherit;
   min-width: 150px;
   padding: 5px 5px 5px 15px;
-  font-size: 18px;
-  height: 40px;
+  font-size: 16px;
+  height: 30px;
   margin-top: 10px;
   border-radius: 10px;
+  border: none;
 }
 
 textarea {
   width: inherit;
   min-width: 150px;
   padding: 10px 5px 5px 15px;
-  font-size: 18px;
+  font-size: 16px;
 
   border-radius: 10px;
   margin-top: 10px;
@@ -47,13 +82,23 @@ button {
   width: 200px;
   height: 50px;
   border-radius: 10px;
+  border: none;
+  margin: 0px auto;
+  background-color: #d97d0d;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f2ab27;
 }
 
 label {
   font-family: system-ui;
-  font-size: 1.6em;
+  font-size: 20px;
   font-style: normal;
-  color: #d97d0d;
+  color: white;
 }
 body {
   background-color: #323e40;
@@ -64,11 +109,5 @@ body {
   font-size: 1.3em;
   font-family: system-ui;
   font-style: normal;
-}
-
-.button {
-  color: #d97d0d;
-  font-size: 1.3em;
-  font-family: system-ui;
-  font-style: normal;
+  padding: 0 0;
 }
