@@ -59,12 +59,13 @@ class Contact extends React.Component {
     return (
       <div className="bloc">
         <div>
-          <label htmlFor="lastName">My lastName : </label>
+          <label htmlFor="lastName">Lastname : </label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => this.handleChange('lastName', e.target.value)}
             onBlur={this.handleErrorLastName}
+            placeholder="Bocuse"
           />
           <p className="required">
             {errorLastName && 'the lastName is required'}
@@ -74,12 +75,13 @@ class Contact extends React.Component {
           <br />
         </div>
         <div>
-          <label htmlFor="firstName">My firstName : </label>
+          <label htmlFor="firstName">Firstname : </label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => this.handleChange('firstName', e.target.value)}
             onBlur={this.handleErrorFirstName}
+            placeholder="Paul"
           />
           <p className="required">
             {errorFirstName && 'the firstName is required'}
@@ -88,24 +90,27 @@ class Contact extends React.Component {
           <br />
         </div>
         <div>
-          <label htmlFor="email">My email : </label>
+          <label htmlFor="email">Email : </label>
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => this.handleChange('email', e.target.value)}
             onBlur={this.handleErrorEmail}
+            placeholder="paulbocuse@gmail.com"
           />
           <p className="required">{errorEmail && 'an email is required'}</p>
           <br />
           <br />
         </div>
         <div>
-          <label htmlFor="comment">Your comments :</label>
+          <label htmlFor="comment">Message :</label>
           <textarea
             name="comment"
             value={comment}
             onChange={(e) => this.handleChange('comment', e.target.value)}
             onBlur={this.handleErrorComment}
+            rows="8"
+            placeholder="Your message..."
           />
           <p className="required">{errorComment && 'a comment is required'}</p>
           <br />
