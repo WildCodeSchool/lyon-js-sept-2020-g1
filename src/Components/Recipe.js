@@ -134,6 +134,30 @@ const Recipe = (props) => {
     setCommentary('');
   };
 
+  const showWineName = () => {
+    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
+      return recipeData.winePairing.productMatches.map((wine, index) => {
+        return <div key={index}>{wine.title}</div>;
+      });
+    }
+  };
+  const showWinePhoto = () => {
+    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
+      return recipeData.winePairing.productMatches.map((winePhoto, index) => {
+        return <div key={index}>{winePhoto.imageUrl}</div>;
+      });
+    }
+  };
+  const showWineDescription = () => {
+    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
+      return recipeData.winePairing.productMatches.map(
+        (wineDescription, index) => {
+          return <div key={index}>{wineDescription.description}</div>;
+        }
+      );
+    }
+  };
+
   return (
     <>
       <div className="btnReturnHome" onClick={() => history.goBack()}>
@@ -217,6 +241,9 @@ const Recipe = (props) => {
           </div>
         </div>
       </div>
+      <div className="pairingWine">{showWineName()}</div>
+      <img src={showWinePhoto()} alt="bottle of wine" />
+      <div>{showWineDescription()}</div>
     </>
   );
 };
