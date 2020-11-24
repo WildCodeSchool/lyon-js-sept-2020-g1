@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 380,
+    margin: '50px auto',
   },
   content: {
     backgroundColor: '#D97D0D',
@@ -147,6 +148,26 @@ const Recipe = (props) => {
     }
   };
 
+  const showWineName = () => {
+    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
+      return recipeData.winePairing.productMatches.map((wine, index) => {
+        return <div key={index}>{wine.title}</div>;
+      });
+    } else {
+      return <h5>No wine found for this recipe.</h5>;
+    }
+  };
+
+  const showWineDescription = () => {
+    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
+      return recipeData.winePairing.productMatches.map(
+        (wineDescription, index) => {
+          return <div key={index}>{wineDescription.description}</div>;
+        }
+      );
+    }
+  };
+
   const setCommentaryIntoRecipe = () => {
     const getCommentaries = [
       ...commentaries,
@@ -168,24 +189,6 @@ const Recipe = (props) => {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
-
-  const showWineName = () => {
-    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
-      return recipeData.winePairing.productMatches.map((wine, index) => {
-        return <div key={index}>{wine.title}</div>;
-      });
-    }
-  };
-
-  const showWineDescription = () => {
-    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
-      return recipeData.winePairing.productMatches.map(
-        (wineDescription, index) => {
-          return <div key={index}>{wineDescription.description}</div>;
-        }
-      );
-    }
   };
 
   return (
