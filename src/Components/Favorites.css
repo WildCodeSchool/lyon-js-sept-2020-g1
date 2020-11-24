@@ -37,4 +37,9 @@
     padding-left: 40px;
     justify-content: flex-start;
   }
+
+  .favorites p {
+    padding-left: 15px;
+    font-size: 18px;
+  }
 }
