@@ -153,6 +153,7 @@ const Recipe = (props) => {
   const showWineName = () => {
     if (
       recipeData.winePairing &&
+      recipeData.winePairing.productMatches &&
       recipeData.winePairing.productMatches.length > 0
     ) {
       return recipeData.winePairing.productMatches.map((wine, index) => {
