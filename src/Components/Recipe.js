@@ -151,7 +151,10 @@ const Recipe = (props) => {
   };
 
   const showWineName = () => {
-    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
+    if (
+      recipeData.winePairing &&
+      recipeData.winePairing.productMatches.length > 0
+    ) {
       return recipeData.winePairing.productMatches.map((wine, index) => {
         return <h5 key={index}>{wine.title}</h5>;
       });
