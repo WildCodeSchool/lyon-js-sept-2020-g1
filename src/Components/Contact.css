@@ -62,7 +62,7 @@ textarea {
 }
 
 .send-button {
-  width: 200px;
+  width: 150px;
   height: 60px;
   border-radius: 10px;
   border: none;
@@ -130,6 +130,9 @@ textarea:required {
     background-repeat: no-repeat;
     height: 800px;
     align-items: flex-start;
+  }
+  .send-button {
+    width: 200px;
   }
 }
 
