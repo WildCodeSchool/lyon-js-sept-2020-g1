@@ -18,7 +18,17 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { DriveEtaTwoTone, ModeComment } from '@material-ui/icons';
 import moment from 'moment';
 
-const useStyles = makeStyles({
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
+
+const useStyles = makeStyles((theme) => ({
   iconList: {
     height: '3em',
     padding: 5,
@@ -37,7 +47,24 @@ const useStyles = makeStyles({
       color: '#D97D0D',
     },
   },
-});
+  root: {
+    maxWidth: 380,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+}));
 
 const Recipe = (props) => {
   const classes = useStyles();
@@ -134,6 +161,11 @@ const Recipe = (props) => {
     setCommentary('');
   };
 
+  const [expanded, setExpanded] = React.useState(false);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   const showWineName = () => {
     if (recipeData.winePairing && recipeData.winePairing.productMatches) {
       return recipeData.winePairing.productMatches.map((wine, index) => {
@@ -217,6 +249,41 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
+
+        <Card className={classes.root}>
+          <CardContent>
+            <Typography variant="h5" color="textSecondary" component="h5">
+              Advised wine:
+            </Typography>
+            <Typography variant="h6" color="textSecondary" component="h6">
+              {showWineName()}
+            </Typography>
+          </CardContent>
+          <CardMedia
+            className={classes.media}
+            image="{showWinePhoto()}"
+            title="Bottle of wine"
+            alt="bottle of wine"
+          />
+          <CardActions disableSpacing>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>{showWineDescription()}</Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+
         <div className="container-commentary">
           <div className="box-commentary">
             <textarea
