@@ -6,7 +6,7 @@ const Mailto = ({ email, subject, body, children }) => {
       href={`mailto:${email}?subject=${
         encodeURIComponent(subject) || ''
       }&body=${encodeURIComponent(body) || ''}`}
-      rel="noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       {children}
