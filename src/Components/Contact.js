@@ -71,7 +71,7 @@ class Contact extends React.Component {
               placeholder="Bocuse"
             />
             <p className="required">
-              {errorLastName && 'the lastName is required'}
+              {errorLastName && 'Lastname is required'}
             </p>
 
             <br />
@@ -87,7 +87,7 @@ class Contact extends React.Component {
               placeholder="Paul"
             />
             <p className="required">
-              {errorFirstName && 'the firstName is required'}
+              {errorFirstName && 'Firstname is required'}
             </p>
             <br />
             <br />
@@ -101,7 +101,7 @@ class Contact extends React.Component {
               onBlur={this.handleErrorEmail}
               placeholder="paulbocuse@gmail.com"
             />
-            <p className="required">{errorEmail && 'an email is required'}</p>
+            <p className="required">{errorEmail && 'Email is required'}</p>
             <br />
             <br />
           </div>
@@ -116,7 +116,7 @@ class Contact extends React.Component {
               placeholder="Your message..."
             />
             <p className="required">
-              {errorComment && 'a comment is required'}
+              {errorComment && 'A message is required'}
             </p>
             <br />
             <br />
