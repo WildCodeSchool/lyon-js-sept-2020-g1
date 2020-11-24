@@ -6,7 +6,8 @@ const useStyles = makeStyles({
     background: 'url(/images/AboutUs.jpeg) no-repeat fixed center / cover',
     textAlign: 'center',
     height: '100%',
-    padding: 30,
+    margin: 0,
+    padding: 35,
   },
   cards: {
     maxWidth: 400,
