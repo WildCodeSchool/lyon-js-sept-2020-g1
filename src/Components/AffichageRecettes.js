@@ -105,8 +105,7 @@ export default function AffichageRecettes({
         </Link>
         <div className={classes.interactions}>
           <div style={{ color: 'black', minWidth: '190px' }}>
-            {otherIngredients &&
-              `${otherIngredients} other ingredients are required for this recipe`}
+            {otherIngredients && `${otherIngredients} other ingredients`}
           </div>
           {favorites[id] ? (
             <FavoriteIcon
