@@ -98,7 +98,7 @@ textarea {
   margin-top: 10px;
 }
 
-button {
+.send-button {
   width: 200px;
   height: 60px;
   border-radius: 10px;
@@ -110,7 +110,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.send-button:hover {
   background-color: #f2ab27;
 }
 
