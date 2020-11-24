@@ -24,7 +24,7 @@ export const SearchContextProvider = ({ children }) => {
   const fetchRecipes = () => {
     let recipeApiURL = '';
     if (ingredientsList && ingredientsList.length > 0) {
-      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=12&addRecipeInformation=true&instructionsRequired=true`;
+      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=21&addRecipeInformation=true&instructionsRequired=true`;
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
           ? ingredient.label
@@ -56,7 +56,7 @@ export const SearchContextProvider = ({ children }) => {
         recipeApiURL += `&types=${meals}`;
       }
     } else {
-      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=12`;
+      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=21`;
 
       // Repère si l'utilisateur a sélectionné un filtre
       let tagsIndice = false;
