@@ -20,6 +20,7 @@ export default function Home() {
           titre={recipe.title}
           image={recipe.image}
           id={recipe.id}
+          otherIngredients={recipe.missedIngredientCount}
         />
       );
     });

@@ -69,6 +69,7 @@ class Contact extends React.Component {
               onChange={(e) => this.handleChange('lastName', e.target.value)}
               onBlur={this.handleErrorLastName}
               placeholder="Bocuse"
+              className="form-field"
             />
             <p className="required">
               {errorLastName && 'Lastname is required'}
@@ -85,6 +86,7 @@ class Contact extends React.Component {
               onChange={(e) => this.handleChange('firstName', e.target.value)}
               onBlur={this.handleErrorFirstName}
               placeholder="Paul"
+              className="form-field"
             />
             <p className="required">
               {errorFirstName && 'Firstname is required'}
@@ -100,6 +102,7 @@ class Contact extends React.Component {
               onChange={(e) => this.handleChange('email', e.target.value)}
               onBlur={this.handleErrorEmail}
               placeholder="paulbocuse@gmail.com"
+              className="form-field"
             />
             <p className="required">{errorEmail && 'Email is required'}</p>
             <br />
@@ -114,6 +117,7 @@ class Contact extends React.Component {
               onBlur={this.handleErrorComment}
               rows="5"
               placeholder="Your message..."
+              className="form-textarea"
             />
             <p className="required">
               {errorComment && 'A message is required'}

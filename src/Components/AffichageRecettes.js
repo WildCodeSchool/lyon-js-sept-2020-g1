@@ -6,11 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import EmailIcon from '@material-ui/icons/Email';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { FavoritesContext } from '../contexts/FavoritesContext';
-import Mailto from './MailTo';
 
 const useStyles = makeStyles({
   root: {
@@ -51,6 +49,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
+    marginTop: '20px',
   },
   media: {
     minHeight: '200px',
@@ -66,7 +65,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AffichageRecettes({ image, titre, id }) {
+export default function AffichageRecettes({
+  image,
+  titre,
+  id,
+  otherIngredients,
+}) {
   const classes = useStyles();
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
@@ -100,15 +104,10 @@ export default function AffichageRecettes({ image, titre, id }) {
           />
         </Link>
         <div className={classes.interactions}>
-          <CardContent className={classes.iconList}>
-            <Mailto
-              email="email@email.com"
-              subject="Recipe send from Meal Factory with Love!"
-              body={`Hi! Somebody send you this recipe: http://localhost:3000/recipe/${id}`}
-            >
-              <EmailIcon className={classes.iconBtn} />
-            </Mailto>
-          </CardContent>
+          <div style={{ color: 'black', minWidth: '190px' }}>
+            {otherIngredients &&
+              `${otherIngredients} other ingredients are required for this recipe`}
+          </div>
           {favorites[id] ? (
             <FavoriteIcon
               style={{ color: '#D97D0D' }}
