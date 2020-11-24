@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 380,
   },
+  content: {
+    backgroundColor: '#D97D0D',
+  },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -251,11 +254,23 @@ const Recipe = (props) => {
         </div>
 
         <Card className={classes.root}>
-          <CardContent>
-            <Typography variant="h5" color="textSecondary" component="h5">
+          <CardContent className={classes.content}>
+            <Typography
+              variant="h5"
+              component="h5"
+              style={{
+                color: '#323e40',
+                textAlign: 'center',
+                textDecoration: 'underline',
+              }}
+            >
               Advised wine:
             </Typography>
-            <Typography variant="h6" color="textSecondary" component="h6">
+            <Typography
+              variant="h6"
+              component="subtitle2"
+              style={{ color: 'white', textAlign: 'center' }}
+            >
               {showWineName()}
             </Typography>
           </CardContent>
