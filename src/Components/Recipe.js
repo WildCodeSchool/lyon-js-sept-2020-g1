@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#D97D0D',
   },
   media: {
+    width: 380,
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
@@ -176,13 +177,7 @@ const Recipe = (props) => {
       });
     }
   };
-  const showWinePhoto = () => {
-    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
-      return recipeData.winePairing.productMatches.map((winePhoto, index) => {
-        return <div key={index}>{winePhoto.imageUrl}</div>;
-      });
-    }
-  };
+
   const showWineDescription = () => {
     if (recipeData.winePairing && recipeData.winePairing.productMatches) {
       return recipeData.winePairing.productMatches.map(
@@ -259,7 +254,7 @@ const Recipe = (props) => {
               variant="h5"
               component="h5"
               style={{
-                color: '#323e40',
+                color: 'white',
                 textAlign: 'center',
                 textDecoration: 'underline',
               }}
@@ -269,18 +264,28 @@ const Recipe = (props) => {
             <Typography
               variant="h6"
               component="subtitle2"
-              style={{ color: 'white', textAlign: 'center' }}
+              style={{ color: '#323e40', textAlign: 'center' }}
             >
               {showWineName()}
             </Typography>
           </CardContent>
           <CardMedia
             className={classes.media}
-            image="{showWinePhoto()}"
+            image="/images/vin.jpg"
             title="Bottle of wine"
             alt="bottle of wine"
           />
-          <CardActions disableSpacing>
+          <CardActions disableSpacing style={{ backgroundColor: '#D97D0D' }}>
+            <Typography
+              paragraph
+              style={{
+                color: '#323e40',
+                margin: 'auto',
+                textDecoration: 'underline',
+              }}
+            >
+              Wine desciption
+            </Typography>
             <IconButton
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
@@ -293,7 +298,9 @@ const Recipe = (props) => {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
+            <CardContent
+              style={{ backgroundColor: '#D97D0D', color: '#323e40' }}
+            >
               <Typography paragraph>{showWineDescription()}</Typography>
             </CardContent>
           </Collapse>
@@ -307,7 +314,7 @@ const Recipe = (props) => {
               value={commentary}
               onChange={(e) => setCommentary(e.target.value)}
             />
-            <button onClick={setCommentaryIntoRecipe}>Commenter</button>
+            <button onClick={setCommentaryIntoRecipe}>Comment</button>
           </div>
           <div className="section-commentaries">
             <h2>Commentaires</h2>
@@ -323,9 +330,6 @@ const Recipe = (props) => {
           </div>
         </div>
       </div>
-      <div className="pairingWine">{showWineName()}</div>
-      <img src={showWinePhoto()} alt="bottle of wine" />
-      <div>{showWineDescription()}</div>
     </>
   );
 };
