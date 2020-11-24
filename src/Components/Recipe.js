@@ -311,7 +311,9 @@ const Recipe = (props) => {
             <CardContent
               style={{ backgroundColor: '#D97D0D', color: '#323e40' }}
             >
-              <Typography paragraph>{showWineDescription()}</Typography>
+              <Typography paragraph style={{ padding: 5 }}>
+                {showWineDescription()}
+              </Typography>
             </CardContent>
           </Collapse>
         </Card>
