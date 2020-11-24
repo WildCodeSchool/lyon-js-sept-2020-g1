@@ -23,6 +23,17 @@
 @media screen and (min-width: 960px) {
   .favorites-container {
     justify-content: flex-start;
+    align-items: flex-start;
     min-height: 800px;
+  }
+
+  .favorites-container h1 {
+    padding-left: 52px;
+  }
+
+  .favorites {
+    margin: 0 0;
+    padding-left: 40px;
+    justify-content: flex-start;
   }
 }

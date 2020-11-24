@@ -24,13 +24,13 @@ export const SearchContextProvider = ({ children }) => {
   const fetchRecipes = () => {
     let recipeApiURL = '';
     if (ingredientsList && ingredientsList.length > 0) {
-      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=12&addRecipeInformation=true`;
+      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=12&addRecipeInformation=true&instructionsRequired=true`;
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
           ? ingredient.label
           : `+${ingredient.label}`
       );
-      recipeApiURL += `&includesIngredients=${ingredients}`;
+      recipeApiURL += `&includeIngredients=${ingredients}`;
       if (filtersList.dietList && filtersList.dietList.length > 0) {
         const diets = filtersList.dietList.map((diet) =>
           filtersList.dietList.indexOf(diet) === 0
@@ -56,7 +56,7 @@ export const SearchContextProvider = ({ children }) => {
         recipeApiURL += `&types=${meals}`;
       }
     } else {
-      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`;
+      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=12`;
 
       // Repère si l'utilisateur a sélectionné un filtre
       let tagsIndice = false;
@@ -94,6 +94,7 @@ export const SearchContextProvider = ({ children }) => {
         recipeApiURL += `${meals}`;
       }
     }
+
     axios
       .get(recipeApiURL)
       .then((response) => response.data)
