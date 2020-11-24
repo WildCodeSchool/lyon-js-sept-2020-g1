@@ -8,6 +8,11 @@ export const SearchContextProvider = ({ children }) => {
   const [ingredientsList, setIngredientsList] = useState([]);
   const [filtersList, setFiltersList] = useState([]);
 
+  // List of the different filters to apply
+  const [dietList, setDietList] = useState([]);
+  const [cuisineList, setCuisineList] = useState([]);
+  const [mealList, setMealList] = useState([]);
+
   // Storage of the recipes following the API request
   const [recipes, setRecipes] = useState([]);
 
@@ -19,7 +24,7 @@ export const SearchContextProvider = ({ children }) => {
   const fetchRecipes = () => {
     let recipeApiURL = '';
     if (ingredientsList && ingredientsList.length > 0) {
-      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=12&addRecipeInformation=true`;
+      recipeApiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=21&addRecipeInformation=true&instructionsRequired=true`;
       const ingredients = ingredientsList.map((ingredient) =>
         ingredientsList.indexOf(ingredient) === 0
           ? ingredient.label
@@ -32,7 +37,7 @@ export const SearchContextProvider = ({ children }) => {
             ? diet.label.replace(/ /g, '%20')
             : `+${diet.label.replace(/ /g, '%20')}`
         );
-        recipeApiURL += `&diet=${diets}`;
+        recipeApiURL += `&diets=${diets}`;
       }
       if (filtersList.cuisineList && filtersList.cuisineList.length > 0) {
         const cuisines = filtersList.cuisineList.map((cuisine) =>
@@ -40,7 +45,7 @@ export const SearchContextProvider = ({ children }) => {
             ? cuisine.label
             : `+${cuisine.label}`
         );
-        recipeApiURL += `&cuisine=${cuisines}`;
+        recipeApiURL += `&cuisines=${cuisines}`;
       }
       if (filtersList.mealList && filtersList.mealList.length > 0) {
         const meals = filtersList.mealList.map((meal) =>
@@ -48,10 +53,10 @@ export const SearchContextProvider = ({ children }) => {
             ? meal.label.replace(/ /g, '%20')
             : `+${meal.label.replace(/ /g, '%20')}`
         );
-        recipeApiURL += `&type=${meals}`;
+        recipeApiURL += `&types=${meals}`;
       }
     } else {
-      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`;
+      recipeApiURL = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=21`;
 
       // Repère si l'utilisateur a sélectionné un filtre
       let tagsIndice = false;
@@ -89,6 +94,7 @@ export const SearchContextProvider = ({ children }) => {
         recipeApiURL += `${meals}`;
       }
     }
+
     axios
       .get(recipeApiURL)
       .then((response) => response.data)
@@ -113,6 +119,12 @@ export const SearchContextProvider = ({ children }) => {
         setRecipes,
         setFiltersList,
         apiKey,
+        dietList,
+        setDietList,
+        cuisineList,
+        setCuisineList,
+        mealList,
+        setMealList,
       }}
     >
       {children}

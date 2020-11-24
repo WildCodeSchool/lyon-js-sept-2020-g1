@@ -7,9 +7,13 @@
 
 .App {
   background-color: #323e40;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   background-color: #323e40;
+  flex-grow: 1;
   width: 100%;
+  min-height: 100vh;
 }

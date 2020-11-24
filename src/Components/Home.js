@@ -15,12 +15,14 @@ export default function Home() {
   const displayRecipes = () => {
     return recipes.map((recipe) => {
       return (
-        <AffichageRecettes
-          key={recipe.id}
-          titre={recipe.title}
-          image={recipe.image}
-          id={recipe.id}
-        />
+        recipe.image && (
+          <AffichageRecettes
+            key={recipe.id}
+            titre={recipe.title}
+            image={recipe.image}
+            id={recipe.id}
+          />
+        )
       );
     });
   };
