@@ -53,6 +53,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     backgroundColor: '#D97D0D',
+    margin: 0,
+    padding: 0,
   },
   media: {
     width: 380,
@@ -151,7 +153,7 @@ const Recipe = (props) => {
   const showWineName = () => {
     if (recipeData.winePairing && recipeData.winePairing.productMatches) {
       return recipeData.winePairing.productMatches.map((wine, index) => {
-        return <div key={index}>{wine.title}</div>;
+        return <h5 key={index}>{wine.title}</h5>;
       });
     } else {
       return <h5>No wine found for this recipe.</h5>;
@@ -162,7 +164,7 @@ const Recipe = (props) => {
     if (recipeData.winePairing && recipeData.winePairing.productMatches) {
       return recipeData.winePairing.productMatches.map(
         (wineDescription, index) => {
-          return <div key={index}>{wineDescription.description}</div>;
+          return <p key={index}>{wineDescription.description}</p>;
         }
       );
     }
@@ -253,24 +255,25 @@ const Recipe = (props) => {
 
         <Card className={classes.root}>
           <CardContent className={classes.content}>
-            <Typography
-              variant="h5"
-              component="h5"
+            <CardContent
               style={{
                 color: 'white',
                 textAlign: 'center',
                 textDecoration: 'underline',
+                fontSize: '1.7em',
               }}
             >
               Advised wine:
-            </Typography>
-            <Typography
-              variant="h6"
-              component="subtitle2"
-              style={{ color: '#323e40', textAlign: 'center' }}
+            </CardContent>
+            <CardContent
+              style={{
+                color: '#323e40',
+                textAlign: 'center',
+                fontSize: '1.5em',
+              }}
             >
               {showWineName()}
-            </Typography>
+            </CardContent>
           </CardContent>
           <CardMedia
             className={classes.media}
