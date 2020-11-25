@@ -133,6 +133,7 @@ h2 {
 .container-commentary {
   margin: 10px;
   padding: 10px;
+  max-width: 500px;
 }
 .box-commentary {
   text-align: center;
