@@ -51,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 380,
-    margin: '50px auto',
+    minWidth: 320, 
+    margin: '50px',
   },
   content: {
     backgroundColor: '#D97D0D',
@@ -276,7 +277,7 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-
+        <div className='suggestion-container'>
         <Card className={classes.root}>
           <CardContent className={classes.content}>
             <CardContent
@@ -337,12 +338,11 @@ const Recipe = (props) => {
             </CardContent>
           </Collapse>
         </Card>
-
         <div className="container-commentary">
           <div className="box-commentary">
             <textarea
               className="area-commentary"
-              placeholder="Add a review..."
+              placeholder="Review..."
               value={commentary}
               onChange={(e) => setCommentary(e.target.value)}
             />
@@ -380,6 +380,8 @@ const Recipe = (props) => {
                 );
               })}
           </div>
+        </div>
+
         </div>
       </div>
     </>

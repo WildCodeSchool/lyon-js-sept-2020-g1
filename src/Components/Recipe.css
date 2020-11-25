@@ -124,8 +124,13 @@ h2 {
   color: #f2ab27;
   text-align: left;
 }
+.suggestion-container{
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .container-commentary {
-  width: 95%;
   margin: 10px;
   padding: 10px;
 }
@@ -133,7 +138,7 @@ h2 {
   text-align: center;
 }
 .area-commentary {
-  width: 90%;
+  width: 100%;
   font-size: 1.1em;
   border-radius: 5px;
   height: 100px;
@@ -196,19 +201,6 @@ h2 {
   .recipe-other-information {
     width: 50vw;
   }
-  .container-commentary {
-    width: 80vw;
-    display: flex;
-    flex-direction: row;
-  }
-  .box-commentary,
-  .section-commentaries {
-    width: 45vw;
-  }
-  .section-commentaries {
-    margin-top: 0;
-    margin-left: 15px;
-  }
 }
 
 @media screen and (min-width: 960px) {
@@ -230,6 +222,15 @@ h2 {
 
   .ingredients-list li {
     margin: 0 0 5px 0;
+  }
+  .suggestion-container{
+    display: flex;
+    flex-direction: row;
+    width: 85vw;
+    justify-content: space-around;
+  }
+  .container-commentary{
+    width: 70%;
   }
 }
 
