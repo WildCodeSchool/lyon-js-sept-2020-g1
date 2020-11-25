@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   media: {
-    width: 380,
+    // width: 380,
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
@@ -179,7 +179,6 @@ const Recipe = (props) => {
   const setCommentaryIntoRecipe = () => {
     if (commentary !== '') {
       const getCommentaries = [
-        ...commentaries,
         {
           id:
             commentaries.length > 0
@@ -190,6 +189,7 @@ const Recipe = (props) => {
           author: 'Wilder',
           date: moment(Date.now()).format('DD/MM/YYYY H:mm'),
         },
+        ...commentaries,
       ];
       setCommentaries(getCommentaries);
       setCommentary('');
