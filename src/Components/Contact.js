@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable */
 import React from 'react';
+import axios from 'axios';
+import ValidationMessage from './ValidationMessage';
 
 class Contact extends React.Component {
   constructor(props) {
@@ -14,6 +16,7 @@ class Contact extends React.Component {
       errorFirstName: false,
       errorEmail: false,
       errorComment: false,
+      isFormSend: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -45,6 +48,45 @@ class Contact extends React.Component {
     this.setState({ [fieldName]: fieldValue });
   };
 
+  handleCloseValidationMessage = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    this.setState({ isFormSend: false });
+  };
+
+  submitForm = () => {
+    const { firstName, lastName, email, comment } = this.state;
+    console.log(firstName, lastName, email, comment);
+
+    const apiKey = process.env.REACT_APP_API_KEY;
+
+    axios
+      .post(`https://meals-factory.herokuapp.com/Contact?apiKey=${apiKey}`, {
+        firstname: firstName,
+        lastname: lastName,
+        email,
+        comment,
+      })
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          isFormSend: true,
+        });
+      });
+
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      comment: '',
+      errorLastName: false,
+      errorFirstName: false,
+      errorEmail: false,
+      errorComment: false,
+    });
+  };
+
   render() {
     const {
       lastName,
@@ -58,6 +100,10 @@ class Contact extends React.Component {
     } = this.state;
     return (
       <div className="contact-main-container">
+        <ValidationMessage
+          isFormSend={this.state.isFormSend}
+          handleCloseValidationMessage={this.handleCloseValidationMessage}
+        />
         <h1>Contact</h1>
         <p>For any question or suggestion, please fulfill the form below.</p>
         <div className="form-container">
@@ -121,7 +167,11 @@ class Contact extends React.Component {
             <br />
             <br />
           </div>
-          <button type="button" className="send-button">
+          <button
+            type="button"
+            className="send-button"
+            onClick={this.submitForm}
+          >
             SEND
           </button>
         </div>
