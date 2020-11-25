@@ -49,6 +49,7 @@ body {
 
 .recipe-other-information {
   display: flex;
+  flex-wrap: wrap;
   width: 100vw;
   justify-content: center;
   margin: 20px 0;
@@ -58,12 +59,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
-  width: 50%;
+  margin: 0 auto;
 }
 
 .recipe-other-information-list p {
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  /* padding-left: 0px; */
+  white-space: nowrap;
 }
 
 .recipe-information-list {
@@ -180,6 +182,16 @@ h2 {
 .paraph-commentary {
   text-align: left;
   padding: 0;
+}
+@media screen and (max-width: 360px) {
+  .recipe-information {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .recipe-information-list {
+    margin: 0 10px 10px 10px;
+  }
 }
 
 @media screen and (min-width: 768px) {
