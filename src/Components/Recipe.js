@@ -14,6 +14,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import EmailIcon from '@material-ui/icons/Email';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import Mailto from './MailTo';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
+import { FacebookIcon, TwitterIcon } from 'react-share';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { DriveEtaTwoTone, ModeComment } from '@material-ui/icons';
 import moment from 'moment';
@@ -230,6 +232,20 @@ const Recipe = (props) => {
             >
               <EmailIcon className={classes.iconBtn} />
             </Mailto>
+
+            <FacebookShareButton
+              className="facebook"
+              url={'https://www.facebook.com/'}
+            >
+              <FacebookIcon size={20} borderRadius={50}></FacebookIcon>
+            </FacebookShareButton>
+
+            <TwitterShareButton
+              className="twitter"
+              url={'https://twitter.com/'}
+            >
+              <TwitterIcon size={20} borderRadius={50}></TwitterIcon>
+            </TwitterShareButton>
           </div>
           <div className="recipe-other-information-list">
             {favorites[recipeId] ? (
@@ -311,7 +327,9 @@ const Recipe = (props) => {
             <CardContent
               style={{ backgroundColor: '#D97D0D', color: '#323e40' }}
             >
-              <Typography paragraph>{showWineDescription()}</Typography>
+              <Typography paragraph style={{ padding: 5 }}>
+                {showWineDescription()}
+              </Typography>
             </CardContent>
           </Collapse>
         </Card>
