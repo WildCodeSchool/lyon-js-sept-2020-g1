@@ -221,3 +221,21 @@ h2 {
     margin: 0 0 5px 0;
   }
 }
+
+.commentary {
+  display: flex;
+  flex-direction: row;
+}
+
+.facebook {
+  width: 20px;
+  height: 20px;
+  border-radius: 50;
+  margin-right: 5px;
+}
+
+.twitter {
+  width: 20px;
+  height: 20px;
+  border-radius: 50;
+}

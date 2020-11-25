@@ -3,52 +3,146 @@
   padding: 0;
 }
 
-.bloc {
-  width: 200px;
+.contact-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
   height: 800px;
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-top: 5%;
 }
 
-input {
-  width: 500px;
-  height: 50px;
-  border-radius: 10px;
+.form-container {
+  width: 50vw;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
 }
 
-textarea {
-  height: 250px;
-  width: 500px;
-  border-radius: 10px;
+.contact-main-container h1,
+p {
+  padding: 25px 25px;
+  color: white;
 }
 
-button {
-  width: 200px;
-  height: 50px;
+.contact-main-container h1 {
+  text-align: center;
+}
+
+.contact-main-container p {
+  font-size: 18px;
+}
+
+.form-container > div {
+  width: inherit;
+}
+
+.form-field {
+  width: inherit;
+  min-width: 150px;
+  padding: 5px 5px 5px 15px;
+  font-size: 16px;
+  height: 30px;
+  margin-top: 10px;
   border-radius: 10px;
+  padding: 5px 5px 5px 10px;
+  font-size: 16px;
+  border: none;
+}
+
+.form-textarea {
+  width: inherit;
+  min-width: 150px;
+  padding: 10px 5px 5px 15px;
+  font-size: 16px;
+
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.send-button {
+  width: 150px;
+  height: 60px;
+  border-radius: 10px;
+  border: none;
+  margin: 0px auto;
+  background-color: #d97d0d;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #f2ab27;
 }
 
 label {
   font-family: system-ui;
-  font-size: 1.6em;
+  font-size: 20px;
   font-style: normal;
-  color: #d97d0d;
-}
-body {
-  background-color: #323e40;
+  color: white;
 }
 
 .required {
   color: red;
-  font-size: 1.3em;
+  font-size: 1.6em;
   font-family: system-ui;
   font-style: normal;
+  padding: 0 0;
+  margin-top: 5px;
 }
 
-.button {
-  color: #d97d0d;
-  font-size: 1.3em;
+.form-field:required {
+  border: 3px solid #d97d0d;
   font-family: system-ui;
-  font-style: normal;
+}
+
+.form-textarea:required {
+  border: 3px solid #d97d0d;
+  font-family: system-ui;
+}
+
+@media screen and (min-width: 320px) {
+  .contact-main-container {
+    background: url(../pictures/background-small.jpg);
+    border-radius: 10px;
+    background-size: 100vh;
+    background-position: fixed / center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .contact-main-container {
+    background: url(../pictures/background.jpg);
+    border-radius: 10px;
+    width: 100%;
+    opacity: 0.9;
+    padding-top: 20px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 800px;
+    align-items: flex-start;
+  }
+  .send-button {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form-container {
+    width: 40vw;
+    max-width: 700px;
+  }
+
+  .contact-main-container h1,
+  p {
+    padding-left: 52px;
+  }
 }

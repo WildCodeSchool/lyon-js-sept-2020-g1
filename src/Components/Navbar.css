@@ -165,4 +165,6 @@ h2 {
 .blocNav {
   display: flex;
   background-color: #323e40;
+  height: 60px;
+  padding: 10px 0;
 }

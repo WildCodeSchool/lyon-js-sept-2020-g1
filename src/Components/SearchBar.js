@@ -114,8 +114,7 @@ const Searchbar = () => {
             label: ingredient.name,
           }));
           setIngredientsOptions(options);
-        })
-        .catch((err) => console.error(err));
+        });
     }
     setDietsOptions(filters.diets);
     setCuisinesOptions(filters.cuisines);
