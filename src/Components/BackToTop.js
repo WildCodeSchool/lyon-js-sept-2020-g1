@@ -19,13 +19,10 @@ const ScrollTopArrow = () => {
     };
 
     window.addEventListener('scroll', checkScrollTop);
-    return (
-      () => {
-        window.removeEventListener('scroll', checkScrollTop);
-      },
-      [showScroll]
-    );
-  });
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  }, [showScroll]);
 
   return (
     <div>
