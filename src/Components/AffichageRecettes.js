@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     margin: '15px',
     height: '400px',
     justifyContent: 'center',
-    opacity: 0.8,
+    opacity: 0.9,
   },
 
   linkToRecipe: {

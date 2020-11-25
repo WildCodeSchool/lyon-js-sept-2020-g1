@@ -108,9 +108,8 @@ textarea:required {
     background: url(../pictures/background-small.jpg);
     border-radius: 10px;
     background-size: 100vh;
-    background-position: center center;
+    background-position: fixed / center;
     background-size: cover;
-
     background-repeat: no-repeat;
   }
 }
