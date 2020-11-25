@@ -48,7 +48,7 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Christian</h3>
           <br />
-          <p className={classes.introduction}>Traduction française?...</p>
+          <p className={classes.introduction}>French translation for him?...</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4} className={classes.cards}>
@@ -60,7 +60,7 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Jean</h3>
           <br />
-          <p className={classes.introduction}>Le Blond, le vrai!...</p>
+          <p className={classes.introduction}>The champion!...</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4} className={classes.cards}>
@@ -72,7 +72,7 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Brieuc</h3>
           <br />
-          <p className={classes.introduction}>Codeur, Joueur, Chanteur!!</p>
+          <p className={classes.introduction}>Gamer, singer, developper!</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4} className={classes.cards}>
@@ -84,7 +84,7 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Gilles</h3>
           <br />
-          <p className={classes.introduction}>La discrétion, mais efficace!</p>
+          <p className={classes.introduction}>Discreet, but efficient!</p>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6} md={4} className={classes.cards}>

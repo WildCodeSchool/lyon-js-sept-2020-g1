@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 380,
     minWidth: 320,
+    borderRadius: 5,
   },
   content: {
     backgroundColor: '#D97D0D',
