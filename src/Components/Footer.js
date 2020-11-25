@@ -1,56 +1,25 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import './Footer.css';
+import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: 100,
-  },
-  footer: {
-    padding: theme.spacing(3, 2),
-    marginTop: 'auto',
-    backgroundColor: '#323E40',
-  },
-}));
-
-export default function StickyFooter() {
-  const classes = useStyles();
-
+const Footer = () => {
   return (
-    <div className={classes.root}>
-      <footer className={classes.footer}>
-        <Container maxWidth="sm">
-          <Typography variant="body1">
-            <Link to="/AboutUs" variant="body2" color="inherit">
-              Development team
-            </Link>
-            <Link to="/Contact" variant="body2">
-              Contact us
-            </Link>
-            <Link
-              rel="noreferrer"
-              target="_blank"
-              href="https://github.com/WildCodeSchool/lyon-js-sept-2020-g1"
-              variant="body2"
-              color="inherit"
-            >
-              Github
-            </Link>
-            <Link
-              rel="noreferrer"
-              target="_blank"
-              href="https://www.wildcodeschool.com/fr-FR/campus/lyon"
-              variant="body2"
-            >
-              Wild Code School
-            </Link>
-          </Typography>
-        </Container>
+    <div>
+      <footer className="footer">
+        <Link to="/AboutUs">Development Team</Link>
+        <Link to="/Contact">Contact Us</Link>
+        <a href="https://github.com/WildCodeSchool/lyon-js-sept-2020-g1">
+          GitHub
+        </a>
+        <a href="https://www.wildcodeschool.com/fr-FR/campus/lyon">
+          Wild Code School
+        </a>
       </footer>
     </div>
   );
-}
+};
+
+export default Footer;
+
+// "https://github.com/WildCodeSchool/lyon-js-sept-2020-g1"
+// https://www.wildcodeschool.com/fr-FR/campus/lyon"

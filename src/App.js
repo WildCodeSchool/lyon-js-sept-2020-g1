@@ -33,7 +33,9 @@ function App() {
             </main>
           </FavoritesContextProvider>
         </SearchContextProvider>
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
       </Router>
     </div>
   );

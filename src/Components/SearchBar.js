@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const Searchbar = () => {
   // Material-ui style
   const classes = useStyles();
+
   const customStyles = {
     container: (provided) => ({
       ...provided,
@@ -39,6 +40,10 @@ const Searchbar = () => {
       ...provided,
       color: 'black',
     }),
+    multiValue: (provided) => ({
+      ...provided,
+      fontSize: '20px',
+    }),
   };
 
   // Consuming SearchContext
@@ -48,6 +53,12 @@ const Searchbar = () => {
     setFiltersList,
     fetchRecipes,
     apiKey,
+    dietList,
+    setDietList,
+    cuisineList,
+    setCuisineList,
+    mealList,
+    setMealList,
   } = useContext(SearchContext);
 
   // Storage of the user search for auto-complete request
@@ -64,11 +75,6 @@ const Searchbar = () => {
 
   // Cuisines options for auto-complete
   const [mealsOptions, setMealsOptions] = useState([]);
-
-  // List of the different filters to apply
-  const [dietList, setDietList] = useState([]);
-  const [cuisineList, setCuisineList] = useState([]);
-  const [mealList, setMealList] = useState([]);
 
   // Handling when users writes in input (for autocomplete) -> the value is stored in the state
   const handleSearch = (inputValue) => {
