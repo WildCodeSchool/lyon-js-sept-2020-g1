@@ -44,7 +44,6 @@ const Recipe = (props) => {
   const [recipeData, setRecipeData] = useState([]);
   const [commentary, setCommentary] = useState('');
   const [commentaries, setCommentaries] = useLocalStorage('commentaries', []);
-
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
 
   const { match } = props;
@@ -117,22 +116,29 @@ const Recipe = (props) => {
   };
 
   const setCommentaryIntoRecipe = () => {
-    const getCommentaries = [
-      ...commentaries,
-      {
-        id:
-          commentaries.length > 0
-            ? commentaries[commentaries.length - 1].id + 1
-            : 1,
-        value: commentary,
-        recipe: recipeId,
-        author: 'Wilder',
-        date: moment(Date.now()).format('DD/MM/YYYY H:i:s'),
-      },
-    ];
-    setCommentaries(getCommentaries);
-    setCommentary('');
+    if(commentary !== ''){
+      const getCommentaries = [
+        ...commentaries,
+        {
+          id:
+            commentaries.length > 0
+              ? commentaries[commentaries.length - 1].id + 1
+              : 1,
+          value: commentary,
+          recipe: recipeId,
+          author: 'Wilder',
+          date: moment(Date.now()).format('DD/MM/YYYY H:mm'),
+        },
+      ];
+      setCommentaries(getCommentaries);
+      setCommentary('');
+    }
+    
   };
+
+  const deleteCommentaryFromRecipe = (id) => {
+    setCommentaries(commentaries.filter(commentary => commentary.id !== id));
+  }
 
   return (
     <>
@@ -153,7 +159,7 @@ const Recipe = (props) => {
         />
         <div className="recipe-other-information">
           <div className="recipe-other-information-list">
-            {' '}
+            
             <AccessTimeIcon /> <p>{recipeData.readyInMinutes} minutes</p>
           </div>
           <div className="recipe-other-information-list">
@@ -193,24 +199,27 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
+        
         <div className="container-commentary">
           <div className="box-commentary">
             <textarea
               className="area-commentary"
-              placeholder="Comment the recipe..."
+              placeholder="Add a review..."
               value={commentary}
               onChange={(e) => setCommentary(e.target.value)}
             />
-            <button onClick={setCommentaryIntoRecipe}>Commenter</button>
+            <button className='add-commentary' onClick={setCommentaryIntoRecipe}>Leave a review</button>
           </div>
           <div className="section-commentaries">
-            <h2>Commentaires</h2>
+          <h2>{commentaries.filter((commentary) => commentary.recipe === recipeId).length > 0 ? 'Reviews' : ''}</h2>
             {commentaries
               .filter((commentary) => commentary.recipe === recipeId)
               .map((commentary) => {
                 return (
                   <div className="section-commentary" key={commentary.id}>
-                    <p>{commentary.value}</p>
+                    <i className='details-commentary'>Posted at {commentary.date} by {commentary.author}</i>
+                    <p className='paraph-commentary'>{commentary.value}</p>
+                    <button className='delete-commentary' onClick={() => deleteCommentaryFromRecipe(commentary.id)}>Delete</button>
                   </div>
                 );
               })}
