@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 380,
-    minWidth: 320, 
+    minWidth: 320,
     margin: '50px',
   },
   content: {
@@ -277,111 +277,112 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-        <div className='suggestion-container'>
-        <Card className={classes.root}>
-          <CardContent className={classes.content}>
-            <CardContent
-              style={{
-                color: 'white',
-                textAlign: 'center',
-                textDecoration: 'underline',
-                fontSize: '1.7em',
-              }}
-            >
-              Advised wine:
+        <div className="suggestion-container">
+          <Card className={classes.root}>
+            <CardContent className={classes.content}>
+              <CardContent
+                style={{
+                  color: 'white',
+                  textAlign: 'center',
+                  textDecoration: 'underline',
+                  fontSize: '1.7em',
+                }}
+              >
+                Advised wine:
+              </CardContent>
+              <CardContent
+                style={{
+                  color: '#323e40',
+                  textAlign: 'center',
+                  fontSize: '1.5em',
+                }}
+              >
+                {showWineName()}
+              </CardContent>
             </CardContent>
-            <CardContent
-              style={{
-                color: '#323e40',
-                textAlign: 'center',
-                fontSize: '1.5em',
-              }}
-            >
-              {showWineName()}
-            </CardContent>
-          </CardContent>
-          <CardMedia
-            className={classes.media}
-            image="/images/vin.jpg"
-            title="Bottle of wine"
-            alt="bottle of wine"
-          />
-          <CardActions disableSpacing style={{ backgroundColor: '#D97D0D' }}>
-            <Typography
-              paragraph
-              style={{
-                color: '#323e40',
-                margin: 'auto',
-                textDecoration: 'underline',
-              }}
-            >
-              Wine desciption
-            </Typography>
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent
-              style={{ backgroundColor: '#D97D0D', color: '#323e40' }}
-            >
-              <Typography paragraph style={{ padding: 5 }}>
-                {showWineDescription()}
-              </Typography>
-            </CardContent>
-          </Collapse>
-        </Card>
-        <div className="container-commentary">
-          <div className="box-commentary">
-            <textarea
-              className="area-commentary"
-              placeholder="Review..."
-              value={commentary}
-              onChange={(e) => setCommentary(e.target.value)}
+            <CardMedia
+              className={classes.media}
+              image="/images/vin.jpg"
+              title="Bottle of wine"
+              alt="bottle of wine"
             />
-            <button
-              className="add-commentary"
-              onClick={setCommentaryIntoRecipe}
-            >
-              Leave a review
-            </button>
+            <CardActions disableSpacing style={{ backgroundColor: '#D97D0D' }}>
+              <Typography
+                paragraph
+                style={{
+                  color: '#323e40',
+                  margin: 'auto',
+                  textDecoration: 'underline',
+                }}
+              >
+                Wine desciption
+              </Typography>
+              <IconButton
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent
+                style={{ backgroundColor: '#D97D0D', color: '#323e40' }}
+              >
+                <Typography paragraph style={{ padding: 5 }}>
+                  {showWineDescription()}
+                </Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
+          <div className="container-commentary">
+            <div className="box-commentary">
+              <textarea
+                className="area-commentary"
+                placeholder="Review..."
+                value={commentary}
+                onChange={(e) => setCommentary(e.target.value)}
+              />
+              <button
+                className="add-commentary"
+                onClick={setCommentaryIntoRecipe}
+              >
+                Leave a review
+              </button>
+            </div>
+            <div className="section-commentaries">
+              <h2>
+                {commentaries.filter(
+                  (commentary) => commentary.recipe === recipeId
+                ).length > 0
+                  ? 'Reviews'
+                  : ''}
+              </h2>
+              {commentaries
+                .filter((commentary) => commentary.recipe === recipeId)
+                .map((commentary) => {
+                  return (
+                    <div className="section-commentary" key={commentary.id}>
+                      <i className="details-commentary">
+                        Posted at {commentary.date} by {commentary.author}
+                      </i>
+                      <p className="paraph-commentary">{commentary.value}</p>
+                      <button
+                        className="delete-commentary"
+                        onClick={() =>
+                          deleteCommentaryFromRecipe(commentary.id)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
-          <div className="section-commentaries">
-            <h2>
-              {commentaries.filter(
-                (commentary) => commentary.recipe === recipeId
-              ).length > 0
-                ? 'Reviews'
-                : ''}
-            </h2>
-            {commentaries
-              .filter((commentary) => commentary.recipe === recipeId)
-              .map((commentary) => {
-                return (
-                  <div className="section-commentary" key={commentary.id}>
-                    <i className="details-commentary">
-                      Posted at {commentary.date} by {commentary.author}
-                    </i>
-                    <p className="paraph-commentary">{commentary.value}</p>
-                    <button
-                      className="delete-commentary"
-                      onClick={() => deleteCommentaryFromRecipe(commentary.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-
         </div>
       </div>
     </>
