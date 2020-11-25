@@ -133,8 +133,11 @@ h2 {
   text-align: center;
 }
 .area-commentary {
-  width: 100%;
+  width: 90%;
   font-size: 1.1em;
+  border-radius: 5px;
+  height: 100px;
+  padding: 5px;
 }
 .section-commentaries {
   margin-top: 10px;
@@ -155,6 +158,8 @@ h2 {
   cursor: pointer;
   text-align: center;
   margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
 }
 .delete-commentary {
   color: white;
@@ -165,10 +170,16 @@ h2 {
   text-align: center;
   margin-top: 10px;
   width: 100px;
-  height: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px;
 }
 .details-commentary {
   font-size: 0.7em;
+}
+.paraph-commentary{
+  text-align: left;
+  padding: 0;
 }
 
 @media screen and (min-width: 768px) {
