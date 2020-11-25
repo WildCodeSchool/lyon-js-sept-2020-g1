@@ -131,7 +131,6 @@ h2 {
 }
 .box-commentary {
   text-align: center;
-  
 }
 .area-commentary {
   width: 100%;
@@ -140,7 +139,6 @@ h2 {
 .section-commentaries {
   margin-top: 10px;
   margin-bottom: 10px;
-  
 }
 .section-commentary {
   border-bottom: groove 1px white;
@@ -149,7 +147,7 @@ h2 {
   padding-bottom: 10px;
   margin-top: 10px;
 }
-.add-commentary{
+.add-commentary {
   color: white;
   background-color: #d97d0d;
   box-shadow: none;
@@ -158,7 +156,7 @@ h2 {
   text-align: center;
   margin-top: 10px;
 }
-.delete-commentary{
+.delete-commentary {
   color: white;
   background-color: #d97d0d;
   box-shadow: none;
@@ -169,7 +167,7 @@ h2 {
   width: 100px;
   height: 20px;
 }
-.details-commentary{
+.details-commentary {
   font-size: 0.7em;
 }
 
@@ -190,12 +188,13 @@ h2 {
   .container-commentary {
     width: 80vw;
     display: flex;
-   flex-direction: row;
+    flex-direction: row;
   }
-  .box-commentary, .section-commentaries{
+  .box-commentary,
+  .section-commentaries {
     width: 45vw;
   }
-  .section-commentaries{
+  .section-commentaries {
     margin-top: 0;
     margin-left: 15px;
   }
@@ -220,5 +219,5 @@ h2 {
 
   .ingredients-list li {
     margin: 0 0 5px 0;
-  } 
+  }
 }

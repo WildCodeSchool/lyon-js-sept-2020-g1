@@ -116,7 +116,7 @@ const Recipe = (props) => {
   };
 
   const setCommentaryIntoRecipe = () => {
-    if(commentary !== ''){
+    if (commentary !== '') {
       const getCommentaries = [
         ...commentaries,
         {
@@ -133,12 +133,11 @@ const Recipe = (props) => {
       setCommentaries(getCommentaries);
       setCommentary('');
     }
-    
   };
 
   const deleteCommentaryFromRecipe = (id) => {
-    setCommentaries(commentaries.filter(commentary => commentary.id !== id));
-  }
+    setCommentaries(commentaries.filter((commentary) => commentary.id !== id));
+  };
 
   return (
     <>
@@ -159,7 +158,6 @@ const Recipe = (props) => {
         />
         <div className="recipe-other-information">
           <div className="recipe-other-information-list">
-            
             <AccessTimeIcon /> <p>{recipeData.readyInMinutes} minutes</p>
           </div>
           <div className="recipe-other-information-list">
@@ -199,7 +197,7 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-        
+
         <div className="container-commentary">
           <div className="box-commentary">
             <textarea
@@ -208,18 +206,36 @@ const Recipe = (props) => {
               value={commentary}
               onChange={(e) => setCommentary(e.target.value)}
             />
-            <button className='add-commentary' onClick={setCommentaryIntoRecipe}>Leave a review</button>
+            <button
+              className="add-commentary"
+              onClick={setCommentaryIntoRecipe}
+            >
+              Leave a review
+            </button>
           </div>
           <div className="section-commentaries">
-          <h2>{commentaries.filter((commentary) => commentary.recipe === recipeId).length > 0 ? 'Reviews' : ''}</h2>
+            <h2>
+              {commentaries.filter(
+                (commentary) => commentary.recipe === recipeId
+              ).length > 0
+                ? 'Reviews'
+                : ''}
+            </h2>
             {commentaries
               .filter((commentary) => commentary.recipe === recipeId)
               .map((commentary) => {
                 return (
                   <div className="section-commentary" key={commentary.id}>
-                    <i className='details-commentary'>Posted at {commentary.date} by {commentary.author}</i>
-                    <p className='paraph-commentary'>{commentary.value}</p>
-                    <button className='delete-commentary' onClick={() => deleteCommentaryFromRecipe(commentary.id)}>Delete</button>
+                    <i className="details-commentary">
+                      Posted at {commentary.date} by {commentary.author}
+                    </i>
+                    <p className="paraph-commentary">{commentary.value}</p>
+                    <button
+                      className="delete-commentary"
+                      onClick={() => deleteCommentaryFromRecipe(commentary.id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 );
               })}
