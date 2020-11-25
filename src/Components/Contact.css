@@ -20,7 +20,7 @@
   margin: 20px auto;
 }
 
-.contact-main-container h1,
+.contact-main-container h1, .contact-main-container
 p {
   padding: 25px 25px;
   color: white;
@@ -141,8 +141,7 @@ label {
     max-width: 700px;
   }
 
-  .contact-main-container h1,
-  p {
+  .contact-main-container h1, .contact-main-container p {
     padding-left: 52px;
   }
 }

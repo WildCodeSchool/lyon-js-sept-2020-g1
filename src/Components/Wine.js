@@ -13,7 +13,7 @@ import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
   wineSuggest: {
-    marginBottom: 30,
+    marginBottom: 90,
   },
   root: {
     maxWidth: 380,
@@ -123,8 +123,10 @@ export default function Wine({ recipeData }) {
           </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent style={{ backgroundColor: '#D97D0D', color: '#323e40' }}>
-            <Typography paragraph>{showWineDescription()}</Typography>
+          <CardContent style={{ backgroundColor: '#D97D0D' }}>
+            <Typography paragraph style={{ color: 'white', padding: 10 }}>
+              {showWineDescription()}
+            </Typography>
           </CardContent>
         </Collapse>
       </Card>
