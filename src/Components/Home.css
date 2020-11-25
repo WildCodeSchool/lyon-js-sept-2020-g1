@@ -48,7 +48,7 @@
   justify-content: space-between;
   align-items: center;
   color: white;
-  background-color: rgba(50,62,64,0.4);
+  background-color: rgba(50, 62, 64, 0.4);
   border-radius: 20px;
   padding: 15px;
 }
@@ -62,7 +62,7 @@ p {
   max-width: 300px;
   height: auto;
   border-radius: 10px;
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
 }
 
 .search-btn {
@@ -86,10 +86,9 @@ a {
   align-items: center;
 }
 
-
 @media screen and (max-width: 450px) {
   .logo {
-    max-width: 200px;;
+    max-width: 200px;
   }
 }
 
