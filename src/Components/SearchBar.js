@@ -158,7 +158,7 @@ const Searchbar = () => {
         options={cuisinesOptions}
         value={cuisineList}
         onChange={addFilterCuisineToList}
-        placeholder="Select your Cuisine Type"
+        placeholder="Select your Cuisine"
       />
       <Select
         isMulti
