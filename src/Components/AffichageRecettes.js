@@ -53,12 +53,12 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
-    paddingTop: 20,
+    padding: '20px 10px 0px 10px',
   },
   media: {
     minHeight: '200px',
     maxHeight: '250px',
-    width: '100%',
+    minWidth: '100%',
     objectFit: 'cover',
     transform: 'scale(1)',
     transition: 'all 200ms ease-in',
@@ -100,8 +100,6 @@ export default function AffichageRecettes({
             className={classes.media}
             component="img"
             alt="photo of the recipe"
-            // height="250"
-            // width="100%"
             image={image}
             objectfit="cover"
             title="photo of recipe"
