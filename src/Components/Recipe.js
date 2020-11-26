@@ -125,10 +125,7 @@ const Recipe = (props) => {
     if (commentary !== '') {
       const getCommentaries = [
         {
-          id:
-            commentaries.length > 0
-              ? commentaries[commentaries.length - 1].id + 1
-              : 1,
+          id: commentaries.length > 0 ? commentaries[0].id + 1 : 1,
           value: commentary,
           recipe: recipeId,
           author: 'Wilder',
@@ -139,10 +136,12 @@ const Recipe = (props) => {
       setCommentaries(getCommentaries);
       setCommentary('');
     }
+    console.log(commentaries);
   };
 
   const deleteCommentaryFromRecipe = (id) => {
-    setCommentaries(commentaries.filter((commentary) => commentary.id !== id));
+    // console.log(commentaries);
+    setCommentaries(commentaries.filter((comm) => comm.id !== id));
   };
 
   return (
@@ -250,9 +249,9 @@ const Recipe = (props) => {
               </h2>
               {commentaries
                 .filter((commentary) => commentary.recipe === recipeId)
-                .map((commentary) => {
+                .map((commentary, index) => {
                   return (
-                    <div className="section-commentary" key={commentary.id}>
+                    <div className="section-commentary" key={index}>
                       <i className="details-commentary">
                         Posted at {commentary.date} by {commentary.author}
                       </i>
