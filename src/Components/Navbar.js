@@ -44,7 +44,12 @@ function Navbar() {
           <ul className="menu" ref={wrapperMenu}>
             <li>
               <Link onClick={closeNavbar} to="/">
-                Random Recipes
+                Search
+              </Link>
+            </li>
+            <li>
+              <Link onClick={closeNavbar} to="/Favoris">
+                Favorites
               </Link>
             </li>
             <li>
@@ -54,12 +59,7 @@ function Navbar() {
             </li>
             <li>
               <Link onClick={closeNavbar} to="/AboutUs">
-                Team Development
-              </Link>
-            </li>
-            <li>
-              <Link onClick={closeNavbar} to="/Favoris">
-                Favoris
+                Development Team
               </Link>
             </li>
           </ul>

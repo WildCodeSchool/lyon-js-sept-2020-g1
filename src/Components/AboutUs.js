@@ -6,12 +6,22 @@ const useStyles = makeStyles({
     background: 'url(/images/AboutUs.jpeg) no-repeat fixed center / cover',
     textAlign: 'center',
     height: '100%',
+    width: '100%',
     margin: 0,
-    padding: 200,
+    padding: 35,
+  },
+  cards: {
+    maxWidth: 400,
   },
   papers: {
     padding: 10,
     backgroundColor: '#ecf0f1',
+    boxShadow: '0 1px 3px rgba(50,62,64,0.12), 0 1px 2px rgba(50,62,64,0.24)',
+    transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
+    '&:hover': {
+      boxShadow:
+        '0 5px 60px rgba(50,62,64,0.50), 0 5px 30px rgba(50,62,64,0.44)',
+    },
   },
   avatar: {
     maxWidth: '100%',
@@ -30,7 +40,7 @@ export default function AboutUs() {
   const classes = useStyles();
   return (
     <Grid container className={classes.root} spacing={5} justify="space-evenly">
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={4} className={classes.cards}>
         <Paper className={classes.papers} elevation={3}>
           <img
             className={classes.avatar}
@@ -39,10 +49,10 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Christian</h3>
           <br />
-          <p className={classes.introduction}>Traduction française?...</p>
+          <p className={classes.introduction}>French translation for him?...</p>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={4} className={classes.cards}>
         <Paper className={classes.papers} elevation={3}>
           <img
             className={classes.avatar}
@@ -51,10 +61,10 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Jean</h3>
           <br />
-          <p className={classes.introduction}>Le Blond, le vrai!...</p>
+          <p className={classes.introduction}>The champion!...</p>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={4} className={classes.cards}>
         <Paper className={classes.papers} elevation={3}>
           <img
             className={classes.avatar}
@@ -63,10 +73,10 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Brieuc</h3>
           <br />
-          <p className={classes.introduction}>Codeur, Joueur, Chanteur!!</p>
+          <p className={classes.introduction}>Gamer, singer, developper!</p>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={4} className={classes.cards}>
         <Paper className={classes.papers} elevation={3}>
           <img
             className={classes.avatar}
@@ -75,10 +85,10 @@ export default function AboutUs() {
           />
           <h3 className={classes.firstName}>Gilles</h3>
           <br />
-          <p className={classes.introduction}>La discrétion, mais efficace!</p>
+          <p className={classes.introduction}>Discreet, but efficient!</p>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={6} md={4} className={classes.cards}>
         <Paper className={classes.papers} elevation={3}>
           <img
             className={classes.avatar}

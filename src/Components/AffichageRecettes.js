@@ -6,19 +6,21 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import EmailIcon from '@material-ui/icons/Email';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { FavoritesContext } from '../contexts/FavoritesContext';
-import Mailto from './MailTo';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 375,
+    width: 375,
+    overflow: 'hidden',
     margin: '15px',
-    height: '400px',
+    '@media screen and (max-width: 340px)': {
+      margin: '15px 5px',
+    },
+    height: '410px',
     justifyContent: 'center',
-    opacity: 0.8,
+    opacity: 0.9,
   },
 
   linkToRecipe: {
@@ -51,11 +53,12 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
+    padding: '20px 10px 5px 10px',
   },
   media: {
     minHeight: '200px',
     maxHeight: '250px',
-    minWidth: 375,
+    minWidth: '100%',
     objectFit: 'cover',
     transform: 'scale(1)',
     transition: 'all 200ms ease-in',
@@ -66,7 +69,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AffichageRecettes({ image, titre, id }) {
+export default function AffichageRecettes({
+  image,
+  titre,
+  id,
+  otherIngredients,
+}) {
   const classes = useStyles();
 
   const { favorites, toggleFavorites } = useContext(FavoritesContext);
@@ -92,23 +100,15 @@ export default function AffichageRecettes({ image, titre, id }) {
             className={classes.media}
             component="img"
             alt="photo of the recipe"
-            // height="250"
-            // width="100%"
             image={image}
             objectfit="cover"
             title="photo of recipe"
           />
         </Link>
         <div className={classes.interactions}>
-          <CardContent className={classes.iconList}>
-            <Mailto
-              email="email@email.com"
-              subject="Recipe send from Meal Factory with Love!"
-              body={`Hi! Somebody send you this recipe: http://localhost:3000/recipe/${id}`}
-            >
-              <EmailIcon className={classes.iconBtn} />
-            </Mailto>
-          </CardContent>
+          <div style={{ color: 'black', minWidth: '190px' }}>
+            {otherIngredients && `${otherIngredients} other ingredients`}
+          </div>
           {favorites[id] ? (
             <FavoriteIcon
               style={{ color: '#D97D0D' }}

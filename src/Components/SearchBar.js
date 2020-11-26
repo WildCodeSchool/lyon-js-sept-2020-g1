@@ -114,8 +114,7 @@ const Searchbar = () => {
             label: ingredient.name,
           }));
           setIngredientsOptions(options);
-        })
-        .catch((err) => console.error(err));
+        });
     }
     setDietsOptions(filters.diets);
     setCuisinesOptions(filters.cuisines);
@@ -159,7 +158,7 @@ const Searchbar = () => {
         options={cuisinesOptions}
         value={cuisineList}
         onChange={addFilterCuisineToList}
-        placeholder="Select your Cuisine Type"
+        placeholder="Select your Cuisine"
       />
       <Select
         isMulti

@@ -17,8 +17,9 @@
     border-radius: 10px;
     background-size: 100vh;
     background-position: center center;
-
     background-repeat: no-repeat;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -40,24 +41,22 @@
 
 .home-container {
   position: absolute;
-  width: 100%;
+  width: 40%;
+  min-width: 240px;
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   color: white;
-  text-align: center;
+  background-color: rgba(50, 62, 64, 0.4);
+  border-radius: 20px;
+  padding: 15px;
 }
 
-.home-container h2 {
+.home-container h2,
+p {
   text-align: center;
-}
-
-.logo {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
 }
 
 .search-btn {
@@ -92,20 +91,5 @@ a {
 
   .home-container p {
     font-size: 24px;
-  }
-
-  .logo {
-    max-width: 700px;
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .logo {
-    max-width: 900px;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .logo {
-    max-width: 1000px;
   }
 }

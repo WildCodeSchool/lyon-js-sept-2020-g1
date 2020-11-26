@@ -37,6 +37,7 @@ body {
 .recipe-container {
   display: flex;
   flex-direction: column;
+  margin: 70px;
 }
 
 .recipe-information {
@@ -49,6 +50,7 @@ body {
 
 .recipe-other-information {
   display: flex;
+  flex-wrap: wrap;
   width: 100vw;
   justify-content: center;
   margin: 20px 0;
@@ -58,12 +60,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
-  width: 50%;
+  margin: 0 auto;
 }
 
 .recipe-other-information-list p {
-  margin-left: 10px;
+  padding: 25px 25px;
+  white-space: nowrap;
 }
 
 .recipe-information-list {
@@ -124,30 +126,77 @@ h2 {
   color: #f2ab27;
   text-align: left;
 }
-.container-commentary {
-  width: 100%;
+.suggestion-container {
+  width: 90vw;
   display: flex;
+  align-items: center;
   flex-direction: column;
+}
+.container-commentary {
+  max-width: 600px;
+  margin: 0 60px;
 }
 .box-commentary {
   text-align: center;
 }
 .area-commentary {
-  box-sizing: border-box;
-  width: 85%;
-  margin: 10px;
+  width: 100%;
   font-size: 1.1em;
+  border-radius: 5px;
+  height: 160px;
+  padding: 5px;
 }
 .section-commentaries {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .section-commentary {
-  padding: 5px;
   border-bottom: groove 1px white;
   font-size: 1.1em;
+  text-align: left;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+.add-commentary {
+  color: white;
+  background-color: #d97d0d;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.delete-commentary {
+  color: white;
+  background-color: #d97d0d;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  width: 100px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px;
+}
+.details-commentary {
+  font-size: 0.7em;
+}
+.paraph-commentary {
+  text-align: left;
+  padding: 0;
+}
+@media screen and (max-width: 360px) {
+  .recipe-information {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .recipe-information-list {
+    margin: 0 10px 10px 10px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -163,18 +212,6 @@ h2 {
 
   .recipe-other-information {
     width: 50vw;
-  }
-  .container-commentary {
-    margin: 20px;
-    display: inline-block;
-  }
-  .box-commentary {
-    text-align: center;
-    width: 50%;
-  }
-  .section-commentaries {
-    text-align: center;
-    width: 50%;
   }
 }
 
@@ -198,4 +235,33 @@ h2 {
   .ingredients-list li {
     margin: 0 0 5px 0;
   }
+  .suggestion-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 85vw;
+    justify-content: space-around;
+    margin-top: 65px;
+  }
+  .container-commentary {
+    width: 70%;
+  }
+}
+
+.commentary {
+  display: flex;
+  flex-direction: row;
+}
+
+.facebook {
+  width: 20px;
+  height: 20px;
+  border-radius: 50;
+  margin-right: 5px;
+}
+
+.twitter {
+  width: 20px;
+  height: 20px;
+  border-radius: 50;
 }

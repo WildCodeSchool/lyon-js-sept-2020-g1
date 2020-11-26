@@ -160,9 +160,12 @@ h2 {
 
 .linkLogo {
   margin: 0 auto;
+  padding: 0 0 0 25px;
 }
 
 .blocNav {
   display: flex;
   background-color: #323e40;
+  height: 60px;
+  padding: 10px 0;
 }
