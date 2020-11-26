@@ -12,12 +12,13 @@ import { FavoritesContext } from '../contexts/FavoritesContext';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 375,
+    width: 375,
+    overflow: 'hidden',
     margin: '15px',
     '@media screen and (max-width: 340px)': {
       margin: '15px 5px',
     },
-    height: '400px',
+    height: '410px',
     justifyContent: 'center',
     opacity: 0.9,
   },
@@ -52,12 +53,12 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
-    marginTop: '20px',
+    padding: '20px 10px 5px 10px',
   },
   media: {
     minHeight: '200px',
     maxHeight: '250px',
-    minWidth: 300,
+    minWidth: '100%',
     objectFit: 'cover',
     transform: 'scale(1)',
     transition: 'all 200ms ease-in',
@@ -99,8 +100,6 @@ export default function AffichageRecettes({
             className={classes.media}
             component="img"
             alt="photo of the recipe"
-            // height="250"
-            // width="100%"
             image={image}
             objectfit="cover"
             title="photo of recipe"
