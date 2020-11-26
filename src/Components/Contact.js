@@ -24,24 +24,32 @@ class Contact extends React.Component {
     const { lastName } = this.state;
     if (lastName.length <= 0) {
       this.setState({ errorLastName: true });
+    } else {
+      this.setState({ errorLastName: false });
     }
   };
   handleErrorFirstName = () => {
     const { firstName } = this.state;
     if (firstName.length <= 0) {
       this.setState({ errorFirstName: true });
+    } else {
+      this.setState({ errorFirstName: false });
     }
   };
   handleErrorEmail = () => {
     const { email } = this.state;
     if (email.length <= 0) {
       this.setState({ errorEmail: true });
+    } else {
+      this.setState({ errorEmail: false });
     }
   };
   handleErrorComment = () => {
     const { comment } = this.state;
     if (comment.length <= 0) {
       this.setState({ errorComment: true });
+    } else {
+      this.setState({ errorComment: false });
     }
   };
   handleChange = (fieldName, fieldValue) => {
