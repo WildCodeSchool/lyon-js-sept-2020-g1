@@ -68,12 +68,15 @@ class Contact extends React.Component {
     console.log(firstName, lastName, email, comment);
 
     axios
-      .post(`https://meals-factory.herokuapp.com/Contact`, {
-        firstname: firstName,
-        lastname: lastName,
-        email,
-        comment,
-      })
+      .post(
+        `https://meals-factory.herokuapp.com/Contact?apiKey=${window.apiKey}`,
+        {
+          firstname: firstName,
+          lastname: lastName,
+          email,
+          comment,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         this.setState({
