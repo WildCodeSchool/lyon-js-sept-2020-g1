@@ -8,6 +8,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import Wine from './Wine.js';
 
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -19,16 +20,6 @@ import { FacebookIcon, TwitterIcon } from 'react-share';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { DriveEtaTwoTone, ModeComment } from '@material-ui/icons';
 import moment from 'moment';
-
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
   iconList: {
@@ -49,29 +40,8 @@ const useStyles = makeStyles((theme) => ({
       color: '#D97D0D',
     },
   },
-  root: {
-    maxWidth: 380,
-    margin: '50px auto',
-  },
-  content: {
-    backgroundColor: '#D97D0D',
-    margin: 0,
-    padding: 0,
-  },
-  media: {
-    width: 380,
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
+  hiddenDiv: {
+    display: 'none',
   },
 }));
 
@@ -151,34 +121,9 @@ const Recipe = (props) => {
     }
   };
 
-  const showWineName = () => {
-    if (
-      recipeData.winePairing &&
-      recipeData.winePairing.productMatches &&
-      recipeData.winePairing.productMatches.length > 0
-    ) {
-      return recipeData.winePairing.productMatches.map((wine, index) => {
-        return <h5 key={index}>{wine.title}</h5>;
-      });
-    } else {
-      return <h5>No wine found for this recipe.</h5>;
-    }
-  };
-
-  const showWineDescription = () => {
-    if (recipeData.winePairing && recipeData.winePairing.productMatches) {
-      return recipeData.winePairing.productMatches.map(
-        (wineDescription, index) => {
-          return <p key={index}>{wineDescription.description}</p>;
-        }
-      );
-    }
-  };
-
   const setCommentaryIntoRecipe = () => {
     if (commentary !== '') {
       const getCommentaries = [
-        ...commentaries,
         {
           id:
             commentaries.length > 0
@@ -189,6 +134,7 @@ const Recipe = (props) => {
           author: 'Wilder',
           date: moment(Date.now()).format('DD/MM/YYYY H:mm'),
         },
+        ...commentaries,
       ];
       setCommentaries(getCommentaries);
       setCommentary('');
@@ -197,11 +143,6 @@ const Recipe = (props) => {
 
   const deleteCommentaryFromRecipe = (id) => {
     setCommentaries(commentaries.filter((commentary) => commentary.id !== id));
-  };
-
-  const [expanded, setExpanded] = React.useState(false);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
   };
 
   return (
@@ -276,109 +217,58 @@ const Recipe = (props) => {
             <table className="recipe-steps">{showRecipeSteps()}</table>
           </div>
         </div>
-
-        <Card className={classes.root}>
-          <CardContent className={classes.content}>
-            <CardContent
-              style={{
-                color: 'white',
-                textAlign: 'center',
-                textDecoration: 'underline',
-                fontSize: '1.7em',
-              }}
-            >
-              Advised wine:
-            </CardContent>
-            <CardContent
-              style={{
-                color: '#323e40',
-                textAlign: 'center',
-                fontSize: '1.5em',
-              }}
-            >
-              {showWineName()}
-            </CardContent>
-          </CardContent>
-          <CardMedia
-            className={classes.media}
-            image="/images/vin.jpg"
-            title="Bottle of wine"
-            alt="bottle of wine"
-          />
-          <CardActions disableSpacing style={{ backgroundColor: '#D97D0D' }}>
-            <Typography
-              paragraph
-              style={{
-                color: '#323e40',
-                margin: 'auto',
-                textDecoration: 'underline',
-              }}
-            >
-              Wine desciption
-            </Typography>
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent
-              style={{ backgroundColor: '#D97D0D', color: '#323e40' }}
-            >
-              <Typography paragraph style={{ padding: 5 }}>
-                {showWineDescription()}
-              </Typography>
-            </CardContent>
-          </Collapse>
-        </Card>
-
-        <div className="container-commentary">
-          <div className="box-commentary">
-            <textarea
-              className="area-commentary"
-              placeholder="Add a review..."
-              value={commentary}
-              onChange={(e) => setCommentary(e.target.value)}
-            />
-            <button
-              className="add-commentary"
-              onClick={setCommentaryIntoRecipe}
-            >
-              Leave a review
-            </button>
-          </div>
-          <div className="section-commentaries">
-            <h2>
-              {commentaries.filter(
-                (commentary) => commentary.recipe === recipeId
-              ).length > 0
-                ? 'Reviews'
-                : ''}
-            </h2>
-            {commentaries
-              .filter((commentary) => commentary.recipe === recipeId)
-              .map((commentary) => {
-                return (
-                  <div className="section-commentary" key={commentary.id}>
-                    <i className="details-commentary">
-                      Posted at {commentary.date} by {commentary.author}
-                    </i>
-                    <p className="paraph-commentary">{commentary.value}</p>
-                    <button
-                      className="delete-commentary"
-                      onClick={() => deleteCommentaryFromRecipe(commentary.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                );
-              })}
+        <div className="suggestion-container">
+          {recipeData.winePairing &&
+          recipeData.winePairing.productMatches &&
+          recipeData.winePairing.productMatches.length > 0 ? (
+            <Wine recipeData={recipeData} />
+          ) : (
+            <div className={classes.hiddenDiv}></div>
+          )}
+          <div className="container-commentary">
+            <div className="box-commentary">
+              <textarea
+                className="area-commentary"
+                placeholder="Review..."
+                value={commentary}
+                onChange={(e) => setCommentary(e.target.value)}
+              />
+              <button
+                className="add-commentary"
+                onClick={setCommentaryIntoRecipe}
+              >
+                Leave a review
+              </button>
+            </div>
+            <div className="section-commentaries">
+              <h2>
+                {commentaries.filter(
+                  (commentary) => commentary.recipe === recipeId
+                ).length > 0
+                  ? 'Reviews'
+                  : ''}
+              </h2>
+              {commentaries
+                .filter((commentary) => commentary.recipe === recipeId)
+                .map((commentary) => {
+                  return (
+                    <div className="section-commentary" key={commentary.id}>
+                      <i className="details-commentary">
+                        Posted at {commentary.date} by {commentary.author}
+                      </i>
+                      <p className="paraph-commentary">{commentary.value}</p>
+                      <button
+                        className="delete-commentary"
+                        onClick={() =>
+                          deleteCommentaryFromRecipe(commentary.id)
+                        }
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </div>

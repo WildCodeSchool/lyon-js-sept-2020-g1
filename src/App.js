@@ -11,6 +11,7 @@ import './Components/Contact.css';
 import Navbar from './Components/Navbar';
 import Recipe from './Components/Recipe';
 import Footer from './Components/Footer';
+import ScrollTop from './Components/ScrollTop';
 import { FavoritesContextProvider } from './contexts/FavoritesContext';
 
 function App() {
@@ -23,13 +24,15 @@ function App() {
               <Navbar />
             </header>
             <main>
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/Contact" component={Contact} />
-                <Route path="/AboutUs" component={AboutUs} />
-                <Route path="/Favoris" component={Favorites} />
-                <Route exact path="/recipe/:id" component={Recipe} />
-              </Switch>
+              <ScrollTop>
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/Contact" component={Contact} />
+                  <Route path="/AboutUs" component={AboutUs} />
+                  <Route path="/Favoris" component={Favorites} />
+                  <Route exact path="/recipe/:id" component={Recipe} />
+                </Switch>
+              </ScrollTop>
             </main>
           </FavoritesContextProvider>
         </SearchContextProvider>

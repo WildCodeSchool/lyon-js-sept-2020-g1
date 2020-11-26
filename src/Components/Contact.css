@@ -20,17 +20,17 @@
   margin: 20px auto;
 }
 
-.contact-main-container h1,
-p {
+.contact-title,
+.contact-text {
   padding: 25px 25px;
   color: white;
 }
 
-.contact-main-container h1 {
+.contact-title {
   text-align: center;
 }
 
-.contact-main-container p {
+.contact-text {
   font-size: 18px;
 }
 
@@ -49,6 +49,7 @@ p {
   padding: 5px 5px 5px 10px;
   font-size: 16px;
   border: none;
+  box-sizing: border-box;
 }
 
 .form-textarea {
@@ -56,9 +57,10 @@ p {
   min-width: 150px;
   padding: 10px 5px 5px 15px;
   font-size: 16px;
-
+  resize: none;
   border-radius: 10px;
   margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .send-button {
@@ -141,8 +143,8 @@ label {
     max-width: 700px;
   }
 
-  .contact-main-container h1,
-  p {
+  .contact-main-title,
+  .contact-main-text {
     padding-left: 52px;
   }
 }

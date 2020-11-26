@@ -59,7 +59,7 @@ function Navbar() {
             </li>
             <li>
               <Link onClick={closeNavbar} to="/AboutUs">
-                Team Development
+                Development Team
               </Link>
             </li>
           </ul>
