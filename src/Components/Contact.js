@@ -59,10 +59,8 @@ class Contact extends React.Component {
     const { firstName, lastName, email, comment } = this.state;
     console.log(firstName, lastName, email, comment);
 
-    const apiKey = process.env.REACT_APP_API_KEY;
-
     axios
-      .post(`https://meals-factory.herokuapp.com/Contact?apiKey=${apiKey}`, {
+      .post(`https://meals-factory.herokuapp.com/Contact`, {
         firstname: firstName,
         lastname: lastName,
         email,
