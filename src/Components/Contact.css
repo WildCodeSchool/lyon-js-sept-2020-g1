@@ -20,17 +20,17 @@
   margin: 20px auto;
 }
 
-.contact-main-container h1,
-.contact-main-container p {
+.contact-title,
+.contact-text {
   padding: 25px 25px;
   color: white;
 }
 
-.contact-main-container h1 {
+.contact-title {
   text-align: center;
 }
 
-.contact-main-container p {
+.contact-text {
   font-size: 18px;
 }
 
@@ -143,8 +143,8 @@ label {
     max-width: 700px;
   }
 
-  .contact-main-container h1,
-  .contact-main-container p {
+  .contact-main-title,
+  .contact-main-text {
     padding-left: 52px;
   }
 }

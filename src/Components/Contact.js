@@ -104,8 +104,10 @@ class Contact extends React.Component {
           isFormSend={this.state.isFormSend}
           handleCloseValidationMessage={this.handleCloseValidationMessage}
         />
-        <h1>Contact</h1>
-        <p>For any question or suggestion, please fulfill the form below.</p>
+        <h1 className="contact-title">Contact</h1>
+        <p className="contact-text">
+          For any question or suggestion, please fulfill the form below.
+        </p>
         <div className="form-container">
           <div>
             <label htmlFor="lastName">Lastname : </label>
