@@ -12,12 +12,13 @@ import { FavoritesContext } from '../contexts/FavoritesContext';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 375,
+    width: 375,
+    overflow: 'hidden',
     margin: '15px',
     '@media screen and (max-width: 340px)': {
       margin: '15px 5px',
     },
-    height: '400px',
+    height: '410px',
     justifyContent: 'center',
     opacity: 0.9,
   },
@@ -52,12 +53,12 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
-    marginTop: '20px',
+    paddingTop: 20,
   },
   media: {
     minHeight: '200px',
     maxHeight: '250px',
-    minWidth: 300,
+    width: '100%',
     objectFit: 'cover',
     transform: 'scale(1)',
     transition: 'all 200ms ease-in',
