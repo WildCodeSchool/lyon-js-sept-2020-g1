@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div>
       <footer className="footer">
-        <Link to="/AboutUs">Team developement</Link>
+        <Link to="/AboutUs">Development team</Link>
         <Link to="/Contact">Contact Us</Link>
         <a href="https://github.com/WildCodeSchool/lyon-js-sept-2020-g1">
           GitHub
