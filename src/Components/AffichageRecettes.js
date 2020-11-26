@@ -14,6 +14,9 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 375,
     margin: '15px',
+    '@media screen and (max-width: 340px)': {
+      margin: '15px 5px',
+    },
     height: '400px',
     justifyContent: 'center',
     opacity: 0.9,
@@ -54,7 +57,7 @@ const useStyles = makeStyles({
   media: {
     minHeight: '200px',
     maxHeight: '250px',
-    minWidth: 375,
+    minWidth: 300,
     objectFit: 'cover',
     transform: 'scale(1)',
     transition: 'all 200ms ease-in',
