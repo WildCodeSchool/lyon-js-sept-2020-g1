@@ -64,8 +64,7 @@ body {
 }
 
 .recipe-other-information-list p {
-  /* margin-left: 10px; */
-  /* padding-left: 0px; */
+  padding: 25px 25px;
   white-space: nowrap;
 }
 
