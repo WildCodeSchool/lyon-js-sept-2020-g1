@@ -127,6 +127,7 @@ const Searchbar = () => {
     dietList,
     cuisineList,
     mealList,
+    setFiltersList,
   ]);
 
   // SearchBar function return
