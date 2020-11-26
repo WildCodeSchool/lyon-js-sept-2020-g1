@@ -136,11 +136,9 @@ const Recipe = (props) => {
       setCommentaries(getCommentaries);
       setCommentary('');
     }
-    console.log(commentaries);
   };
 
   const deleteCommentaryFromRecipe = (id) => {
-    // console.log(commentaries);
     setCommentaries(commentaries.filter((comm) => comm.id !== id));
   };
 

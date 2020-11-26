@@ -123,7 +123,6 @@ const Searchbar = () => {
   }, [
     currentIngredientSearch,
     apiKey,
-    filters,
     dietList,
     cuisineList,
     mealList,
