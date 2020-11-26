@@ -53,7 +53,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
-    padding: '20px 10px 0px 10px',
+    padding: '20px 10px 5px 10px',
   },
   media: {
     minHeight: '200px',
